@@ -1,0 +1,66 @@
+{
+	// set debug to true for print info & error messege.
+	"debug": false,
+	// file_name: each file in this array should be exist in 'Tooltip-Helper' folder with the correct file name.
+	// link (optional): in case you want to add link for documentation website.
+	// scope:  must to be valid, so in case you dont know what is the current scope press ctrl+alt+shift+p or
+	// search in scopes.txt file.
+	"files":
+	[
+		{
+			"file_name": "PythonSublimeAPI.sublime-tooltip",
+			"link": "http://www.sublimetext.com/docs/3/api_reference.html",
+			"scope": "source.python"
+		},
+		{
+			"file_name": "HTML.sublime-tooltip",
+			"link": "http://www.w3schools.com/html/",
+			"scope": "text.html"
+		},
+		{
+			"file_name": "Dooble.sublime-tooltip",
+			"link": "http://www.htmlpp.com/sjs-api-listing",
+			"scope": "source.js"
+		},
+		{
+			"file_name": "CSS.sublime-tooltip",
+			"link": "http://www.w3schools.com/css/",
+			"scope": "source.css"
+		}
+	],
+	// set timeout to false if you dont want that the tooltip window close.
+	"has_timeout": true,
+	// set key order which determine the order of attributes in tooltip window.
+	"keyorder":
+	[
+		"method",
+		"description",
+		"parameters",
+		"return",
+		"link"
+	],
+	// set the width of tooltip window.
+	"max_width": 700,
+	// set the timeout of tooltip window in milliseconds.
+	"set_timeout": 10000,
+	// set css to tooltip
+	"css": 
+	{
+		"title": 
+		{
+			"color": "black",
+			"text-decoration": "underline"
+		},
+		"content":
+		{
+			"color": "black",
+			"text-decoration": "none"
+		},
+	        "link":
+	        {
+	        	"color": "black",
+			"text-decoration": "underline"
+			
+		}
+	}
+}
