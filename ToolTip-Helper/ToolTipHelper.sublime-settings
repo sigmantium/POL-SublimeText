@@ -8,26 +8,6 @@
 	"files":
 	[
 		{
-			"file_name": "PythonSublimeAPI.sublime-tooltip",
-			"link": "http://www.sublimetext.com/docs/3/api_reference.html",
-			"scope": "source.python"
-		},
-		{
-			"file_name": "HTML.sublime-tooltip",
-			"link": "http://www.w3schools.com/html/",
-			"scope": "text.html"
-		},
-		{
-			"file_name": "Dooble.sublime-tooltip",
-			"link": "http://www.htmlpp.com/sjs-api-listing",
-			"scope": "source.js"
-		},
-		{
-			"file_name": "CSS.sublime-tooltip",
-			"link": "http://www.w3schools.com/css/",
-			"scope": "source.css"
-		},
-		{
 			"file_name": "POLeScript.sublime-tooltip",
 			"link": "https://docs.polserver.com/pol100",
 			"scope": "source.polscript"
