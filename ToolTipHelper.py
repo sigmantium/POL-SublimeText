@@ -25,7 +25,7 @@ class Utilities():
             try:
                 # the output of sorted function is an ordered list of tuples 
                 ordered_result = sorted(json.items(), key=lambda i:keyorder.index(i[0]))
-                print("ordered_result: " + str(ordered_result))
+                # print("ordered_result: " + str(ordered_result))
             except Exception as e:
                 print(e)
                 ordered_result = []
@@ -45,7 +45,7 @@ class Utilities():
 
     @staticmethod
     def get_html_from_list(ordered_result, style):
-        print(ordered_result)
+        # print(ordered_result)
         message = ""
         for item in ordered_result:
             key, value = item
@@ -78,7 +78,7 @@ class Utilities():
         separator = 100*'-'
         currnet_date_time = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")
         formated_msg = separator + '\n\t\t\t\t\t\t' + currnet_date_time + '\n' + separator + '\n' + msg + '\n\n'
-        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'PolServer'), 'logger.txt')
+        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'PolServer\\ToolTip-Helper'), 'logger.txt')
         try:
             with open(relative_path, 'w+') as f:
                 f.write(formated_msg)
@@ -92,7 +92,7 @@ class OpenSublimeTooltipFilesCommand(sublime_plugin.WindowCommand):
 
     def run(self):
         # set root directory path
-        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'PolServer'), 'db')
+        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'PolServer\\ToolTip-Helper'), 'db')
         # only file names
         decorated_files_names = [f for f in os.listdir(relative_path) if os.path.isfile(os.path.join(relative_path, f))]
         # full path files
@@ -529,7 +529,7 @@ class ToolTipHelperCommand(sublime_plugin.TextCommand):
             json_data = self.read_JSON(file_path)
             return json_data[search_result]
         except Exception as e:
-            logging.error('Documentation not exist in: \"%s\"' % file_path)
+            # logging.error('Documentation not exist in: \"%s\"' % file_path)
             self.logger_msg += str(e) + '\n'
             return {}
 
@@ -546,7 +546,7 @@ class ToolTipHelperCommand(sublime_plugin.TextCommand):
     def get_tooltip_files(self, current_scope):
         """ get all files paths which have the current scope """
         files = self.get_immediate_files()
-        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'PolServer'), 'db')
+        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'PolServer\\ToolTip-Helper'), 'db')
         tooltip_files = []
         scope_arr = list(reversed(current_scope.strip().split(' ')))
         self.logger_msg += "Current scope: %s\n" % current_scope
@@ -568,7 +568,7 @@ class ToolTipHelperCommand(sublime_plugin.TextCommand):
                     break
             if not has_files:
                 self.logger_msg += 'There is no file with scope from the files list that match to the current scope\n'                
-        print(tooltip_files)
+        # print(tooltip_files)
         return tooltip_files
         
     def get_immediate_files(self):
