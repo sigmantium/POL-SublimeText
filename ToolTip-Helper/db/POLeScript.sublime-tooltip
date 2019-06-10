@@ -1,0 +1,12 @@
+{
+  // UO
+  "Accessible": {
+    "method": "Accessible( by_character, item, range := ACCESSIBLE_DEFAULT )",
+    "parameters": "by_character\tCharacter Reference\r\nitem\tItem Reference\r\nrange\tInteger",
+    "explanation": "Function: Determines if an item falls into one of the following categories for a character:\r\nAn item on the ground, within \"range\" squares (defaults to \"DefaultAccessibleRange\" from servspecopt). Use ACCESSIBLE_IGNOREDISTANCE to avoid this check.\r\nAn item equipped by the character\r\nAn item inside the character's backpack\r\nA temporarily accessible item\r\nNotes: Does not check that character has line-of-sight to item.",
+    "return":"0 if item does not fall into one of the above categories, 1 if the item does.",
+    "errors":"none",
+    "related":"Item\nCharacter",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#Accessible"
+  }
+}

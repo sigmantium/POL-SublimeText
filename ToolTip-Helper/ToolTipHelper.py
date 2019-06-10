@@ -78,7 +78,7 @@ class Utilities():
         separator = 100*'-'
         currnet_date_time = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")
         formated_msg = separator + '\n\t\t\t\t\t\t' + currnet_date_time + '\n' + separator + '\n' + msg + '\n\n'
-        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'ToolTip-Helper'), 'logger.txt')
+        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'PolServer\\ToolTip-Helper'), 'logger.txt')
         try:
             with open(relative_path, 'w+') as f:
                 f.write(formated_msg)
@@ -92,7 +92,7 @@ class OpenSublimeTooltipFilesCommand(sublime_plugin.WindowCommand):
 
     def run(self):
         # set root directory path
-        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'ToolTip-Helper'), 'db')
+        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'PolServer\\ToolTip-Helper'), 'db')
         # only file names
         decorated_files_names = [f for f in os.listdir(relative_path) if os.path.isfile(os.path.join(relative_path, f))]
         # full path files
@@ -546,7 +546,7 @@ class ToolTipHelperCommand(sublime_plugin.TextCommand):
     def get_tooltip_files(self, current_scope):
         """ get all files paths which have the current scope """
         files = self.get_immediate_files()
-        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'ToolTip-Helper'), 'db')
+        relative_path = os.path.join(os.path.join(sublime.packages_path(), 'PolServer\\ToolTip-Helper'), 'db')
         tooltip_files = []
         scope_arr = list(reversed(current_scope.strip().split(' ')))
         self.logger_msg += "Current scope: %s\n" % current_scope

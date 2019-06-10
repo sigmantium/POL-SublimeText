@@ -1,6 +1,6 @@
 {
 	// set debug to true for print info & error messege.
-	"debug": false,
+	"debug": true,
 	// file_name: each file in this array should be exist in 'Tooltip-Helper' folder with the correct file name.
 	// link (optional): in case you want to add link for documentation website.
 	// scope:  must to be valid, so in case you dont know what is the current scope press ctrl+alt+shift+p or
@@ -26,6 +26,11 @@
 			"file_name": "CSS.sublime-tooltip",
 			"link": "http://www.w3schools.com/css/",
 			"scope": "source.css"
+		},
+		{
+			"file_name": "POLeScript.sublime-tooltip",
+			"link": "https://docs.polserver.com/pol100",
+			"scope": "source.polscript"
 		}
 	],
 	// set timeout to false if you dont want that the tooltip window close.
@@ -34,9 +39,11 @@
 	"keyorder":
 	[
 		"method",
-		"description",
 		"parameters",
+		"explanation",
 		"return",
+		"errors",
+		"related",
 		"link"
 	],
 	// set the width of tooltip window.

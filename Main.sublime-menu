@@ -1,0 +1,60 @@
+[
+    {
+        "caption": "Preferences",
+        "mnemonic": "n",
+        "id": "preferences",
+        "children": [
+            {
+                "caption": "POL Server Settings",
+                "mnemonic": "P",
+                "children": 
+                [
+                    {
+                        "caption": "All Autocomplete",
+                        "children":
+                        [
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/PolServer/SublimeAllAutocomplete/All Autocomplete.sublime-settings"
+                                },
+                                "caption": "Settings – Default"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/PolServer/User/SublimeAllAutocomplete/All Autocomplete.sublime-settings"
+                                },
+                                "caption": "Settings – User"
+                            }
+                        ]
+                    },
+                    {
+                        "caption": "ToolTip helper", 
+                        "children": 
+                        [
+                            {
+                                "command": "open_file", "args":
+                                {
+                                    "file": "${packages}/PolServer/ToolTip-Helper/ToolTipHelper.sublime-settings"
+                                },
+                                "caption": "ToolTip Helper Settings – Default"
+                            },
+                            {
+                                "command": "open_file", "args":
+                                {
+                                    "file": "${packages}/PolServer/User/ToolTipHelper.sublime-settings"
+                                },
+                                "caption": "ToolTip Helper Settings – User"
+                            },
+                            {
+                                "command":"enter_data",
+                                "caption": "Enter Data To Tooltip - Settings"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
