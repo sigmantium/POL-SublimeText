@@ -1,0 +1,202 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+name: POL eScript CFG
+file_extensions:
+  - cfg
+scope: source.cfg.polscript
+
+contexts:
+  # The prototype context is prepended to all contexts but those setting
+  # meta_include_prototype: false.
+  prototype:
+    - include: comments
+    - include: numbers
+    - include: operators
+    - include: strings
+    - include: values
+
+  main:
+    # The main context is the initial starting point of our syntax.
+    # Include other contexts from here (or specify them directly).
+    - include: script
+    - include: structures
+
+  script:
+    - include: braces
+    - include: brackets
+    - include: parens
+
+
+  # MAIN
+  
+
+  # BRACES & PARENS
+
+  braces:
+    # BRACES {} balancing
+    - match: \{
+      scope: punctuation.section.braces.begin.polscript
+      push: inside_braces
+    - match: \}
+      scope: invalid.illegal.polscript
+
+  inside_braces:
+    - match: \}
+      scope: punctuation.section.braces.end.polscript
+      pop: true
+    - include: script
+    - include: prop
+    - include: cprop
+
+  brackets:
+    # BRACKETS [] balancing
+    - match: \[
+      scope: punctuation.section.brackets.begin.polscript
+      push: inside_brackets
+    - match: \]
+      scope: invalid.illegal.polscript
+
+  inside_brackets:
+    - match: \]
+      scope: punctuation.section.brackets.end.polscript
+      pop: true
+    - include: script
+
+  parens:
+    # PARENTHESES () balancing
+    - match: \(
+      scope: punctuation.section.parens.begin.polscript
+      push: inside_parens
+    - match: \)
+      scope: invalid.illegal.polscript
+
+  inside_parens:
+    - match: \)
+      scope: punctuation.section.parens.end.polscript
+      pop: true
+    - include: script
+
+
+  # POL SPECIFICS
+
+  values:
+    - match: '(?i)\b(DisplayParrySuccessMessages|WarmodeInhibitsRegen|WarModeDelay|SingleCombat|CoreHitSounds|ScriptedAttackChecks|ResetSwingOnTurn|SendSwingPacket|SendDamagePacket|AttackWhileFrozen|SendAttackMsg|ModuleDirectory|IncludeDirectory|PolScriptRoot|PackageRoot|GenerateListing|GenerateDebugInfo|GenerateDebugTextInfo|DisplayWarnings|CompileAspPages|OnlyCompileUpdatedScripts|GenerateDependencyInfo|DisplayUpToDateScripts|AutoCompileByDefault|UpdateOnlyOnAutoCompile|DisplaySummary|OptimizeObjectMembers|ErrorOnWarning|ThreadedCompilation|ParanoiaWarnings|Tillerman|Port_Plank|Starboard_Plank|Hold|Rope|Wheel|Hull|Tiller|Rudder|Sails|Storage|Waponslot|Wrestling|Mount|Shield|Secure_Trade_Container|Wornitems_Container|Enabled|Name|Requires|Replaces|Conflicts|Version|CoreRequired|ProvidesSystemHomePage|Maintainer|Email|UoDataFileRoot|WorldDataPath|RealmDataPath|PidFilePath|ListenPort|ClientEncryptionVersion|CountResourceTiles|Multithread|WebServer|WebServerPort|IgnoreLoadErrors|DebugPort|AccountDataSave|Verbose|LogLevel|SelectTimeout|WatchRpm|WatchSysLoad|WatchMapCache|LogSysLoad|InhibitSaves|LogScriptCycles|ProfileCProps|WebServerLocalOnly|WebServerDebug|WebServerPassword|CacheInteractiveScripts|ShowSpeechColors|RequireSpellbooks|EnableSecureTrading|RunawayScriptThreshold|InactivityWarningTimeout|InactivityDisconnectTimeout|MinCmdlevelToLogin|MinCmdLvlToIgnoreInactivity|MaxCallDepth|ThreadStacktracesWhenStuck|DumpStackOnAssertionFailure|DisplayUnknownPackets|ExpLosChecksMap|EnableDebugLog|DebugPassword|DebugLocalOnly|DebugLevel|ReportRunToCompletionScripts|ReportCriticalScripts|ReportMissingConfigs|MaximumClients|MaximumClientsBypassCmdLevel|AllowMultiClientsPerAccount|CharacterSlots|MiniDumpType|RetainCleartextPasswords|AssertionFailureAction|ShutdownSaveType|TimestampEveryLine|MaxTileID|MaxObjtype|DiscardOldEvents|UseSingleThreadLogin|DisableNagle|ShowRealmInfo|EnforceMountObjtype|SingleThreadDecay|ThreadDecayStatistics|ReportCrashsAutomatically|ReportAdminEmail|ReportServer|ReportURL|AllowSecureTradingInWarMode|DefaultDecayTime|DefaultDoubleclickRange|DefaultLightLevel|MovementUsesStamina|TotalStatsAtCreation|DefaultContainerMaxItems|DefaultContainerMaxWeight|UOFeatureEnable|MaxPathFindRange|HiddenTurnsCount|ItemColorMask|DecayItems|UseTileFlagPrefix|UseWinLFH|EventVisibilityCoreChecks|DoubleClickWait|InvulTag|StartingGold|PrivacyPaperdoll|ForceNewObjCachePackets|AllowMovingTrade|CoreHandledLocks|DefaultAttributeCap|CoreSendsCaps|SendStatLocks|MaxContainerSlots|UseContainerSlots|EditServer|CarryingCapacityMod|SpeechRange|WhisperRange|YellRange|CoreSendsSeason|CoreHandledTags|SupportFaces|NewbieStartingEquipment|SpeedhackPrevention|ScriptedMerchantHandlers|HonorUnequipScriptOnDeath|SpeedHack_MountRunDelay|SpeedHack_MountWalkDelay|SpeedHack_FootRunDelay|SpeedHack_FootWalkDelay|SeperateSpeechTokens|CoreGuildMessages|MobilesBlockNpcMovement|DefaultCharacterHeight|Combat|ProfileScripts)\b\s*\='
+      scope: keyword.other.polscript
+
+  structures:
+    - match: '(?i)\b(OnMount|MobileType|ArmorZone|Attribute|AuxService|BannedIP|Boat|Circle|CmdLevel|Commands|Equipment|FileAccess|Item|Container|Spellbook|Door|House|Map|Weapon|Armor|Region|LightRegion|ItemMenu|MovementCost|Walking|Running|Walking_Mounted|Running_Mounted|Stairs|General|HookList|PackageRoot|NameColoring|ResourceSystem|Global|GameServer|Spell|Stacking|StartingLocation|SystemHookScript|Protocol|Listener|LOSOptions|StaticOptions|TileOptions|MultiTypes|Mounts|ClientOptions|Packet|SubPacket|Skill|Vital|WeatherRegion|MIME)\b'
+      scope: keyword.other.polscript
+
+  prop:
+    - match: '(?i)\b(OldAnimX|NewAnim|Graphic|Name|Chance|Layer|Alias|GetIntrinsicModFunction|Delay|Unhides|Script|DefaultCap|DisableCoreChecks|Port|IPMatch|MultiId|TillerMan|PortGangplankExtended|PortGangplankRetracted|StarboardGangplankExtended|StarboardGangplankRetracted|Hold|Rope|Wheel|Hull|Tiller|Rudder|Sails|Storage|WeaponSlot|Mana|Difficulty|PointValue|DIR|CMD|Armor|Weapon|Equip|Package|Directory|Extension|AllowRead|AllowWrite|AllowAppend|AllowRemote|Color|Facing|Desc|Tooltip|WalkOnScript|EquipScript|UnequipScript|ControlScript|CreateScript|DestroyScript|MethodScript|RequiresAttention|Lockable|VendorSellsFor|VendorBuysFor|DecayTime|SaveOnExit|Movable|DoubleClickRange|UseRequiresLOS|GhostsCanUse|CanUseWhileFrozen|CanUseWhileParalyzed|Newbie|Insured|Invisible|DecaysOnMultis|BlocksCastingIfInHand|StrRequired|MaxHP|Weight|OldObjtype|StackingIgnoresCProps|Resource|FireResist|ColdResist|EnergyResist|PoisonResist|PhysicalResist|FireDamage|ColdDamage|EnergyDamage|PoisonDamage|PhysicalDamage|StackLimit|NoDrop|Gump|MinX|MaxX|MinY|MaxY|MaxWeight|MaxItems|MaxSlots|NoDropException|CanInsertScript|OnInsertScript|CanRemoveScript|OnRemoveScript|SpellType|OpenGraphic|XMod|YMod|Editable|Speed|Damage|Attribute|Anim|MountedAnim|HitSound|MissSound|HitScript|Projectile|ProjectileType|ProjectileAnim|ProjectileSound|TwoHanded|MinRange|MaxRange|AR|OnHitScript|Coverage|Range|Realm|Guarded|EnterText|LeaveText|EnterScript|LeaveScript|Light|Title|Entry|SubMenu|Over|static|dynamic|Midi|Nocast|ObjType|Gender|TrueColor|Alignment|AttackSpeed|AttackDelay|AttackDamage|AttackAttribute|AttackHitSound|AttackMissSound|AttackHitScript|AttackMinRange|AttackMaxRange|AttackAnimation|AttackProjectile|AttackProjectileAnim|AttackProjectileType|AttackProjectileSound|AttackCProp|Shield|ShieldOnHitScript|ShieldCProp|MoveMode|Privs|Settings|SpeechColor|SpeechFont|UseAdjustments|RunSpeed|MaxPartyMembers|TreatNoAsPrivate|DeclineTimeout|PrivateMsgPrefix|RemoveMemberOnLogoff|RejoinPartyOnLogon|CanAddToParty|OnAddToParty|CanRemoveMember|CanLeaveParty|OnLeaveParty|OnPublicChat|OnPrivateChat|OnDisband|ChangePublicChat|ChangePrivateChat|OnPartyCreate|OnDecline|OnLootPermChange|dir|NoCast|NoCombat|LightLevel|WeatherType|WeatherSeverity|WeatherAux|LightOverride|Murderer|Criminal|Attackable|Innocent|Invulnerable|GuildAlly|GuildEnemy|CriminalFlagInterval|AggressorFlagTimeout|PartyHelpFullCountsAsCriminal|NameColor|HighLightColor|OnAttack|OnDamage|OnHelp|ResourceType|InitialUnits|LandTile|UnitsPerArea|SecondsPerRegrow|Capacity|IP|AcctMatch|SpellID|PowerWords|Animation|Circle|Reagent|IgnoreCprops|City|Description|MapID|Cliloc|Coordinate|Strength|Intelligence|Dexterity|Hits|Stamina|MaxSkillID|EnableFlowControlPackets|KeepClients|Encryption|AOSResistances|UseNoShoot|LOSThroughWindows|MaxStaticsPerBlock|WarningStaticsPerBlock|ShowIllegalGraphicWarning|ShowRoofAndPlatformWarning|Boats|Houses|Stairs|Tiles|UseNewHSAFormat|Length|Version|ClientVersion|ReceiveFunction|SendFunction|SubCommandOffset|SubCommandLength|SubCommandID|RegenRateFunction|MaximumFunction|UnderflowFunction|RegenWhileDead|MIME)\b'
+      scope: entity.other.attribute-name.polscript
+
+  cprop:
+    - match: '(?i)(CProp)\s(.*)\s([si])(.*)'
+      captures:
+        1: entity.other.attribute-name.polscript
+        2: keyword.other.polscript
+        3: support.class.polscript
+        4: string.unquoted.polscript
+
+
+  # GENERAL
+
+  numbers:
+    - match: '(?i)0x[0-9ABCDEF]+'
+      scope: constant.numeric.hex.polscript
+    - match: '[0-9]+.[0-9]+'
+      scope: constant.numeric.float.polscript
+    - match: '[0-9]+'
+      scope: constant.numeric.integer.polscript
+
+  operators:
+    - match: '(:=|\+=|-=|->)'
+      scope: keyword.operator.assignment.polscript
+    - match: '(\+|-|\*|/)'
+      scope: keyword.operator.arithmetic.polscript
+    - match: '(?i)(&&|\band\b|\|\||\bor\b|\bnot\b)'
+      scope: keyword.operator.bitwise.polscript
+    - match: '(==|!|!=|<|<=|>|>=)'
+      scope: keyword.operator.logical.polscript
+    - match: ;
+      scope: keyword.operator.polscript
+
+  strings:
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character.
+    - match: '"'
+      scope: punctuation.definition.string.begin.polscript
+      push: inside_string_double
+
+  inside_string_double:
+    - meta_include_prototype: false
+    - meta_scope: string.quoted.double.polscript
+    - match: '"'
+      scope: punctuation.definition.string.end.polscript
+      pop: true
+    - include: htmltags
+
+  htmltags:
+    - match: '(?i)<br>'
+      scope: support.class.polscript
+    - match: '(?i)<(\/)?(h[1-5]|b|i|u|center|body)>'
+      scope: support.class.polscript
+    - match: '(?i)<basefont'
+      scope: support.class.polscript
+      push:
+        - match: '(?i)(color=)((#)([0-9]{2})([0-9]{2})([0-9]{2})|\w*)'
+          captures:
+            1: entity.name.namespace.polscript
+            2: keyword.other.polscript
+            3: entity.name.namespace.polscript
+            4: keyword.other.polscript
+            5: entity.name.namespace.polscript
+            6: constant.numeric.hex.polscript
+        - match: '(?i)(face=)(UO_(Runic|Gargish)_(12|16|20)pt|[0-9]+)'
+          captures:
+            1: entity.name.namespace.polscript
+            2: keyword.other.polscript
+        - match: '(?i)(size=)([0-9]+)'
+          captures:
+            1: entity.name.namespace.polscript
+            2: keyword.other.polscript
+        - match: '>'
+          scope: support.class.polscript
+          pop: true
+    - match: '(?i)<\/basefont>'
+      scope: support.class.polscript
+    - match: '(?i)(<div)((\s(align=(left|center|right)))*)(>)'
+      captures:
+        1: support.class.polscript
+        2: entity.name.namespace.polscript
+        6: support.class.polscript
+    - match: '(?i)<\/div>'
+      scope: support.class.polscript
+    - match: '(?i)(<a)(\s((href=)(\w*))*)(>)'
+      captures:
+        1: support.class.polscript
+        2: entity.name.namespace.polscript
+        5: keyword.other.polscript
+        6: support.class.polscript
+    - match: '(?i)<\/a>'
+      scope: support.class.polscript
+
+  comments:
+    # Comments begin with a '//' and finish at the end of the line.
+    - match: '(//|#)'
+      scope: punctuation.definition.comment.polscript
+      push:
+        # This is an anonymous context push for brevity.
+        - meta_scope: comment.line.double-slash.polscript
+        - match: $\n?
+          pop: true
+    # Comments begin with a '/*' and finish with '*/'.
+    - match: '/\*'
+      scope: punctuation.definition.comment.polscript
+      push:
+        # This is an anonymous context push for brevity.
+        - meta_scope: comment.block.polscript
+        - match: '\*/'
+          pop: true
