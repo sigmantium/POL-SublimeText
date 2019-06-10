@@ -1,0 +1,4 @@
+{
+	"file_exclude_patterns": ["*.lst","*.dbg","*.dep","*.bak","*.zip","*.ecl"],
+	"index_exclude_patterns": ["*.log","*.txt","*.bak","*.zip"]
+}
