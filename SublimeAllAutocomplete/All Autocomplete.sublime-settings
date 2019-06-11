@@ -5,4 +5,7 @@
 	//      "css",
 	//      "scss"
 	// ]
+	//
+	// Used to display abbreviation for functions found in current file.
+	// "file_view_abbrev":"\tview"
 }
