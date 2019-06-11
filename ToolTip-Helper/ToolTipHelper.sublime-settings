@@ -14,7 +14,7 @@
 		}
 	],
 	// set timeout to false if you dont want that the tooltip window close.
-	"has_timeout": true,
+	"has_timeout": false,
 	// set key order which determine the order of attributes in tooltip window.
 	"keyorder":
 	[

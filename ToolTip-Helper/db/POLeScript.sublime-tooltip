@@ -2,20 +2,39 @@
   "_comment": "FILE - UO",
   "Accessible": {
     "method": "Accessible( by_character, item, range := ACCESSIBLE_DEFAULT )",
-    "parameters": "by_character\tCharacter Reference\r\nitem\tItem Reference\r\nrange\tInteger",
-    "explanation": "Function: Determines if an item falls into one of the following categories for a character:\r\nAn item on the ground, within \"range\" squares (defaults to \"DefaultAccessibleRange\" from servspecopt). Use ACCESSIBLE_IGNOREDISTANCE to avoid this check.\r\nAn item equipped by the character\r\nAn item inside the character's backpack\r\nA temporarily accessible item\r\nNotes: Does not check that character has line-of-sight to item.",
+    "parameters": ["by_character\tCharacter Reference","item\tItem Reference","range\tInteger"],
+    "explanation": ["Function: Determines if an item falls into one of the following categories for a character:\r","An item on the ground, within \"range\" squares (defaults to \"DefaultAccessibleRange\" from servspecopt). Use ACCESSIBLE_IGNOREDISTANCE to avoid this check.\r","An item equipped by the character\r","An item inside the character's backpack\r","A temporarily accessible item\r","Notes: Does not check that character has line-of-sight to item."],
     "return":"0 if item does not fall into one of the above categories, 1 if the item does.",
-    "errors":"\"That item is being used\" (if inuse or reserved)\r\n\"That item type is not stackable\"\r\n\"Can't add that much to that stack\" (if resulting amount > 60000)\r\n\"Invalid Parameter type\"",
+    "errors":["\"That item is being used\" (if inuse or reserved)\r","\"That item type is not stackable\"\r","\"Can't add that much to that stack\" (if resulting amount > 60000)\r","\"Invalid Parameter type\""],
     "related":"Item",
     "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#Accessible"
   },
   "AddAmount": {
     "method": "AddAmount( item, amount )",
-    "parameters": "item\tItem reference\r\namount\tAn integer 1-60000",
+    "parameters": ["item\tItem reference","amount\tAn integer 1-60000"],
     "explanation": "Adds the specified amount to a stack of items. Amount is between 1 and 60000",
     "return":"1 or error",
     "errors":"none",
-    "related":"Item\nCharacter",
+    "related":["Item","Character"],
     "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#AddAmount"
+  },
+  "AddMenuItem": {
+    "method": "AddMenuItem( menu, objtype, text, color:=0 )",
+    "parameters": ["menu  Dynamic Menu Reference (from CreateMenu())","objtype Integer tile graphic to add to menu","text  String description","color Integer"],
+    "explanation": ["Adds a menu item to a dynamic menu.",
+"Notes: The 'objtype' field of a mobile is not appropriate here. There is special art for mobiles for use in menus. Human Males (object type: 0x190) use 0x2106, females 0x2107. Use InsideUO to determine other values. Color defaults to 0 if no itemdesc.cfg entry exists. Hint: menus.cfg uses the color of the itemdesc entry of the objtype given.",
+"0 for objtype creates a checkbox-style menu"],
+    "return":"1 if the item was added successfully",
+    "errors":"none (returns 0 on invalid parameters)",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#AddMenuItem"
+  },
+  "ApplyConstraint": {
+    "method": "ApplyConstraint( objlist, configfile, propertyname, minvalue )",
+    "parameters": ["objlist\tarray of objtype numbers","configfile\tconfig file reference","propertyname\tstring","minvalue\tinteger"],
+    "explanation": ["Each element's objtype in \"objlist\" is looked up in the config file referenced by \"configfile\". if the object's value for \"propertyname\" is less than \"minvalue\", its objtype is included in the returned array.\r","Notes: Example: gets all the bowcraft items you can make given the amount of logs selected.\r","\/\/Returns all the objtypes in the \"BowcraftCarving\" entry in menus.cfg:\r","var objtypes := GetMenuObjTypes( \"BowcraftCarving\" );\r","\/\/Returns a subset of the objtypes in the bowcraft item crafting config file that require\r","\/\/less \"material\" than the value of targetted_logs.amount.\r","objtypes := ApplyConstraint(objtypes,bowcraftconfigfile,\"material\",targetted_logs.amount);\r","\/\/the return value is in a convienent form to use AddMenuItem()\r","return objtypes;"],
+    "return":"An Array of Object Types that pass the constraint.",
+    "errors":"none (instead returns an Uninitialized Object on failure)",
+    "related":["UObject","Array"],
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ApplyConstraint"
   }
 }
