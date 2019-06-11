@@ -36,5 +36,1468 @@
     "errors":"none (instead returns an Uninitialized Object on failure)",
     "related":["UObject","Array"],
     "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ApplyConstraint"
+  },
+  "AssignRectToWeatherRegion": {
+    "method": "AssignRectToWeatherRegion( region, xwest, ynorth, xeast, ysouth )",
+    "parameters": ["region string",
+"xwest integer",
+"ynorth  integer",
+"xeast integer",
+"ysouth  integer"],
+    "explanation": "Sets the range for weather region named \"region\". Useful for making moving storms. Notes: Weather region strings as defined in regions/weather.cfg",
+    "return":"1 on success",
+    "errors":["\"Invalid Parameter type\"",
+"\"Weather region not found\""],
+    "related":"weather.cfg",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#AssignRectToWeatherRegion"
+  },
+  "Attach": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#Attach"
+  },
+  "Broadcast": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#Broadcast"
+  },
+  "CanWalk": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CanWalk"
+  },
+  "CancelTarget": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CancelTarget"
+  },
+  "CheckLineOfSight": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CheckLineOfSight"
+  },
+  "CheckLosAt": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CheckLosAt"
+  },
+  "CheckLosBetween": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CheckLosBetween"
+  },
+  "CloseGump": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CloseGump"
+  },
+  "CloseTradeWindow": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CloseTradeWindow"
+  },
+  "CloseWindow": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CloseWindow"
+  },
+  "ConsumeReagents": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ConsumeReagents"
+  },
+  "ConsumeSubstance": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ConsumeSubstance"
+  },
+  "CoordinateDistance": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CoordinateDistance"
+  },
+  "CoordinateDistanceEuclidean": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CoordinateDistanceEuclidean"
+  },
+  "CreateAccount": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CreateAccount"
+  },
+  "CreateItemAtLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CreateItemAtLocation"
+  },
+  "CreateItemCopyAtLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CreateItemCopyAtLocation"
+  },
+  "CreateItemInBackpack": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CreateItemInBackpack"
+  },
+  "CreateItemInContainer": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CreateItemInContainer"
+  },
+  "CreateItemInInventory": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CreateItemInInventory"
+  },
+  "CreateMenu": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CreateMenu"
+  },
+  "CreateMultiAtLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CreateMultiAtLocation"
+  },
+  "CreateNpcFromTemplate": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#CreateNpcFromTemplate"
+  },
+  "DestroyItem": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#DestroyItem"
+  },
+  "DestroyMulti": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#DestroyMulti"
+  },
+  "Detach": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#Detach"
+  },
+  "DisableEvents": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#DisableEvents"
+  },
+  "DisconnectClient": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#DisconnectClient"
+  },
+  "Distance": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#Distance"
+  },
+  "DistanceEuclidean": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#DistanceEuclidean"
+  },
+  "EnableEvents": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#EnableEvents"
+  },
+  "EnumerateItemsInContainer": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#EnumerateItemsInContainer"
+  },
+  "EnumerateOnlineCharacters": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#EnumerateOnlineCharacters"
+  },
+  "EquipFromTemplate": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#EquipFromTemplate"
+  },
+  "EquipItem": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#EquipItem"
+  },
+  "EraseGlobalProperty": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#EraseGlobalProperty"
+  },
+  "EraseObjProperty": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#EraseObjProperty"
+  },
+  "FindAccount": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#FindAccount"
+  },
+  "FindObjtypeInContainer": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#FindObjtypeInContainer"
+  },
+  "FindPath": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#FindPath"
+  },
+  "FindSubstance": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#FindSubstance"
+  },
+  "GetAmount": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetAmount"
+  },
+  "GetCommandHelp": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetCommandHelp"
+  },
+  "GetCoordsInLine": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetCoordsInLine"
+  },
+  "GetEquipmentByLayer": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetEquipmentByLayer"
+  },
+  "GetFacing": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetFacing"
+  },
+  "GetGlobalProperty": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetGlobalProperty"
+  },
+  "GetGlobalPropertyNames": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetGlobalPropertyNames"
+  },
+  "GetHarvestDifficulty": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetHarvestDifficulty"
+  },
+  "GetMapInfo": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetMapInfo"
+  },
+  "GetMenuObjTypes": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetMenuObjTypes"
+  },
+  "GetMidpointCircleCoords": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetMidpointCircleCoords"
+  },
+  "GetMultiDimensions": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetMultiDimensions"
+  },
+  "GetObjProperty": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetObjProperty"
+  },
+  "GetObjPropertyNames": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetObjPropertyNames"
+  },
+  "GetObjType": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetObjType"
+  },
+  "GetObjTypeByName": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetObjTypeByName"
+  },
+  "GetRegionLightLevelAtLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetRegionLightLevelAtLocation"
+  },
+  "GetRegionName": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetRegionName"
+  },
+  "GetRegionNameAtLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetRegionNameAtLocation"
+  },
+  "GetRegionString": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetRegionString"
+  },
+  "GetSpellDifficulty": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetSpellDifficulty"
+  },
+  "GetStandingHeight": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetStandingHeight"
+  },
+  "GetStandingLayers": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetStandingLayers"
+  },
+  "GetWorldHeight": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GetWorldHeight"
+  },
+  "GrantPrivilege": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#GrantPrivilege"
+  },
+  "HarvestResource": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#HarvestResource"
+  },
+  "IsStackable": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#IsStackable"
+  },
+  "ListAccounts": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListAccounts"
+  },
+  "ListEquippedItems": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListEquippedItems"
+  },
+  "ListGhostsNearLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListGhostsNearLocation"
+  },
+  "ListHostiles": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListHostiles"
+  },
+  "ListItemsAtLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListItemsAtLocation"
+  },
+  "ListItemsInBoxOfObjType": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListItemsInBoxOfObjType"
+  },
+  "ListItemsNearLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListItemsNearLocation"
+  },
+  "ListItemsNearLocationOfType": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListItemsNearLocationOfType"
+  },
+  "ListItemsNearLocationWithFlag": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListItemsNearLocationWithFlag"
+  },
+  "ListMobilesInBox": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListMobilesInBox"
+  },
+  "ListMobilesInLineOfSight": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListMobilesInLineOfSight"
+  },
+  "ListMobilesNearLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListMobilesNearLocation"
+  },
+  "ListMobilesNearLocationEx": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListMobilesNearLocationEx"
+  },
+  "ListMultisInBox": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListMultisInBox"
+  },
+  "ListObjectsInBox": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListObjectsInBox"
+  },
+  "ListObjectsInBoxOfClass": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListObjectsInBoxOfClass"
+  },
+  "ListOfflineMobilesInRealm": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListOfflineMobilesInRealm"
+  },
+  "ListStaticsAtLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListStaticsAtLocation"
+  },
+  "ListStaticsInBox": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListStaticsInBox"
+  },
+  "ListStaticsNearLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListStaticsNearLocation"
+  },
+  "ListStaticsNearLocationOfType": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListStaticsNearLocationOfType"
+  },
+  "ListStaticsNearLocationWithFlag": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ListStaticsNearLocationWithFlag"
+  },
+  "MoveItemToContainer": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#MoveItemToContainer"
+  },
+  "MoveItemToSecureTradeWin": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#MoveItemToSecureTradeWin"
+  },
+  "MoveObjectToLocation": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#MoveObjectToLocation"
+  },
+  "OpenPaperdoll": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#OpenPaperdoll"
+  },
+  "POLCore": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#POLCore"
+  },
+  "PerformAction": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PerformAction"
+  },
+  "PlayLightningBoltEffect": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlayLightningBoltEffect"
+  },
+  "PlayMovingEffect": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlayMovingEffect"
+  },
+  "PlayMovingEffectEx": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlayMovingEffectEx"
+  },
+  "PlayMovingEffectXYZ": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlayMovingEffectXYZ"
+  },
+  "PlayMovingEffectXYZEx": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlayMovingEffectXYZEx"
+  },
+  "PlayMusic": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlayMusic"
+  },
+  "PlayObjectCenteredEffect": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlayObjectCenteredEffect"
+  },
+  "PlayObjectCenteredEffectEx": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlayObjectCenteredEffectEx"
+  },
+  "PlaySoundEffect": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlaySoundEffect"
+  },
+  "PlaySoundEffectPrivate": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlaySoundEffectPrivate"
+  },
+  "PlaySoundEffectXYZ": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlaySoundEffectXYZ"
+  },
+  "PlayStationaryEffect": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlayStationaryEffect"
+  },
+  "PlayStationaryEffectEx": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PlayStationaryEffectEx"
+  },
+  "PrintTextAbove": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PrintTextAbove"
+  },
+  "PrintTextAbovePrivate": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#PrintTextAbovePrivate"
+  },
+  "ReadGameClock": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ReadGameClock"
+  },
+  "RegisterForSpeechEvents": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#RegisterForSpeechEvents"
+  },
+  "ReleaseItem": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ReleaseItem"
+  },
+  "RequestInput": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#RequestInput"
+  },
+  "ReserveItem": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#ReserveItem"
+  },
+  "RestartScript": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#RestartScript"
+  },
+  "Resurrect": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#Resurrect"
+  },
+  "RevokePrivilege": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#RevokePrivilege"
+  },
+  "SaveWorldState": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SaveWorldState"
+  },
+  "SecureTradeWin": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SecureTradeWin"
+  },
+  "SelectColor": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SelectColor"
+  },
+  "SelectMenuItem2": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SelectMenuItem2"
+  },
+  "SendBuyWindow": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendBuyWindow"
+  },
+  "SendCharProfile": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendCharProfile"
+  },
+  "SendCharacterRaceChanger": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendCharacterRaceChanger"
+  },
+  "SendDialogGump": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendDialogGump"
+  },
+  "SendEvent": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendEvent"
+  },
+  "SendHousingTool": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendHousingTool"
+  },
+  "SendInstaResDialog": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendInstaResDialog"
+  },
+  "SendOpenBook": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendOpenBook"
+  },
+  "SendOpenSpecialContainer": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendOpenSpecialContainer"
+  },
+  "SendOverallSeason": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendOverallSeason"
+  },
+  "SendPacket": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendPacket"
+  },
+  "SendPopUpMenu": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendPopUpMenu"
+  },
+  "SendQuestArrow": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendQuestArrow"
+  },
+  "SendSellWindow": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendSellWindow"
+  },
+  "SendSkillWindow": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendSkillWindow"
+  },
+  "SendStatus": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendStatus"
+  },
+  "SendStringAsTipWindow": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendStringAsTipWindow"
+  },
+  "SendSysMessage": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendSysMessage"
+  },
+  "SendTextEntryGump": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendTextEntryGump"
+  },
+  "SendViewContainer": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SendViewContainer"
+  },
+  "SetGlobalProperty": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SetGlobalProperty"
+  },
+  "SetName": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SetName"
+  },
+  "SetObjProperty": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SetObjProperty"
+  },
+  "SetRegionLightLevel": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SetRegionLightLevel"
+  },
+  "SetRegionWeatherLevel": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SetRegionWeatherLevel"
+  },
+  "SetScriptController": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SetScriptController"
+  },
+  "Shutdown": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#Shutdown"
+  },
+  "SingleClick": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SingleClick"
+  },
+  "SpeakPowerWords": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SpeakPowerWords"
+  },
+  "StartSpellEffect": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#StartSpellEffect"
+  },
+  "SubtractAmount": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SubtractAmount"
+  },
+  "SystemFindObjectBySerial": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#SystemFindObjectBySerial"
+  },
+  "Target": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#Target"
+  },
+  "TargetCoordinates": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#TargetCoordinates"
+  },
+  "TargetMultiPlacement": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#TargetMultiPlacement"
+  },
+  "UpdateItem": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#UpdateItem"
+  },
+  "UpdateMobile": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#UpdateMobile"
+  },
+  "UseItem": {
+    "method": "",
+    "parameters": "",
+    "explanation": "",
+    "return":"",
+    "errors":"",
+    "related":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=uoem#UseItem"
   }
 }
