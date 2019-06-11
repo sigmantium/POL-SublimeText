@@ -35,17 +35,17 @@
 	{
 		"title": 
 		{
-			"color": "black",
+			"color": "white",
 			"text-decoration": "underline"
 		},
 		"content":
 		{
-			"color": "black",
+			"color": "white",
 			"text-decoration": "none"
 		},
 	        "link":
 	        {
-	        	"color": "black",
+	        	"color": "white",
 			"text-decoration": "underline"
 			
 		}
