@@ -8,8 +8,10 @@ This package of plugins is based on the following sublime text plugins
 
 Better Completion:
 https://packagecontrol.io/packages/Better%20Completion
+
 All Autocomplete
 https://packagecontrol.io/packages/All%20Autocomplete
+
 ToolTip-Helper:
 https://packagecontrol.io/packages/ToolTip-Helper
 
