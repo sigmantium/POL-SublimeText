@@ -1,0 +1,41 @@
+{
+    "scope": "source.polscript - (source.script.polscript|string.quoted.double.polscript|string.quoted.single.polscript)",
+
+    "completions": [
+
+        // Use
+        ["attributes\tuse", "use attributes;" ],
+        ["basic\tuse", "use basic;" ],
+        ["basicio\tuse", "use basicio;" ],
+        ["boat\tuse", "use boat;" ],
+        ["cfgfile\tuse", "use cfgfile;" ],
+        ["cliloc\tuse", "use cliloc;" ],
+        ["datafile\tuse", "use datafile;" ],
+        ["file\tuse", "use file;" ],
+        ["guild\tuse", "use guild;" ],
+        ["http\tuse", "use http;" ],
+        ["math\tuse", "use math;" ],
+        ["npc\tuse", "use npc;" ],
+        ["os\tuse", "use os;" ],
+        ["party\tuse", "use party;" ],
+        ["polsys\tuse", "use polsys;" ],
+        ["storage\tuse", "use storage;" ],
+        ["mysql\tuse", "use mysql;" ],
+        ["unicode\tuse", "use unicode;" ],
+        ["uo\tuse", "use uo;" ],
+        ["util\tuse", "use util;" ],
+        ["vitals\tuse", "use vitals;" ],
+
+        // Include
+        ["include\tinclude", "include \"$1\";" ],
+
+        // Program
+        ["program\tscript", "program $1($2)\nendprogram" ],
+
+        // Function
+        ["function\tscript", "function $1($2)\nendfunction" ],
+        ["exported function\tscript", "exported function $1($2)\nendfunction" ]
+
+    ]
+
+}
