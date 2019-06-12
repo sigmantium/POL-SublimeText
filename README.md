@@ -16,6 +16,9 @@ https://packagecontrol.io/packages/All%20Autocomplete
 ToolTip-Helper:
 https://packagecontrol.io/packages/ToolTip-Helper
 
+Autocomplete, wordfiles, syntax and keyword recognition all supplied by Dracoscript:
+https://github.com/DracoScript/POL_eScript_Sublime
+
 # To install:
 1. Open Sublime Text
 2. Click Preferences -> Browse Packages
