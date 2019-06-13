@@ -1,5 +1,5 @@
 {
-  "_comment": "FILE - UO",
+  "_comment": "FILE - BASIC",
   "Print": {
     "method": "Print(anything)",
     "parameters": ["anything\tAny object, or primitive."],

@@ -1,0 +1,12 @@
+{
+  "_comment": "FILE - Attributes.em",
+  "AlterAttributeTemporaryMod": {
+    "method": "AlterAttributeTemporaryMod( character, attrname, delta_tenths )",
+    "parameters": ["character\tCharacter Reference","attrname\tString (attribute name)","delta_tenths\tInteger"],
+    "explanation": ["Changes the temporary modification value for attribute named \"attrname\". delta_tenths is in tenths, obviously. So \"1\" would increase the temp mod by 0.1 points."],
+    "return":"1 on success or Error",
+    "errors": ["\"Invalid parameter type\" including if attrname was not found as an attribute","\"New modifier value is out of range\""],
+    "related": ["Character", "attributes.cfg"],
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=attributesem#AlterAttributeTemporaryMod"
+  }
+}

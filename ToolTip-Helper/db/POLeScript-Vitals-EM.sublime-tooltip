@@ -1,0 +1,10 @@
+{
+  "_comment": "FILE - VITALS",
+  "ApplyDamage": {
+    "method": "",
+    "parameters": [""],
+    "explanation": [""],
+    "return":"",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=vitalsem#ApplyDamage"
+  }
+}
