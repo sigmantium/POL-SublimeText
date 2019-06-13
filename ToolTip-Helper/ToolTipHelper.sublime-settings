@@ -8,10 +8,15 @@
 	"files":
 	[
 		{
-			"file_name": "POLeScript.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100",
+			"file_name": "POLeScript-UOEM.sublime-tooltip",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=uoem",
 			"scope": "source.polscript"
-		}
+		},
+		{
+			"file_name": "POLeScript-BASICIOEM.sublime-tooltip",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=basicioem",
+			"scope": "source.polscript"
+		},
 	],
 	// set timeout to false if you dont want that the tooltip window close.
 	"has_timeout": false,

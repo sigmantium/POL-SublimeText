@@ -1,0 +1,10 @@
+{
+  "_comment": "FILE - UO",
+  "Print": {
+    "method": "Print(anything)",
+    "parameters": ["anything\tAny object, or primitive."],
+    "explanation": ["Prints 'anything' to the console. If it's a string or number, it will show the value. If it's an array, struct or dictionary, it will show the contents of the structure fairly nicely. On Packets it will show the content. Else, it shows the type of object, i.e. 'ItemRef'."],
+    "return":"Nothing",
+    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=basicioem#Print"
+  }
+}
