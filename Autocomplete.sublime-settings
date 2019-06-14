@@ -21,6 +21,16 @@
     "POL-core-declarations":true,
 
 	// ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/sbc-api-POL-config-files.sublime-settings
-    "POL-config-files":true
+    "POL-config-files":true,
+    
+  // ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/sbc-api-POL-config-keywords.sublime-settings
+    "POL-core-keywords":true,
+    
+  // ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/sbc-api-POL-config-members.sublime-settings
+    "POL-core-members":true,
+    
+  // ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/sbc-api-POL-config-methods.sublime-settings
+    "POL-core-methods":true
+
   }
 }
