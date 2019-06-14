@@ -19,6 +19,13 @@
                                     "file": "${packages}/PolServer/Autocomplete.sublime-settings"
                                 },
                                 "caption": "Settings"
+                            },
+                            {
+                                "command": "open_dir",
+                                "args": {
+                                    "dir": "${packages}/PolServer/sublime-completions"
+                                },
+                                "caption": "Completion Files"
                             }
                         ]
                     },
@@ -32,6 +39,13 @@
                                     "file": "${packages}/PolServer/Tooltips.sublime-settings"
                                 },
                                 "caption": "Settings"
+                            },
+                            {
+                                "command": "open_dir",
+                                "args": {
+                                    "dir": "${packages}/PolServer/ToolTip-Helper/db"
+                                },
+                                "caption": "Tooltip Definition Files"
                             },
                             {
                                 "command":"enter_data",
