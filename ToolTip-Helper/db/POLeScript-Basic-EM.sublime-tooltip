@@ -1,10 +1,554 @@
 {
-  "_comment": "FILE - BASIC",
-  "Print": {
-    "method": "Print(anything)",
-    "parameters": ["anything\tAny object, or primitive."],
-    "explanation": ["Prints 'anything' to the console. If it's a string or number, it will show the value. If it's an array, struct or dictionary, it will show the contents of the structure fairly nicely. On Packets it will show the content. Else, it shows the type of object, i.e. 'ItemRef'."],
-    "return":"Nothing",
-    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=basicioem#Print"
-  }
+"CAsc":
+ {
+    "prototype": "CAsc(str)",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "String to convert"
+       }
+    ],
+    "explain": [
+       "Converts the first character of string to an ASCII code"
+    ],
+    "return": "ASCII code",
+    "_name": "CAsc"
+ }, 
+ "CAscZ": 
+ {
+    "prototype": "CAscZ(str, nullterm := 0)",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "String to convert"
+       },
+       {
+          "_name": "nullterm",
+          "_value": "If true, adds a 0x00 to the end of the array"
+       }
+    ],
+    "explain": [
+       "Converts the string to an array of the character's ASCII codes"
+    ],
+    "return": "Array of ASCII values",
+    "_name": "CAscZ"
+ }, 
+ "CChr": 
+ {
+    "prototype": "CChr(number)",
+    "parameter": [
+       {
+          "_name": "number",
+          "_value": "Integer to convert"
+       }
+    ],
+    "explain": [
+       "Converts an ASCII value to a string consisting of one character."
+    ],
+    "return": "A character",
+    "_name": "CChr"
+ },
+ "CChrZ":
+ {
+    "prototype": "CChrZ(intarray, break_at_first_null := 0)",
+    "parameter": [
+       {
+          "_name": "intarray",
+          "_value": "Array of ASCII values"
+       },
+       {
+          "_name": "break_at_first_null",
+          "_value": "If true, stops when 0x00 found"
+       }
+    ],
+    "explain": [
+       "Converts an array of ASCII values to a string"
+    ],
+    "return": "A string",
+    "_name": "CChrZ"
+ },
+ "CDbl":
+ {
+    "prototype": "CDbl(expr)",
+    "parameter": [
+       {
+          "_name": "expr",
+          "_value": "A variable Int or String"
+       }
+    ],
+    "explain": [
+       "Converts a string or int to a real. Only strings containing digits and '.' will return a predicatable result. \nInts will be expanded."
+    ],
+    "return": "A Real",
+    "_name": "CDbl"
+ },
+ "CInt":
+ {
+    "prototype": "CInt(expr)",
+    "parameter": [
+       {
+          "_name": "expr",
+          "_value": "A variable Real or String"
+       }
+    ],
+    "explain": [
+       "Converts a string or real to an integer. Only strings containing digits and '.' will return a predicatable \nresult. Doubles will be truncated."
+    ],
+    "return": "An Int",
+    "_name": "CInt"
+ },
+ "CStr":
+ {
+    "prototype": "CStr(expr)",
+    "parameter": [
+       {
+          "_name": "expr",
+          "_value": "A variable Int or Real"
+       }
+    ],
+    "explain": [
+       "Converts a real or int to a string."
+    ],
+    "return": "A String",
+    "_name": "CStr"
+ },
+ "Find":
+ {
+    "prototype": "Find(str, search, start)",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "The string to search in"
+       },
+       {
+          "_name": "search",
+          "_value": "The string to search for"
+       },
+       {
+          "_name": "start",
+          "_value": "The index to start searching at"
+       }
+    ],
+    "explain": [
+       "Returns the index of the first occurance of 'search' after 'start' within 'string'"
+    ],
+    "return": "An int",
+    "_name": "Find"
+ },
+ "Hex":
+ {
+    "prototype": "Hex(number)",
+    "parameter": [
+       {
+          "_name": "number",
+          "_value": "The number to convert"
+       }
+    ],
+    "explain": [
+       "Returns the hexidecimal value of 'number'"
+    ],
+    "return": "A hexidecimal",
+    "_name": "Hex"
+ },
+ "Len":
+ {
+    "prototype": "Len(str_or_array)",
+    "parameter": [
+       {
+          "_name": "str_or_array",
+          "_value": "A string or array"
+       }
+    ],
+    "explain": [
+       "For strings, returns string length. For arrays, returns number of elements. Does not work for structs or dictionaries, use .size() for those."
+    ],
+    "return": "An Int",
+    "_name": "Len"
+ },
+ "Lower":
+ {
+    "prototype": "Lower(str)",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "A string to convert"
+       }
+    ],
+    "explain": [
+       "Converts 'string' to lowercase (doesn't work with high-ascii characters or unicode)"
+    ],
+    "return": "A string",
+    "_name": "Lower"
+ },
+ "Pack":
+ {
+    "prototype": "Pack(expr)",
+    "parameter": [
+       {
+          "_name": "expr",
+          "_value": "An object to pack"
+       }
+    ],
+    "explain": [
+       "Packs a variable into POL's packed data string format. Note that object references CANNOT be saved with the world, but may be passed to other running scripts, or with an event."
+    ],
+    "return": "A string",
+    "_name": "Pack"
+ },
+ "SizeOf":
+ {
+    "prototype": "SizeOf(obj)",
+    "parameter": [
+       {
+          "_name": "obj",
+          "_value": "Any object"
+       }
+    ],
+    "explain": [
+       "Returns an estimate of the memory used in bytes."
+    ],
+    "return": "An int",
+    "_name": "SizeOf"
+ },
+ "SplitWords":
+ {
+    "prototype": "SplitWords( str, delimiter := \" \", max_split := -1 )",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "The string to split"
+       },
+       {
+          "_name": "delimiter",
+          "_value": "The delimiter to use"
+       },
+       {
+          "_name": "max_split",
+          "_value": "Number of max splits. -1 = unlimited"
+       }
+    ],
+    "explain": [
+       "Returns an array of words contained in 'string'. Words are separated by the delimiter."
+    ],
+    "return": "An array",
+    "_name": "SplitWords"
+ },
+ "TypeOf":
+ {
+    "prototype": "TypeOf(expr)",
+    "parameter": [
+       {
+          "_name": "expr",
+          "_value": "a script var"
+       }
+    ],
+    "explain": [
+       "Returns a string, depending on the variable type of the parameter. Is one of: \"Dictionary\", \n      \"AccountRef\", \"ConfigFileRef\", \"ConfigElemRef\", \"DataFileRef\", \"DataElemRef\", \"ScriptExRef\", \"GuildRef\", \n      \"BoundingBox\", \"DebugContext\", \"Package\", \"MenuRef\", \"MobileRef\", \"OfflineMobileRef\",\n      \"ItemRef\", \"BoatRef\", \"MultiRef\", \"Unknown\", \"Uninit\", \"String\", \"Integer\", \"Double\", \"Array\", \"ApplicPtr\",\n      \"ApplicObj\", \"Error\", \"Struct\", \"Packet\"."
+    ],
+    "return": "A string",
+    "_name": "TypeOf"
+ },
+ "Unpack":
+ {
+    "prototype": "Unpack(str)",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "A string to unpack"
+       }
+    ],
+    "explain": [
+       "Unpacks a \"packed data string\" into the variable it represents. See Pack()."
+    ],
+    "return": "A variable",
+    "_name": "Unpack"
+ },
+ "Upper":
+ {
+    "prototype": "Upper(str)",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "A string to convert"
+       }
+    ],
+    "explain": [
+       "Converts 'string' to uppercase (doesn't work with high-ascii characters or unicode)"
+    ],
+    "return": "A string",
+    "_name": "Upper"
+ },
+ "Bin":
+ {
+    "prototype": "Bin(number)",
+    "parameter": [
+       {
+          "_name": "number",
+          "_value": "The number to convert"
+       }
+    ],
+    "explain": [
+       "Returns the binary coded value of 'number'"
+    ],
+    "return": "A binary coded number",
+    "_name": "Bin"
+ },
+ "SubStr":
+ {
+    "prototype": "SubStr(str, start, length)",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "The string to search within"
+       },
+       {
+          "_name": "start",
+          "_value": "The index to start getting the substring from"
+       },
+       {
+          "_name": "length",
+          "_value": "The length of the substring"
+       }
+    ],
+    "explain": [
+       "Returns the substring of 'string' beginning at 'start' for 'length'. This functions the same as virtual Substrings within eScript such as String[4,6]"
+    ],
+    "return": "A String",
+    "_name": "SubStr"
+ },
+ "Compare":
+ {
+    "prototype": "Compare(str1, str2, pos1_start:=0, pos1_end:=0, pos2_start:=0, pos2_end:=0)",
+    "parameter": [
+       {
+          "_name": "str1",
+          "_value": "First string to compare"
+       },
+       {
+          "_name": "str2",
+          "_value": "Second string to compare"
+       },
+       {
+          "_name": "pos1_start",
+          "_value": "The index to start from first string"
+       },
+       {
+          "_name": "pos1_end",
+          "_value": "The index to end from first string"
+       },
+       {
+          "_name": "pos2_start",
+          "_value": "The index to start from second string"
+       },
+       {
+          "_name": "pos2_end",
+          "_value": "The index to end from second string"
+       }
+    ],
+    "explain": [
+    	"Compare(string1, string2)\nCompare(string1, string2, string1_index, string1_length)\nCompare(string1, string2, string1_index, string1_length, string2_index, string2_length)",
+         "Can be used in 3 overloaded ways. Returns 1 on compare success.\n\n\nIndex is a starting position to begin the compare in the string, and length \nis the length to compare from the index. When using the 3rd method, \nyou can compare substrings in both strings instead of just the \nsubstring of string1 to entire string2."
+    ],
+    "return": "1 on compare success/0",
+    "error": [
+       "\"Index must not be negative for param 1\"",
+       "\"Index out of range for param 1\"",
+       "\"Index must not be negative for param 2\"",
+       "\"Index out of range for param 2\"",
+       "\"Length out of range for param 1\"",
+       "\"Length must not be negative for param 1\"",
+       "\"Length out of range for param 2\"",
+       "\"Length must not be negative for param 2\""
+    ],
+    "_name": "Compare"
+ },
+ "Trim":
+ {
+    "prototype": "Trim(str, type:=TRIM_BOTH, to_trim:=\" \")",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "The string to trim"
+       },
+       {
+          "_name": "type",
+          "_value": "The trim type to use"
+       },
+       {
+          "_name": "to_trim",
+          "_value": "The string to trim as whitespace"
+       }
+    ],
+    "explain": [
+       "Trims whitespaces from strings.",
+       "const TRIM_LEFT  := 0x1; // Trim whitespace from Left of string.\nconst TRIM_RIGHT := 0x2; // Trim whitespace from Right of string.\nconst TRIM_BOTH  := 0x3; // Trim whitespace from Left and Right of string.",
+       "basic.em constants for type value:"
+    ],
+    "return": "A String",
+    "_name": "Trim"
+ },
+ "StrReplace":
+ {
+    "prototype": "StrReplace(str, to_replace, replace_with)",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "The string to modify"
+       },
+       {
+          "_name": "to_replace",
+          "_value": "The string to replace"
+       },
+       {
+          "_name": "replace_with",
+          "_value": "The string to replace with"
+       }
+    ],
+    "explain": [
+       "Replace all instances of to_replace in the string with replace_with."
+    ],
+    "return": "A String",
+    "_name": "StrReplace"
+ },
+ "SubStrReplace":
+ {
+    "prototype": "SubStrReplace(str, replace_with, start, length:=0)",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "The string to modify"
+       },
+       {
+          "_name": "replace_with",
+          "_value": "The string to replace"
+       },
+       {
+          "_name": "start",
+          "_value": "Integer start index"
+       },
+       {
+          "_name": "length",
+          "_value": "Integer length"
+       }
+    ],
+    "explain": [
+       "Replace portion of string using replace_with, beginning at start for length."
+    ],
+    "return": "A String",
+    "error": [
+       "\"Index must not be negative\"",
+       "\"Index out of range\"",
+       "\"Length out of range\"",
+       "\"Length must not be negative\""
+    ],
+    "_name": "SubStrReplace"
+ },
+ "TypeOfInt":
+ {
+    "prototype": "TypeOfInt( expr )",
+    "parameter": [
+       {
+          "_name": "expr",
+          "_value": "The string to parse"
+       }
+    ],
+    "explain": [
+       "returns Integer representation of TypeOf string."
+    ],
+    "return": "An Integer",
+    "_name": "TypeOfInt"
+ },
+ "PackJSON":
+ {
+    "prototype": "PackJSON( expr )",
+    "parameter": [
+       {
+          "_name": "expr",
+          "_value": "An object to pack"
+       }
+    ],
+    "explain": [
+       "Returns a JSON-serialization of the object to pack.",
+       "The following conversions are done:",
+       "eScript -> JSON",
+       "double -> number",
+       "int -> number",
+       "string -> string",
+       "array -> array",
+       "struct -> object",
+       "dict -> object",
+       "bool -> bool",
+       "everything else -> null"
+    ],
+    "return": "string",
+    "_name": "PackJSON"
+ },
+ "UnpackJSON":
+ {
+    "prototype": "UnpackJSON( str )",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "A JSON serialized string"
+       }
+    ],
+    "explain": [
+       "Returns an eScript object representing the serialized JSON string.",
+       "The following conversions are done:",
+       "JSON -> eScript",
+       "number -> double",
+       "string -> string",
+       "array -> array",
+       "object-> struct",
+       "bool -> bool",
+       "null -> uninitialized object"
+    ],
+    "return": "Any one of: double, string, array, struct, boolean, or uninit.",
+    "_name": "UnpackJSON"
+ },
+ "Boolean":
+ {
+    "prototype": "Boolean( number )",
+    "parameter": [
+       {
+          "_name": "number",
+          "_value": "1/0"
+       }
+    ],
+    "explain": [
+       "Converts a number to an boolean value."
+    ],
+    "return": "Returns an Boolean object.",
+    "_name": "Boolean"
+ },
+ "EncodeBase64":
+ {
+    "prototype": "EncodeBase64( str )",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "a string"
+       }
+    ],
+    "explain": [
+       "Returns a base64 encoded string string."
+    ],
+    "return": "A String",
+    "_name": "EncodeBase64"
+ },
+ "DecodeBase64":
+ {
+    "prototype": "DecodeBase64( str )",
+    "parameter": [
+       {
+          "_name": "str",
+          "_value": "a string"
+       }
+    ],
+    "explain": [
+       "Takes a base64 encoded string and converts it back to standard."
+    ],
+    "return": "A String",
+    "_name": "DecodeBase64"
+ }
 }

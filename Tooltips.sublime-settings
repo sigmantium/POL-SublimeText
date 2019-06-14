@@ -14,7 +14,7 @@
 	[
 		{
 			"file_name": "POLeScript-Attributes-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=Attributesem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=attributesem",
 			"scope": "source.polscript"
 		},
 		{
@@ -34,32 +34,32 @@
 		},
 		{
 			"file_name": "POLeScript-CfgFile-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=CfgFileem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=cfgfileem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-CliLoc-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=CliLocem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=cliLocem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-DataFile-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=DataFileem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=datafileem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-File-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=Fileem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=fileem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-Guild-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=Guildem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=guildsem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-Http-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=Httpem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=httpem",
 			"scope": "source.polscript"
 		},
 		{
@@ -69,7 +69,7 @@
 		},
 		{
 			"file_name": "POLeScript-Npc-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=Npcem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=npcem",
 			"scope": "source.polscript"
 		},
 		{
@@ -79,42 +79,42 @@
 		},
 		{
 			"file_name": "POLeScript-Party-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=Partyem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=partyem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-PolSys-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=PolSysem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=polsysem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-Storage-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=Storageem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=storageem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-MySQL-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=MySQLem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=sqlem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-Unicode-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=Unicodeem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=unicodeem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-UO-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=UOem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=uoem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-Util-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=Utilem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=utilem",
 			"scope": "source.polscript"
 		},
 		{
 			"file_name": "POLeScript-Vitals-EM.sublime-tooltip",
-			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=Vitalsem",
+			"link": "https://docs.polserver.com/pol100/fullfunc.php?xmlfile=vitalsem",
 			"scope": "source.polscript"
 		}
 	],

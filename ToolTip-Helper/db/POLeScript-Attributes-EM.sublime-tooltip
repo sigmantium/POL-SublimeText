@@ -1,12 +1,412 @@
 {
-  "_comment": "FILE - Attributes.em",
-  "AlterAttributeTemporaryMod": {
-    "method": "AlterAttributeTemporaryMod( character, attrname, delta_tenths )",
-    "parameters": ["character\tCharacter Reference","attrname\tString (attribute name)","delta_tenths\tInteger"],
-    "explanation": ["Changes the temporary modification value for attribute named \"attrname\". delta_tenths is in tenths, obviously. So \"1\" would increase the temp mod by 0.1 points."],
-    "return":"1 on success or Error",
-    "errors": ["\"Invalid parameter type\" including if attrname was not found as an attribute","\"New modifier value is out of range\""],
-    "related": ["Character", "attributes.cfg"],
-    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=attributesem#AlterAttributeTemporaryMod"
+  "CheckSkill":
+  {
+  "prototype": "CheckSkill( character, skillid, difficulty, points )",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Ref"
+     },
+     {
+        "_name": "skillid",
+        "_value": "Integer skill/attribute ID"
+     },
+     {
+        "_name": "difficulty",
+        "_value": "Integer skill use difficulty"
+     },
+     {
+        "_name": "points",
+        "_value": "Integer skill gain on success"
+     }
+  ],
+  "explain": [
+     "NOTE: Calls the Syshook script CheckSkill. If it doesn't exist, always returns false."
+  ],
+  "return": "Return value of CheckSkill syshook.",
+  "error": [
+     "\"Invalid parameter\"",
+     "\"No such skill\""
+  ],
+  "related": "Character",
+  "_name": "CheckSkill"
+  },
+  "AlterAttributeTemporaryMod":
+  {
+  "prototype": "AlterAttributeTemporaryMod( character, attrname, delta_tenths )",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     },
+     {
+        "_name": "delta_tenths",
+        "_value": "Integer"
+     }
+  ],
+  "explain": [
+     "Changes the temporary modification value for attribute named \"attrname\".\n \tdelta_tenths is in tenths, obviously. So \"1\" would increase the temp mod by 0.1 points."
+  ],
+  "return": "1 on success or Error",
+  "error": [
+     "\"Invalid parameter type\" including if attrname was not found as an attribute",
+     "\"New modifier value is out of range\""
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "AlterAttributeTemporaryMod"
+  },
+  "GetAttributeName":
+  {
+  "prototype": "GetAttributeName( alias_name )",
+  "parameter": [
+     {
+        "_name": "alias_name",
+        "_value": "String"
+     }
+  ],
+  "explain": [
+     "Returns the real attribute name from an alias"
+  ],
+  "return": "String",
+  "error": [
+     "\"Invalid parameter\""
+  ],
+  "related": "Character",
+  "_name": "GetAttributeName"
+  },
+  "GetAttribute":
+  {
+  "prototype": "GetAttribute( character, attrname, precision := ATTRIBUTE_PRECISION_NORMAL )",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     },
+     {
+        "_name": "precision",
+        "_value": "Integer"
+     }
+  ],
+  "explain": [
+     "Returns the current effective value for the specified attribute on character."
+  ],
+  "return": "Integer \"Effective\" attribute value on success (base + temporary mod + intrinsic mod) or \nError. Will return the precision in tenths if ATTRIBUTE_PRECISION_TENTHS is specified.",
+  "error": [
+     "\"Invalid parameter type\" including if attrname was not found as an attribute"
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "GetAttribute"
+  },
+  "GetAttributeBaseValue":
+  {
+  "prototype": "GetAttributeBaseValue( character, attrname )",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     }
+  ],
+  "explain": [
+     "Returns the base value for the specified attribute on character."
+  ],
+  "return": "Integer \"Base\" attribute value on success or Error",
+  "error": [
+     "\"Invalid parameter type\" including if attrname was not found as an attribute"
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "GetAttributeBaseValue"
+  },
+  "GetAttributeIntrinsicMod":
+  {
+  "prototype": "GetAttributeIntrinsicMod( character, attrname )",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     }
+  ],
+  "explain": [
+     "Returns the intrinsic value for the specified attribute on character.",
+     "You set intrinsic Mod via exported GetIntrinsicModFunction in attributes.cfg"
+  ],
+  "return": "Integer \"Intrinsic\" attribute value on success or Error",
+  "error": [
+     "\"Invalid parameter type\" including if attrname was not found as an attribute"
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "GetAttributeIntrinsicMod"
+  },
+  "GetAttributeTemporaryMod":
+  {
+  "prototype": "GetAttributeTemporaryMod( character, attrname )",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     }
+  ],
+  "explain": [
+     "Returns the temporary modification value for the specified attribute on character."
+  ],
+  "return": "Integer \"temporary\" attribute value on success or Error",
+  "error": [
+     "\"Invalid parameter type\" including if attrname was not found as an attribute"
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "GetAttributeTemporaryMod"
+  },
+  "SetAttributeBaseValue":
+  {
+  "prototype": "SetAttributeBaseValue( character, attrname, basevalue_tenths ); // obsoletes \nSetRawSkill",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     },
+     {
+        "_name": "basevalue_tenths",
+        "_value": "Integer (0..60000)"
+     }
+  ],
+  "explain": [
+     "Sets the \"base\" value of \"attrname\" on \"character\""
+  ],
+  "return": "1 on success",
+  "error": [
+     "\"Invalid parameter type\""
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "SetAttributeBaseValue"
+  },
+  "SetAttributeTemporaryMod":
+  {
+  "prototype": "SetAttributeTemporaryMod( character, attrname, tempmod_tenths ); // obsoletes mob.strength_mod \netc",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     },
+     {
+        "_name": "tempmod_tenths",
+        "_value": "Integer (-30000..30000)"
+     }
+  ],
+  "explain": [
+     "Sets the \"temporary modification\" value of \"attrname\" on \"character\""
+  ],
+  "return": "1 on success",
+  "error": [
+     "\"Invalid parameter type\" including if attrname was not found as an attribute"
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "SetAttributeTemporaryMod"
+  },
+  "BaseSkillToRawSkill":
+  {
+  "prototype": "BaseSkillToRawSkill( baseskill )",
+  "parameter": [
+     {
+        "_name": "baseskill",
+        "_value": "Integer"
+     }
+  ],
+  "explain": [
+     "Converts an old-style \"base skill\" value to old-style \"raw skill\" value.",
+     "Notes: OBSOLETE"
+  ],
+  "return": "Raw skill value representation",
+  "error": [
+     "\"Invalid parameter type\""
+  ],
+  "_name": "BaseSkillToRawSkill"
+  },
+  "RawSkillToBaseSkill":
+  {
+  "prototype": "RawSkillToBaseSkill( rawskill )",
+  "parameter": [
+     {
+        "_name": "rawskill",
+        "_value": "Integer"
+     }
+  ],
+  "explain": [
+     "Converts an old-style \"raw skill\" value to old-style \"base skill\" value.",
+     "Notes: OBSOLETE"
+  ],
+  "return": "Base skill value representation",
+  "error": [
+     "\"Invalid parameter type\""
+  ],
+  "_name": "RawSkillToBaseSkill"
+  },
+  "GetAttributeLock":
+  {
+  "prototype": "GetAttributeLock( character, attrname )",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     }
+  ],
+  "explain": [
+     "Gets the lockstate of given character and attribute name.",
+     "This works for any attribute.",
+     "const ATTRIBUTE_LOCK_UP     := 0;\nconst ATTRIBUTE_LOCK_DOWN   := 1;\nconst ATTRIBUTE_LOCK_LOCKED := 2;",
+     "attribute.em constants for return value:"
+  ],
+  "return": "Integer",
+  "error": [
+     "\"Invalid parameter type\""
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "GetAttributeLock"
+  },
+  "SetAttributeLock":
+  {
+  "prototype": "SetAttributeLock( character, attrname, lockstate )",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     },
+     {
+        "_name": "lockstate",
+        "_value": "Integer"
+     }
+  ],
+  "explain": [
+     "Sets the lockstate of given character and attribute name",
+     "This works for any attribute.",
+     "const ATTRIBUTE_LOCK_UP     := 0;\nconst ATTRIBUTE_LOCK_DOWN   := 1;\nconst ATTRIBUTE_LOCK_LOCKED := 2;",
+        "attribute.em constants for lockstate:"
+  ],
+  "return": "1 on sucess",
+  "error": [
+     "\"Invalid parameter type\""
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "SetAttributeLock"
+  },
+  "GetAttributeDefaultCap":
+  {
+  "prototype": "GetAttributeDefaultCap( attrname )",
+  "parameter": [
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     }
+  ],
+  "explain": [
+     "Gets the default cap value of given attribute name.",
+     "This works for any attribute."
+  ],
+  "return": "Integer default cap value in tenths",
+  "error": [
+     "\"Invalid parameter type\""
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "GetAttributeDefaultCap"
+  },
+  "GetAttributeCap":
+  {
+  "prototype": "GetAttributeCap( character, attrname )",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     }
+  ],
+  "explain": [
+     "Gets the current cap value of given attribute name.",
+     "This works for any attribute."
+  ],
+  "return": "Integer current cap value in tenths",
+  "error": [
+     "\"Invalid parameter type\""
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "GetAttributeCap"
+  },
+  "SetAttributeCap":
+  {
+  "prototype": "SetAttributeCap( character, attrname, capvalue )",
+  "parameter": [
+     {
+        "_name": "character",
+        "_value": "Character Reference"
+     },
+     {
+        "_name": "attrname",
+        "_value": "String (attribute name)"
+     },
+     {
+        "_name": "capvalue",
+        "_value": "Integer (in tenths)"
+     }
+  ],
+  "explain": [
+     "Sets the current cap value of given attribute name.",
+     "This works for any attribute.",
+     "const ATTRIBUTE_MAX_BASE    := 60000;",
+     "attribute.em constants for capvalue:"
+  ],
+  "return": "1 on success",
+  "error": [
+     "\"Invalid parameter type\""
+  ],
+  "related": "Character",
+  "relatedcfg": "attributes.cfg",
+  "_name": "SetAttributeCap"
   }
 }

@@ -1,4 +1,193 @@
 {
-  "_comment": "FILE - BOAT",
-  "": {}
+	"MoveBoat":
+	{
+    "prototype": "MoveBoat( boat, facing, speed := BOAT_SPEED_ONE_TILE )",
+    "parameter": [
+       {
+          "_name": "boat",
+          "_value": "Boat Reference"
+       },
+       {
+          "_name": "facing",
+          "_value": "Integer (0..7)"
+       },
+       {
+          "_name": "speed",
+          "_value": "Integer (0..4)"
+       }
+    ],
+    "explain": [
+       "Moves a boat in the direction of an absolute facing",
+       "0=N, 1=NE, 2=E, 3=SE, 4=S, 5=SW, 6=W, 7=NW",
+       "speed to determine how fast the boat movement should be animated for smooth move"
+    ],
+    "return": "1 always",
+    "error": [
+       "none (returns 0 on invalid param)"
+    ],
+    "related": [
+       "Boat"
+    ],
+    "_name": "MoveBoat"
+ }, 
+ "MoveBoatXY": 
+ {
+    "prototype": "MoveBoatXY( boat, x, y )",
+    "parameter": [
+       {
+          "_name": "boat",
+          "_value": "Boat Reference"
+       },
+       {
+          "_name": "x",
+          "_value": "Integer world coordinate"
+       },
+       {
+          "_name": "y",
+          "_value": "Integer world coordinate"
+       }
+    ],
+    "explain": [
+       "Moves a boat to the specified world coordinates.",
+       "Careful moving close to the world edge where a part of the boat might be out of bounds."
+    ],
+    "return": "1 on success, 0 on failure",
+    "error": [
+       "Invalid Parameter"
+    ],
+    "related": [
+       "Boat"
+    ],
+    "_name": "MoveBoatXY"
+  }, 
+ "MoveBoatRelative": 
+ {
+    "prototype": "MoveBoatRelative( boat, direction, speed := BOAT_SPEED_ONE_TILE )",
+    "parameter": [
+       {
+          "_name": "boat",
+          "_value": "Boat Reference"
+       },
+       {
+          "_name": "direction",
+          "_value": "Integer (0..7)"
+       },
+       {
+          "_name": "speed",
+          "_value": "Integer (0..4)"
+       }
+    ],
+    "explain": [
+       "Move a boat in the direction of a relative facing. Same as MoveBoat, but adjusted for boat's facing.",
+       "If boat faces East, 0 will move E, 1 will move SE, etc.",
+       "speed to determine how fast the boat movement should be animated for smooth move"
+    ],
+    "return": "1 always",
+    "error": [
+       "none (returns 0 on invalid param)"
+    ],
+    "related": [
+       "Boat"
+    ],
+    "_name": "MoveBoatRelative"
+  }, 
+ "RegisterItemWithBoat": 
+ {
+    "prototype": "RegisterItemWithBoat( boat, item )",
+    "parameter": [
+       {
+          "_name": "boat",
+          "_value": "Boat Reference"
+       },
+       {
+          "_name": "item",
+          "_value": "Item Reference)"
+       }
+    ],
+    "explain": [
+       "'registering' an item with a boat causes the boat to move the item when it moves, if and only if the item is still on the boat."
+    ],
+    "return": "1 always",
+    "error": [
+       "none (returns 0 on invalid param)"
+    ],
+    "related": [
+       "Boat",
+       "Item"
+    ],
+    "_name": "RegisterItemWithBoat"
+  }, 
+ "BoatFromItem": 
+ {
+    "prototype": "BoatFromItem( item )",
+    "parameter": [
+       {
+          "_name": "item",
+          "_value": "Item Ref"
+       }
+    ],
+    "explain": [
+       "if you have an itemref referring to a boat (typically in a doubleclick script) this will convert it into a boatref.",
+       "Note that this should not be necessary anymore."
+    ],
+    "return": "Boat Reference",
+    "error": [
+       "\"Item wasn't a multi\"",
+       "\"Multi wasn't a boat\"",
+       "\"Invalid parameter type.\""
+    ],
+    "related": [
+       "Boat",
+       "Item"
+    ],
+    "_name": "BoatFromItem"
+  }, 
+ "TurnBoat": 
+ {
+    "prototype": "TurnBoat( boat, direction )",
+    "parameter": [
+       {
+          "_name": "boat",
+          "_value": "Boat Reference"
+       },
+       {
+          "_name": "direction",
+          "_value": "Integer (0..3)"
+       }
+    ],
+    "explain": [
+       "Turn a boat in a direction, relative to its current directon.",
+       "direction is 0=none, 1=right, 2=flip, 3=left"
+    ],
+    "return": "true/false if the boat could be turned (i.e. wouldn't be in an invalid location after the turn)",
+    "error": [
+       "\"Invalid Parameter type\""
+    ],
+    "related": [
+       "Boat"
+    ],
+    "_name": "TurnBoat"
+  }, 
+ "SystemFindBoatBySerial": 
+ {
+    "prototype": "SystemFindBoatBySerial( serial )",
+    "parameter": [
+       {
+          "_name": "serial",
+          "_value": "Integer"
+       }
+    ],
+    "explain": [
+       "given the serial number of a boat, return a boatref that can be used with MoveBoat, TurnBoat, etc.",
+       "SystemFindObjectBySerial can find boats as well, should use that."
+    ],
+    "return": "Boat Reference on success",
+    "error": [
+       "\"Boat not found.\""
+    ],
+    "related": [
+       "Boat"
+    ],
+    "_name": "SystemFindBoatBySerial"
+ }
 }

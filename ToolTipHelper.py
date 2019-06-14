@@ -53,7 +53,6 @@ class Utilities():
             if value and \
                 key != 'link':
                 # in case the key has a list
-                print("k:"+str(key))
                 if  key == "parameter":
                         value = Utilities.build_params_list(value)
                 elif isinstance(value, list):

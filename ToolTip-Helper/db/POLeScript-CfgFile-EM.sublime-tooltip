@@ -1,4 +1,340 @@
 {
-  "_comment": "FILE - CFGFILE",
-  "": {}
+	"ReadConfigFile":
+	{
+	"prototype": "ReadConfigFile(filename)",
+	"parameter": [
+	   {
+	      "_name": "filename",
+	      "_value": "String (not including '.cfg')"
+	   }
+	],
+	"explain": [
+	   "Reads a given config file and returns a reference to it for use with other functions in this EM file.",
+	   "Note, takes the usual package filespec: '::cfgfile' is in /pol/config, '::regions/cfgfile' is in /pol/regions, ':*:cfgfile' is a combination of all configs named 'cfgfile' in all pacakages, and ':pkgname:cfgfile' is a specific cfgfile inside a package. If only 'cfgfile' is passed, POL looks for it first in /pol/config and then in each package sequentially."
+	],
+	"return": "A ConfigFileRef on success.",
+	"error": [
+	   "\"Unable to find package X\"",
+	   "\"Poorly formed config file descriptor: X\"",
+	   "\"Config file not found\"",
+	   "\"Invalid parameter type\""
+	],
+	"_name": "ReadConfigFile"
+	},	"FindConfigElem":	{
+	"prototype": "FindConfigElem( config_file, key )",
+	"parameter": [
+	   {
+	      "_name": "config_file",
+	      "_value": "ConfigFileRef"
+	   },
+	   {
+	      "_name": "key",
+	      "_value": "String or Integer"
+	   }
+	],
+	"explain": [
+	   {
+	      "code": "Dessert applepie\n{\n    Cost 8\n    Calories 1004\n    MadeLike   grandma\n    Ingredient flour\n    Ingredient butter\n    Ingredient apples\n    Deliciousness 3.6\n}",
+	      "__text": "Finds a Config Element matching 'key' in the given config_file. In the following sample entry, 'applepie' is the key:"
+	   }
+	],
+	"return": "A Config Element Reference on success",
+	"error": [
+	   "\"Parameter 0 must be a Config File\"",
+	   "\"Param 1 must be an Integer or a String\"",
+	   "\"Element not found\""
+	],
+	"_name": "FindConfigElem"
+	},	"GetConfigMaxIntKey":	{
+	"prototype": "GetConfigMaxIntKey( config_file )",
+	"parameter": [
+	   {
+	      "_name": "config_file",
+	      "_value": "ConfigFileRef"
+	   }
+	],
+	"explain": [
+	   "Gets the value of the highest value integer key in the config file. This is useful if all the keys are sequentially numbered and need to be looped over."
+	],
+	"return": "The maximum integer key in the file",
+	"error": [
+	   "\"Parameter 0 must be a Config File\""
+	],
+	"_name": "GetConfigMaxIntKey"
+	},	"GetConfigStringKeys":	{
+	"prototype": "GetConfigStringKeys( config_file )",
+	"parameter": [
+	   {
+	      "_name": "config_file",
+	      "_value": "ConfigFileRef"
+	   }
+	],
+	"explain": [
+	   "Gets an array of all the String keys, AND integer keys (returned as strings) in the config file."
+	],
+	"return": "An array of strings",
+	"error": [
+	   "\"GetConfigStringKeys param 0 must be a Config File\""
+	],
+	"_name": "GetConfigStringKeys"
+	},	"GetConfigIntKeys":	{
+	"prototype": "GetConfigIntKeys( config_file )",
+	"parameter": [
+	   {
+	      "_name": "config_file",
+	      "_value": "ConfigFileRef"
+	   }
+	],
+	"explain": [
+	   "Gets an array of only all the Integer keys in the config file."
+	],
+	"return": "An array of integers",
+	"error": [
+	   "\"GetConfigIntKeys param 0 must be a Config File\""
+	],
+	"_name": "GetConfigIntKeys"
+	},	"ListConfigElemProps":	{
+	"prototype": "ListConfigElemProps( element )",
+	"parameter": [
+	   {
+	      "_name": "element",
+	      "_value": "ConfigElementRef"
+	   }
+	],
+	"explain": [
+	   "Gets an array of the element's property-names (as unique strings)"
+	],
+	"return": "An array of strings",
+	"error": [
+	   "\"Invalid parameter type\""
+	],
+	"_name": "ListConfigElemProps"
+	},	"GetConfigInt":	{
+	"prototype": "GetConfigInt( element, property_name )",
+	"parameter": [
+	   {
+	      "_name": "element",
+	      "_value": "ConfigElementRef"
+	   },
+	   {
+	      "_name": "property_name",
+	      "_value": "String"
+	   }
+	],
+	"explain": [
+	   {
+	      "code": "Dessert applepie\n{\n    Cost 8\n    Calories 1004\n    MadeLike   grandma\n    Ingredient flour\n    Ingredient butter\n    Ingredient apples\n    Deliciousness 3.6\n}\nUse: 'var cals := GetConfigInt(element,\"Calories\");'",
+	      "__text": "Gets a piece of Integer data from a config file element reference. For example, to get the value of 'Calories' in the following element:"
+	   }
+	],
+	"return": "An Integer value for the property",
+	"error": [
+	   "\"Invalid type in config file! (internal error)\"",
+	   "\"Property not found\"",
+	   "\"Invalid parameter type\""
+	],
+	"_name": "GetConfigInt"
+	},	"GetConfigReal":	{
+	"prototype": "GetConfigReal( element, property_name )",
+	"parameter": [
+	   {
+	      "_name": "element",
+	      "_value": "ConfigElementRef"
+	   },
+	   {
+	      "_name": "property_name",
+	      "_value": "String"
+	   }
+	],
+	"explain": [
+	   {
+	      "code": "Dessert applepie\n{\n    Cost 8\n    Calories 1004\n    MadeLike   grandma\n    Ingredient flour\n    Ingredient butter\n    Ingredient apples\n    Deliciousness 3.6\n}\nUse: 'var yum := GetConfigReal(element,\"Deliciousness\");'",
+	      "__text": "Gets a piece of Real (float) data from a config file element reference. For example, to get the value of 'Deliciousness' in the following element:"
+	   }
+	],
+	"return": "An Real value for the property",
+	"error": [
+	   "\"Invalid type in config file! (internal error)\"",
+	   "\"Property not found\"",
+	   "\"Invalid parameter type\""
+	],
+	"_name": "GetConfigReal"
+	},	"GetConfigString":	{
+	"prototype": "GetConfigString( element, property_name )",
+	"parameter": [
+	   {
+	      "_name": "element",
+	      "_value": "ConfigElementRef"
+	   },
+	   {
+	      "_name": "property_name",
+	      "_value": "String"
+	   }
+	],
+	"explain": [
+	   {
+	      "code": "Dessert applepie\n{\n    Cost 8\n    Calories 1004\n    MadeLike   grandma\n    Ingredient flour\n    Ingredient butter\n    Ingredient apples\n    Deliciousness 3.6\n}\nUse: 'var madelike := GetConfigString(element,\"MadeLike\");'",
+	      "__text": "Gets a piece of String data from a config file element reference. For example, to get the value of 'MadeLike' in the following element:"
+	   }
+	],
+	"return": "An Real value for the property",
+	"error": [
+	   "\"Invalid type in config file! (internal error)\"",
+	   "\"Property not found\"",
+	   "\"Invalid parameter type\""
+	],
+	"_name": "GetConfigString"
+	},	"GetConfigStringArray":	{
+	"prototype": "GetConfigStringArray( element, property_name )",
+	"parameter": [
+	   {
+	      "_name": "element",
+	      "_value": "ConfigElementRef"
+	   },
+	   {
+	      "_name": "property_name",
+	      "_value": "String"
+	   }
+	],
+	"explain": [
+	   "For elements with multiple occurrences of a given property, returns an array containing each occurrence.",
+	   {
+	      "code": "Dessert applepie\n{\n    Cost 8\n    Calories 1004\n    MadeLike   grandma\n    Ingredient flour\n    Ingredient butter\n    Ingredient apples\n    Deliciousness 3.6\n}\nUse: 'var ingredients := GetConfigStringArray(element,\"Ingredient\");'\n'ingredients' now contains 'flour', 'butter', and 'apples'.",
+	      "__text": "For example, to get all the ingredients in the following element:"
+	   },
+	   "Value of the properties are always returned as strings. If the values are ints or reals, use CInt() or CDbl() to cast the values to the correct type."
+	],
+	"return": "An array of strings.",
+	"error": [
+	   "\"Invalid parameter type\""
+	],
+	"_name": "GetConfigStringArray"
+	},	"GetConfigIntArray":	{
+	"prototype": "GetConfigIntArray( element, property_name )",
+	"parameter": [
+	   {
+	      "_name": "element",
+	      "_value": "ConfigElementRef"
+	   },
+	   {
+	      "_name": "property_name",
+	      "_value": "String"
+	   }
+	],
+	"explain": [
+	   "For elements with multiple occurrences of a given property, returns an array containing each occurrence.",
+	   "Value of the properties are always returned as integers."
+	],
+	"return": "An array of integers.",
+	"error": [
+	   "\"Invalid parameter type\""
+	],
+	"_name": "GetConfigIntArray"
+	},	"GetConfigStringDictionary":	{
+	"prototype": "GetConfigStringDictionary( element, property_name )",
+	"parameter": [
+	   {
+	      "_name": "element",
+	      "_value": "ConfigElementRef"
+	   },
+	   {
+	      "_name": "property_name",
+	      "_value": "String"
+	   }
+	],
+	"explain": [
+	   "Works similarly to GetConfigStringArray() but will take the first word on the line and use it for the key.",
+	   {
+	      "code": "Dessert applepie\n{\n    Cost 8\n    Calories 1004\n    MadeLike   grandma\n    Ingredient flour 1 kg\n    Ingredient butter 2 kg\n    Ingredient apples 3 kg\n    Deliciousness 3.6\n}\nUse: 'var ingredients := GetConfigStringDictionary(element,\"Ingredient\");'\n'ingredients' now contains ['flour'] = '1 kg', ['butter'] = '2 kg', and ['apples'] = '3 kg'.",
+	      "__text": "For example, to get all the ingredients in the following element:"
+	   },
+	   "Value of the properties are always returned as strings. If the values are ints or reals, use CInt() or CDbl() to cast the values to the correct type."
+	],
+	"return": "Dictionary with Strings",
+	"error": [
+	   "\"Invalid parameter type\""
+	],
+	"_name": "GetConfigStringDictionary"
+	},	"AppendConfigFileElem":	{
+	"prototype": "AppendConfigFileElem( filename, elemtype, elemkey, properties )",
+	"parameter": [
+	   {
+	      "_name": "filename",
+	      "_value": "String"
+	   },
+	   {
+	      "_name": "elemtype",
+	      "_value": "String"
+	   },
+	   {
+	      "_name": "elemkey",
+	      "_value": "Int or String"
+	   },
+	   {
+	      "_name": "properties",
+	      "_value": "Array of Arrays {propname,value}, or array of structs { name, value }"
+	   }
+	],
+	"explain": [
+	   "Appends an element to the config file specified. Properties must be an array of structures, where each element is a structure containing a name member first, and a value member second.",
+	   "filename uses normal package descriptor format (see ReadConfigFile).",
+	   {
+	      "code": "MyType 0x34F\n{\n    MyProp 3.1\n}",
+	      "__text": "elemtype is the string before the key in the config file, i.e. 'MyType' in the following:"
+	   },
+	   "elemkey is 0x34F in the above example. It can be a string or integer (as in that case)",
+	   {
+	      "code": "var props := array;\nvar a := {\"MyProp1\",1};\nvar b := {\"MyProp2\",2};\nprops.append(a);\nprops.append(b);\nAppendConfigFileElem( \":mypkg:mycfg\", \"MyType\", 0x34F, props );",
+	      "__text": "properties must be an array of arrays with the following format:"
+	   }
+	],
+	"return": "1 on success",
+	"error": [
+	   "\"Unable to find package X\"",
+	   "\"Poorly formed config file descriptor: X\"",
+	   "\"Invalid parameter type\""
+	],
+	"_name": "AppendConfigFileElem"
+	},	"UnloadConfigFile":	{
+	"prototype": "UnloadConfigFile( filename )",
+	"parameter": [
+	   {
+	      "_name": "filename",
+	      "_value": "String"
+	   }
+	],
+	"explain": [
+	   "Unloads a config file from memory.  If other scripts reference the config file specified, it will remain in memory until they no longer reference it.  Scripts which call ReadConfigFile() after this, however, will re-read the config file and use the newer version.",
+	   "Has no effect on most core-read config files like itemdesc.cfg, npcdesc.cfg, etc (See ReloadConfiguation in polsys.em)",
+	   "filename uses the normal package descriptor format (see ReadConfigFile)"
+	],
+	"return": "Integer number of files unloaded",
+	"error": [
+	   "\"Unable to find package X\"",
+	   "\"Poorly formed config file descriptor: X\"",
+	   "\"Invalid parameter\""
+	],
+	"_name": "UnloadConfigFile"
+	},	"LoadTusScpFile":	{
+	"prototype": "LoadTusScpFile( filename )",
+	"parameter": [
+	   {
+	      "_name": "filename",
+	      "_value": "String, see explaination"
+	   }
+	],
+	"explain": [
+	   {
+	      "code": "// \n    // Load a TUS .SCP file as a config file\n    //\n    // Filename must be alphanumeric only.  The file must exist\n    // in pol/import/tus.  So LoadTusScpFile( \"grayacct\" ) will\n    // try to load \"/pol/import/tus/grayacct.scp\"\n    // \n    // Header properties, if any, in cfgfile[0]\n    // Other elements numbered sequentially from 1\n    // The part in brackets (\"[WORLDITEM 04000]\") will appear in two ways:\n    //   1) as a \"_key\" property\n    //   2) as a property itself (name=WORLDITEM, value=0x4000)\n    //\n    //\n    // So,if you had the following as the first element\n    //   [WORLDITEM 04000]\n    //   SERIAL=080\n    //   P=1,2,3\n    // And 'var tusfile' was the result of LoadTusScpFile, then\n    // tusfile[1]._key      is \"WORLDITEM 04000\"\n    // tusfile[1].worlditem is 0x4000\n    // tusfile[1].serial    is 0x80\n    // tusfile[1].p         is \"1,2,3\"\n    //",
+	      "__text": "Very Old Function - may not work any longer!"
+	   }
+	],
+	"return": "A Config File Reference",
+	"error": [
+	   "\"Invalid parameter type\"",
+	   "\"Filename cannot include path information or special characters\"",
+	   "\"File not found\""
+	],
+	"_name": "LoadTusScpFile"
+	}
 }
