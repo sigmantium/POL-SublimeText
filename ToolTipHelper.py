@@ -53,13 +53,24 @@ class Utilities():
             if value and \
                 key != 'link':
                 # in case the key has a list
-                if isinstance(value, list):
+                print("k:"+str(key))
+                if  key == "parameter":
+                        value = Utilities.build_params_list(value)
+                elif isinstance(value, list):
                     str_val = ""
+                    
                     for item in value:
                         str_val += item + '<br>'
                     value = str_val
                 # message += '<b><u>' + key + ':</u></b><br>' + value + " <br><br>"
                 message += '<span style=\" ' + style['title'] + '\"><b>' + key + ':</b></span><br>' + '<span style=\"' + style['content'] + '\">' + value + '</span>' + " <br><br>"
+        return message
+
+    @staticmethod
+    def build_params_list(json):
+        message = ""
+        for item in json:
+            message += '&nbsp;&nbsp;<b>' + item['_name']+ ':</b>'+item['_value']+"<br>"
         return message
 
     @staticmethod

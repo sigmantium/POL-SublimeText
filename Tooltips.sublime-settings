@@ -123,9 +123,9 @@
 	// set key order which determine the order of attributes in tooltip window.
 	"keyorder":
 	[
-		"method",
-		"parameters",
-		"explanation",
+		"prototype",
+		"parameter",
+		"explain",
 		"return",
 		"errors",
 		"related",
