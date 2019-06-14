@@ -10,42 +10,28 @@
                 "children": 
                 [
                     {
-                        "caption": "All Autocomplete",
+                        "caption": "Autocomplete",
                         "children":
                         [
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/PolServer/SublimeAllAutocomplete/All Autocomplete.sublime-settings"
+                                    "file": "${packages}/PolServer/Autocomplete.sublime-settings"
                                 },
-                                "caption": "Settings – Default"
-                            },
-                            {
-                                "command": "open_file",
-                                "args": {
-                                    "file": "${packages}/PolServer/User/SublimeAllAutocomplete/All Autocomplete.sublime-settings"
-                                },
-                                "caption": "Settings – User"
+                                "caption": "Settings"
                             }
                         ]
                     },
                     {
-                        "caption": "ToolTip helper", 
+                        "caption": "ToolTip", 
                         "children": 
                         [
                             {
                                 "command": "open_file", "args":
                                 {
-                                    "file": "${packages}/PolServer/ToolTip-Helper/ToolTipHelper.sublime-settings"
+                                    "file": "${packages}/PolServer/Tooltips.sublime-settings"
                                 },
-                                "caption": "ToolTip Helper Settings – Default"
-                            },
-                            {
-                                "command": "open_file", "args":
-                                {
-                                    "file": "${packages}/PolServer/User/ToolTipHelper.sublime-settings"
-                                },
-                                "caption": "ToolTip Helper Settings – User"
+                                "caption": "Settings"
                             },
                             {
                                 "command":"enter_data",

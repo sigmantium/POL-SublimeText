@@ -142,7 +142,7 @@ class EnterDataCommand(sublime_plugin.WindowCommand):
 
     def save_changes(self):
         try:
-            file_settings = 'ToolTipHelper.sublime-settings'
+            file_settings = 'Tooltips.sublime-settings'
             file_load = sublime.load_settings(file_settings)
             files = file_load.get("files")
             files.append({"file_name":self.file_name, "scope":self.scope, "link":self.link})
@@ -161,7 +161,7 @@ class ToolTipHelperCommand(sublime_plugin.TextCommand):
         self.view = view
         self.selEvent = selEvent;
         self.location = None;
-        self.settings = sublime.load_settings('ToolTipHelper.sublime-settings')
+        self.settings = sublime.load_settings('Tooltips.sublime-settings')
         self.files = self.settings.get("files")
         self.style = self.get_css_style()
         self.keyorder = self.get_keyorder()
@@ -518,7 +518,7 @@ class ToolTipHelperCommand(sublime_plugin.TextCommand):
 
     def save_keyorder_list(self):
         """ save the new keyorder in settings """
-        file_settings = 'ToolTipHelper.sublime-settings'
+        file_settings = 'Tooltips.sublime-settings'
         file_load = sublime.load_settings(file_settings)
         file_load.set("keyorder", self.keyorder)
         sublime.save_settings(file_settings)
@@ -574,13 +574,13 @@ class ToolTipHelperCommand(sublime_plugin.TextCommand):
     def get_immediate_files(self):
         """ get the files from settings """
         try:
-            file_settings = 'ToolTipHelper.sublime-settings'
+            file_settings = 'Tooltips.sublime-settings'
             file_load = sublime.load_settings(file_settings)
             files = file_load.get("files")
-            if files:
-                self.logger_msg += 'Files which loaded from the settings: %s\n' %str(files)
+            #if files:
+                #self.logger_msg += 'Files which loaded from the settings: %s\n' %str(files)
         except Exception as e:
-            self.logger_msg += 'Cannot loads the files from settings: check that \'files\' array is exist in the Packages\\User\\ToolTipHelper.sublime-tooltip\n'
+            self.logger_msg += 'Cannot loads the files from settings: check that \'files\' array is exist in the Packages\\User\\PolServer\\PolServer-settings.sublime-tooltip\n'
             files = []
         return files
 

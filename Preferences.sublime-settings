@@ -1,4 +1,11 @@
 {
+	////////////////////////////
+	///	GENERAL PREFERENCES ///
+	//////////////////////////
+
+	// File and index exclude items to prevent files from being searched or displayed.
+	// Defaults for POL are normally limited to files created during compilation and log files.
 	"file_exclude_patterns": ["*.lst","*.dbg","*.dep","*.bak","*.zip","*.ecl"],
 	"index_exclude_patterns": ["*.log","*.txt","*.bak","*.zip"]
+
 }

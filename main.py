@@ -9,12 +9,12 @@ MAX_VIEWS = 20
 MAX_WORDS_PER_VIEW = 100
 MAX_FIX_TIME_SECS_PER_VIEW = 0.01
 
-settings = sublime.load_settings('sbc-setting.sublime-settings')
+settings = sublime.load_settings('Autocomplete.sublime-settings')
 
 class PleasurazyAPICompletionsPackage():
   def init(self):
     self.api = {}
-    self.settings = sublime.load_settings('sbc-setting.sublime-settings')
+    self.settings = sublime.load_settings('Autocomplete.sublime-settings')
     self.API_Setup = self.settings.get('completion_active_list')
 
     # Caching completions
