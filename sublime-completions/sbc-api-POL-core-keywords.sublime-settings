@@ -1,0 +1,56 @@
+{
+	"scope": "source.polscript",
+
+	"completions": [
+
+		// End
+		["endprogram\tkeyword","endprogram"],
+		["endfunction\tkeyword","endfunction"],
+
+		// Declaration
+		[ "const\tdeclare", "const $1${2: := $3]" ],
+		[  "var\tdeclare", "var $1${2: := $3]" ],
+
+		// Enum
+		["enum","enum"],
+		["endenum","endenum"],
+
+		// If
+		["if\tkeyword", "if ($1)" ],
+		["elseif\tkeyword", "elseif ($1)" ],
+		["else\tkeyword","else"],
+		["endif\tkeyword","endif"],
+
+		// Case
+		["case\tkeyword", "case ($1)" ],
+		["default:\tkeyword","default:"],
+		["endcase\tkeyword","endcase"],
+
+		// While
+		["while\tkeyword", "while ($1)" ],
+		["endwhile\tkeyword","endwhile"],
+
+		// For
+		["for\tkeyword", "for ($1 ; $2 ; $3)" ],
+		["for to\tkeyword", "for $1 to $2" ],
+		["endfor\tkeyword","endfor"],
+
+		// Foreach
+		["foreach in\tkeyword", "foreach $1 in $2" ],
+		["endforeach\tkeyword","endforeach"],
+
+		// Do-dowhile
+		["dowhile\tkeyword", "dowhile ($1);" ],
+
+		// Repeat-until
+		["repeat\tkeyword","repeat"],
+		["until\tkeyword", "until ($1);" ],
+
+		// Keywords
+		["continue;\tkeyword","continue;"],
+		["next;\tkeyword","next;"],
+		["break;\tkeyword","break;"],
+		["return\tkeyword", "return $1;" ]
+		
+	]
+}
