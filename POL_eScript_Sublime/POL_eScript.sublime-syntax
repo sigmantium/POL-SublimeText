@@ -5,6 +5,7 @@ name: POL eScript
 file_extensions:
   - src
   - inc
+  - em
 scope: source.polscript
 
 contexts:
@@ -59,9 +60,8 @@ contexts:
         2: meta.function.parameters.polscript
     - match: '(?i)\b(array|dictionary|struct|error)\b'
       scope: storage.type.polscript
-    - match: '(?i)\b(return|exit)\b'
+    - match: '(?i)\b(return|exit|in)\b'
       scope: keyword.control.conditional.polscript
-
 
   # MAIN
 
@@ -207,6 +207,8 @@ contexts:
       scope: invalid.illegal.polscript
 
   inside_case:
+    - match: '(?i)\bbreak\b'
+      scope: keyword.control.conditional.polscript
     - match: '^\s*\w+:'
       scope: constant.other.polscript
     - match: '(?i)\bendcase\b'
@@ -427,10 +429,12 @@ contexts:
   operators:
     - match: '(:=|\+=|-=|->)'
       scope: keyword.operator.assignment.polscript
-    - match: '(\+|-|\*|/)'
+    - match: '(\+|-|\*|/|%|\^|~)'
       scope: keyword.operator.arithmetic.polscript
-    - match: '(?i)(&&|\band\b|\|\||\bor\b|\bnot\b)'
+    - match: '(?i)(&&|\|\||\bnot\b)'
       scope: keyword.operator.bitwise.polscript
+    - match: '(?i)\b(and|or)\b'
+      scope: invalid.illegal.polscript
     - match: '(==|!=|!|<=|<|>=|>)'
       scope: keyword.operator.logical.polscript
     - match: ;
