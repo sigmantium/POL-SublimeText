@@ -1,4 +1,60 @@
 {
-  "_comment": "FILE - GUILD",
-  "": {}
+	"_comment": "FILE - GUILD",
+	"ListGuilds":
+  	{
+		"prototype": "ListGuilds()",
+		"explain": "Gets a list of all guilds.",
+		"return": "An Array of Guild References.",
+		"related": [
+			"Guild",
+			"Array"
+		],
+		"_name": "ListGuilds"
+	},
+	"FindGuild":
+	{
+		"prototype": "FindGuild( guildid )",
+		"parameter": {
+			"_name": "guildid",
+			"_value": "integer"
+		},
+		"explain": "Gets a Guild Reference for a given Guild ID number",
+		"return": "Guild Reference on success",
+		"error": [
+			"\"Guild not found\"",
+			"\"Invalid parameter type\""
+		],
+		"related": "Guild",
+		"_name": "FindGuild"
+	},
+	"CreateGuild":
+	{
+		"prototype": "CreateGuild()",
+		"explain": "Creates a new Guild Object.",
+		"return": "A Guild Reference to the new guild.",
+		"related": "Guild",
+		"_name": "CreateGuild"
+	},
+	"DestroyGuild":
+	{
+		"prototype": "DestroyGuild( guild )",
+		"parameter": {
+			"_name": "guild",
+			"_value": "Guild Reference"
+		},
+		"explain": [
+			"Destroys an empty guild.",
+			"Notes: Must first empty the guild of members, allies, and enemies (see guildref methods)"
+		],
+		"return": "1 on success",
+		"error": [
+			"\"Guild has members\"",
+			"\"Guild has allies\"",
+			"\"Guild has enemies\"",
+			"\"Guild has disbanded\"",
+			"\"Invalid parameter type\""
+		],
+		"related": "Guild",
+		"_name": "DestroyGuild"
+	}
 }

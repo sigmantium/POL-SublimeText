@@ -1,4 +1,113 @@
 {
   "_comment": "FILE - PARTY",
-  "": {}
+  "CreateParty":
+	{
+	"prototype": "CreateParty( leader, firstmember)",
+	"parameter": [
+		{
+			"_name": "leader",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "firstmember",
+			"_value": "Character Reference"
+		}
+	],
+	"explain": "Creates a Party with given leader and firstmember.",
+	"return": "1 on success",
+	"error": [
+		"\"Leader is already in a party\"",
+		"\"Leader is already candidate of a party\"",
+		"\"Leader and Firstmember are the same\"",
+		"\"First Member is already in a party\"",
+		"\"First Member is already candidate of a party\"",
+		"\"Invalid parameter type\""
+	],
+	"related": "Party",
+	"relatedcfg": "party.cfg",
+	"_name": "CreateParty"
+	},
+	"DisbandParty":
+{
+	"prototype": "DisbandParty( PartyRef )",
+	"parameter": {
+		"_name": "PartyRef",
+		"_value": "Party Reference"
+	},
+	"explain": "Disbands the given Party",
+	"return": "1 on success",
+	"error": [
+		"\"Party has no leader\"",
+		"\"Invalid parameter type\""
+	],
+	"related": "Party",
+	"relatedcfg": "party.cfg",
+	"_name": "DisbandParty"
+	},
+	"SendPartyMsg":
+{
+	"prototype": "SendPartyMsg( party, character, uctext )",
+	"parameter": [
+		{
+			"_name": "party",
+			"_value": "Party Reference"
+		},
+		{
+			"_name": "character",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "uctext",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character"
+		}
+	],
+	"explain": "Sends a Party Message with character=Sender",
+	"return": "1 on success",
+	"error": [
+		"\"Unicode array exceeds maximum size.\"",
+		"\"Invalid value in Unicode array.\"",
+		"\"Invalid parameter type\""
+	],
+	"related": [
+		"Party",
+		"Array"
+	],
+	"relatedcfg": "party.cfg",
+	"_name": "SendPartyMsg"
+	},
+	"SendPrivatePartyMsg":
+{
+	"prototype": "SendPrivatePartyMsg( party, character, tocharacter, uctext )",
+	"parameter": [
+		{
+			"_name": "party",
+			"_value": "Party Reference"
+		},
+		{
+			"_name": "character",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "tocharacter",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "uctext",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character"
+		}
+	],
+	"explain": "Sends a Private Party Message with character=Sender",
+	"return": "1 on success",
+	"error": [
+		"\"Unicode array exceeds maximum size.\"",
+		"\"Invalid value in Unicode array.\"",
+		"\"Invalid parameter type\""
+	],
+	"related": [
+		"Party",
+		"Array"
+	],
+	"relatedcfg": "party.cfg",
+	"_name": "SendPrivatePartyMsg"
+	}
 }

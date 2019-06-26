@@ -1,4 +1,137 @@
 {
   "_comment": "FILE - CLILOC",
-  "": {}
+	"SendSysMessageCL":
+	{
+	"prototype": "SendSysMessageCL(character, cliloc_num, uc_text:=array, font:=_DEFAULT_CLFONT , color:=_DEFAULT_CLCOLOR)",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Character reference to receive the text"
+		},
+		{
+			"_name": "cliloc_num",
+			"_value": "Cliloc Number you wish to be displayed."
+		},
+		{
+			"_name": "uc_text",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character. Only used when the cliloc accepts arguments for replacement."
+		},
+		{
+			"_name": "font",
+			"_value": "Integer (optional) font code. Not the same as non-unicode font codes"
+		},
+		{
+			"_name": "color",
+			"_value": "Integer (optional) color code. Not the same color as the same value for non-unicode prints"
+		}
+	],
+	"explain": [
+		"Displays a Cliloc (Client Localized) system message to 'character'. Arguments for the cliloc itself are seperated with a tab (\\t) character.",
+		"uc_text MUST be an array of integers representing unicode characters.",
+		"Integers must be \"Big Endian\" (0x1234) and not \"Little Endian\" (0x3412).",
+		"Integers will be clipped internally to 2-bytes (value masked with 0xFFFF)",
+		"The Array must be terminated with zero. (0x0000)",
+		"Argument example: \nCliloc Number: 1042762: \nCliloc ENU String: \"Only ~1_AMOUNT~ gold could be deposited. A check for ~2_CHECK_AMOUNT~ gold was returned to you.\"\nThe uc_text string may have \"100 thousand\\t25 hundred\", which in turn would modify the string:\n\"Only 100 thousand gold could be deposited. A check for 25 hundred gold was returned to you.\""
+	],
+	"return": "1 on success",
+	"error": [
+		"\"Unicode array exceeds maximum size.\" (200 characters)",
+		"\"Invalid value in Unicode array.\"",
+		"\"A parameter was invalid\""
+	],
+	"related": "Array",
+	"_name": "SendSysMessageCL"
+	},
+	"PrintTextAboveCL":
+	{
+	"prototype": "PrintTextAboveCL(character, cliloc_num, uc_text:=array, font:=_DEFAULT_CLFONT , color:=_DEFAULT_CLCOLOR)",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Character reference to receive the text"
+		},
+		{
+			"_name": "cliloc_num",
+			"_value": "Cliloc Number you wish to be displayed."
+		},
+		{
+			"_name": "uc_text",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character. Only used when the cliloc accepts arguments for replacement."
+		},
+		{
+			"_name": "font",
+			"_value": "Integer (optional) font code. Not the same as non-unicode font codes"
+		},
+		{
+			"_name": "color",
+			"_value": "Integer (optional) color code. Not the same color as the same value for non-unicode prints"
+		}
+	],
+	"explain": [
+		"Displays a Cliloc (Client Localized) message above 'character'. Arguments for the cliloc itself are seperated with a tab (\\t) character.",
+		"uc_text MUST be an array of integers representing unicode characters.",
+		"Integers must be \"Big Endian\" (0x1234) and not \"Little Endian\" (0x3412).",
+		"Integers will be clipped internally to 2-bytes (value masked with 0xFFFF)",
+		"The Array must be terminated with zero. (0x0000)",
+		{
+			"code": "Argument example: \nCliloc Number: 1042762: \nCliloc ENU String: \"Only ~1_AMOUNT~ gold could be deposited. A check for ~2_CHECK_AMOUNT~ gold was returned to you.\"\nThe uc_text string may have \"100 thousand\\t25 hundred\", which in turn would modify the string:\n\"Only 100 thousand gold could be deposited. A check for 25 hundred gold was returned to you.\""
+		}
+	],
+	"return": "1 on success",
+	"error": [
+		"\"Unicode array exceeds maximum size.\" (200 characters)",
+		"\"Invalid value in Unicode array.\"",
+		"\"A parameter was invalid\""
+	],
+	"related": "Array",
+	"_name": "PrintTextAboveCL"
+	},
+	"PrintTextAbovePrivateCL":
+	{
+	"prototype": "PrintTextAbovePrivateCL(character, object, cliloc_num, uc_text:=array, font:=_DEFAULT_CLFONT , color:=_DEFAULT_CLCOLOR)",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Character reference to receive the text"
+		},
+		{
+			"_name": "object",
+			"_value": "UObject reference to print the text above"
+		},
+		{
+			"_name": "cliloc_num",
+			"_value": "Cliloc Number you wish to be displayed."
+		},
+		{
+			"_name": "uc_text",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character. Only used when the cliloc accepts arguments for replacement."
+		},
+		{
+			"_name": "font",
+			"_value": "Integer (optional) font code. Not the same as non-unicode font codes"
+		},
+		{
+			"_name": "color",
+			"_value": "Integer (optional) color code. Not the same color as the same value for non-unicode prints"
+		}
+	],
+	"explain": [
+		"Displays a Cliloc (Client Localized) message above 'character'. Arguments for the cliloc itself are seperated with a tab (\\t) character.",
+		"uc_text MUST be an array of integers representing unicode characters.",
+		"Integers must be \"Big Endian\" (0x1234) and not \"Little Endian\" (0x3412).",
+		"Integers will be clipped internally to 2-bytes (value masked with 0xFFFF)",
+		"The Array must be terminated with zero. (0x0000)",
+		{
+			"code": "Argument example: \nCliloc Number: 1042762: \nCliloc ENU String: \"Only ~1_AMOUNT~ gold could be deposited. A check for ~2_CHECK_AMOUNT~ gold was returned to you.\"\nThe uc_text string may have \"100 thousand\\t25 hundred\", which in turn would modify the string:\n\"Only 100 thousand gold could be deposited. A check for 25 hundred gold was returned to you.\""
+		}
+	],
+	"return": "1 on success",
+	"error": [
+		"\"Unicode array exceeds maximum size.\" (200 characters)",
+		"\"Invalid value in Unicode array.\"",
+		"\"A parameter was invalid\""
+	],
+	"related": "Array",
+	"_name": "PrintTextAbovePrivateCL"
+	}
 }

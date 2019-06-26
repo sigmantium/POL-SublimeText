@@ -1,4 +1,295 @@
 {
   "_comment": "FILE - MATH",
-  "": {}
+  "Sin":
+	{
+		"prototype": "Sin(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real, in radians"
+		},
+		"explain": "Computes the sine of x",
+		"return": "Real number",
+		"error": "\"Invalid parameter type\"",
+		"_name": "Sin"
+	},
+	"Cos":
+	{
+		"prototype": "Cos(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real, in radians"
+		},
+		"explain": "Computes the cosine of x",
+		"return": "Real number",
+		"error": "\"Invalid parameter type\"",
+		"_name": "Cos"
+	},
+	"Tan":
+	{
+		"prototype": "Tan(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real, in radians"
+		},
+		"explain": "Computes the tangent of x",
+		"return": "Real number",
+		"error": "\"Invalid parameter type\"",
+		"_name": "Tan"
+	},
+	"ASin":
+	{
+		"prototype": "ASin(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real, in radians"
+		},
+		"explain": "Computes the arcsine of x",
+		"return": "Real number in radians",
+		"error": "\"Invalid parameter type\"",
+		"_name": "ASin"
+	},
+	"ACos":
+	{
+		"prototype": "ACos(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real, in radians"
+		},
+		"explain": "Computes the arccosine of x",
+		"return": "Real number in radians",
+		"error": "\"Invalid parameter type\"",
+		"_name": "ACos"
+	},
+	"ATan":
+	{
+		"prototype": "ATan(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real, in radians"
+		},
+		"explain": "Computes the arctangent of x",
+		"return": "Real number in radians",
+		"error": "\"Invalid parameter type\"",
+		"_name": "ATan"
+	},
+	"RadToDeg":
+	{
+		"prototype": "RadToDeg( radians )",
+		"parameter": {
+			"_name": "radians",
+			"_value": "Real, in radians"
+		},
+		"explain": "Converts the radian parameter to degrees",
+		"return": "Real number in degrees",
+		"error": "\"Invalid parameter type\"",
+		"_name": "RadToDeg"
+	},
+	"DegToRad":
+	{
+		"prototype": "DegToRad( degrees )",
+		"parameter": {
+			"_name": "degrees",
+			"_value": "Real, in degrees"
+		},
+		"explain": "Converts the degrees parameter to radians",
+		"return": "Real number in radians",
+		"error": "\"Invalid parameter type\"",
+		"_name": "DegToRad"
+	},
+	"Pow":
+	{
+		"prototype": "Pow(x,y)",
+		"parameter": [
+			{
+				"_name": "x",
+				"_value": "Real"
+			},
+			{
+				"_name": "y",
+				"_value": "Real"
+			}
+		],
+		"explain": "Computes x ^ y",
+		"return": "Real number",
+		"error": "\"Invalid parameter type\"",
+		"_name": "Pow"
+	},
+	"Sqrt":
+	{
+		"prototype": "Sqrt(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real"
+		},
+		"explain": "Computes the square root of x",
+		"return": "Real number",
+		"error": "\"Invalid parameter type\"",
+		"_name": "Sqrt"
+	},
+	"Root":
+	{
+		"prototype": "Root(x,y)",
+		"parameter": [
+			{
+				"_name": "x",
+				"_value": "Real"
+			},
+			{
+				"_name": "y",
+				"_value": "Real"
+			}
+		],
+		"explain": "Computes the y root of x (same as Pow(x,1.0/y)).",
+		"return": "Real number",
+		"error": "\"Invalid parameter type\"",
+		"_name": "Root"
+	},
+	"Abs":
+	{
+		"prototype": "Abs(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real or Integer"
+		},
+		"explain": "Computes the absolute value of x",
+		"return": "Real number",
+		"error": "\"Invalid parameter type\"",
+		"_name": "Abs"
+	},
+	"Log10":
+	{
+		"prototype": "Log10(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real"
+		},
+		"explain": "Computes log(base 10) of x",
+		"return": "Real number",
+		"error": "\"Invalid parameter type\"",
+		"_name": "Log10"
+	},
+	"LogE":
+	{
+		"prototype": "LogE(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real"
+		},
+		"explain": "Computes the natural log of x",
+		"return": "Real number",
+		"error": "\"Invalid parameter type\"",
+		"_name": "LogE"
+	},
+	"Ceil":
+	{
+		"prototype": "Ceil(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real"
+		},
+		"explain": "Computes the ceiling of x",
+		"return": "Real that is smallest integer >= x",
+		"error": "\"Invalid parameter type\"",
+		"_name": "Ceil"
+	},
+	"Floor":
+	{
+		"prototype": "Floor(x)",
+		"parameter": {
+			"_name": "x",
+			"_value": "Real"
+		},
+		"explain": "Computes the floor of x",
+		"return": "Real that is largest integer <= x",
+		"error": "\"Invalid parameter type\"",
+		"_name": "Floor"
+	},
+	"ConstPi":
+	{
+		"prototype": "ConstPi()",
+		"explain": [
+			"Returns an approximation of the trancendental number Pi",
+			"Pi is a numerical constant that represents the ratio of a circle's circumference to \n    its diameter on a flat plane surface. The value is the same regardless of the size of \n    the circle. The decimal expansion of pi is a nonterminating, nonrepeating sequence of \n    digits. Pi can be expressed through the Fourier series pi = 4 - (4/3) + (4/5) - (4/7) + (4/9) - ..."
+		],
+		"return": "Real number (3.14159....)",
+		"_name": "ConstPi"
+	},
+	"ConstE":
+	{
+		"prototype": "ConstE()",
+		"explain": [
+			"Returns an approximation of the trancendental number E",
+			"e, is an irrational NUMBER occurring widely in mathematics and science, approximately \n    equal to the value 2.71828; it is the base of natural, or Naperian, LOGARITHMS. Like pi, \n    e is transcendental, i.e., not a ROOT of any algebraic equation. It is defined as the \n    LIMIT of the expression (1 + 1/n)^n as n becomes infinitely large. Expressions of the \n    form e^(x), known as the exponential function, occur in applications ranging from \n    statistics to nuclear physics"
+		],
+		"return": "Real number",
+		"_name": "ConstE"
+	},
+	"FormatRealToString":
+	{
+		"prototype": "FormatRealToString( value, precision )",
+		"parameter": [
+			{
+				"_name": "value",
+				"_value": "Real"
+			},
+			{
+				"_name": "precision",
+				"_value": "Integer"
+			}
+		],
+		"explain": "Formats a Double into a string. WARNING: this may produce different output on Windows and Linux,\n    output is intended only for displaying and informational purposes. Do not rely on it to be accurate,\n    to do not change in time, or to fit into any specifiec or predictable format.",
+		"return": "String rep of the real number",
+		"error": "\"Invalid parameter type\"",
+		"_name": "FormatRealToString"
+	},
+	"Min":
+	{
+		"prototype": "Min( x, y:=0 )",
+		"parameter": [
+			{
+				"_name": "x",
+				"_value": "Integer/Double/Array"
+			},
+			{
+				"_name": "y",
+				"_value": "Integer/Double"
+			}
+		],
+		"explain": [
+			"The numerically lowest Integer of the parameter values. Will return int/dbl based on parameter types passed.",
+			"If first param is an Array second will be ignored and returns lowest int/dbl entry."
+		],
+		"return": "Integer/Double",
+		"error": [
+			"\"Invalid parameter type\"",
+			"\"Array empty\"",
+			"\"No Integer/Double elements\""
+		],
+		"_name": "Min"
+	},
+	"Max":
+	{
+		"prototype": "Max( x, y:=0)",
+		"parameter": [
+			{
+				"_name": "x",
+				"_value": "Integer/Double/Array"
+			},
+			{
+				"_name": "y",
+				"_value": "Integer/Double"
+			}
+		],
+		"explain": [
+			"The numerically highest Integer of the parameter values. Will return int/dbl based on parameter types passed.",
+			"If first param is an Array second will be ignored and returns lowest int/dbl entry."
+		],
+		"return": "Integer/Double",
+		"error": [
+			"\"Invalid parameter type\"",
+			"\"Array empty\"",
+			"\"No Integer/Double elements\""
+		],
+		"_name": "Max"
+	}
 }

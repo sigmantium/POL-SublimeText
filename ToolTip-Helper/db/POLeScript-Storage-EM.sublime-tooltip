@@ -1,4 +1,107 @@
 {
   "_comment": "FILE - STORAGE",
-  "": {}
+  "StorageAreas":
+	{
+	"prototype": "StorageAreas()",
+	"explain": "Returns a StorageAreas object, see object reference for details",
+	"return": "StorageAreas object",
+	"related": "StorageAreas",
+	"_name": "StorageAreas"
+	},
+	"FindStorageArea":
+{
+	"prototype": "FindStorageArea( areaname )",
+	"parameter": {
+		"_name": "areaname",
+		"_value": "String"
+	},
+	"explain": "Gets a reference to the storage area named \"areaname\"",
+	"return": "Storage Area reference on success",
+	"error": "none (returns 0 on invalid parameter or area not found)",
+	"related": "StorageArea",
+	"_name": "FindStorageArea"
+	},
+	"FindRootItemInStorageArea":
+{
+	"prototype": "FindRootItemInStorageArea( area, itemname )",
+	"parameter": [
+		{
+			"_name": "area",
+			"_value": "Storage Area Reference"
+		},
+		{
+			"_name": "itemname",
+			"_value": "String"
+		}
+	],
+	"explain": "Finds the root item named \"itemname\" in the storage area named \"area\".",
+	"return": "Item Reference on success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Root item not found.\""
+	],
+	"_name": "FindRootItemInStorageArea"
+	},
+	"CreateStorageArea":
+{
+	"prototype": "CreateStorageArea( areaname )",
+	"parameter": {
+		"_name": "areaname",
+		"_value": "String"
+	},
+	"explain": "Create a new storage area with name \"areaname\".",
+	"return": "Storage Area reference on success",
+	"error": "Errors: none (returns 0 on invalid parameter)",
+	"_name": "CreateStorageArea"
+	},
+	"CreateRootItemInStorageArea":
+{
+	"prototype": "CreateRootItemInStorageArea( area, itemname, objtype )",
+	"parameter": [
+		{
+			"_name": "area",
+			"_value": "String"
+		},
+		{
+			"_name": "itemname",
+			"_value": "String"
+		},
+		{
+			"_name": "objtype",
+			"_value": "Integer objtype, OR String ObjtypeName, OR GetItemDescriptor struct."
+		}
+	],
+	"explain": [
+		"Creates the \"root\" (top-level) item in the storage area \"area\". \"itemname\" is the name of this\n\t\t\t\titem, and \"objtype\" is its type.",
+		"Notes: The item is normally a container. For example, a bankbox is a storage area and the root item \nis the chest container. Normal items are then placed in this container."
+	],
+	"return": "Item Reference on success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Unable to create item\""
+	],
+	"related": "Item",
+	"_name": "CreateRootItemInStorageArea"
+	},
+	"DestroyRootItemInStorageArea":
+{
+	"prototype": "DestroyRootItemInStorageArea( area, itemname )",
+	"parameter": [
+		{
+			"_name": "area",
+			"_value": "Storage Area Reference"
+		},
+		{
+			"_name": "itemname",
+			"_value": "String"
+		}
+	],
+	"explain": "Destroys the root item named \"itemname\" in storage area \"area\"",
+	"return": [
+		"1 on delete success",
+		"0 on item not found"
+	],
+	"error": "\"Invalid parameter type\"",
+	"_name": "DestroyRootItemInStorageArea"
+	}
 }

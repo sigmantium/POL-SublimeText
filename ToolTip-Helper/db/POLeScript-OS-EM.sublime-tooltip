@@ -1,4 +1,439 @@
 {
   "_comment": "FILE - OS",
-  "": {}
+  "GetProcess":
+	{
+	"prototype": "GetProcess(pid := 0)",
+	"parameter": {
+		"_name": "pid",
+		"_value": "Integer process ID of a script (optional)"
+	},
+	"explain": [
+		"Gets a script process object for the given script's PID.",
+		"If no PID is supplied uses PID of parent script."
+	],
+	"return": "A Script object",
+	"error": [
+		"\"Process not found\"",
+		"\"Invalid parameter type\""
+	],
+	"related": "Script",
+	"_name": "GetProcess"
+	},
+	"GetPid":
+{
+	"prototype": "GetPid()",
+	"explain": "Returns the Process ID for this script.",
+	"return": "Integer Process ID",
+	"_name": "GetPid"
+	},
+	"Unload_Scripts":
+{
+	"prototype": "Unload_Scripts(scriptname := \"\")",
+	"parameter": {
+		"_name": "scriptname",
+		"_value": "String filename of script without extension (optional)"
+	},
+	"explain": [
+		"unload scripts from the script cache (they will be reloaded from disk on demand) currently running scripts will continue as normal.",
+		"Passing \"\" will unload all scripts."
+	],
+	"return": "Number of scripts unloaded",
+	"error": "\"Invalid parameter type\"",
+	"related": "Script",
+	"_name": "Unload_Scripts"
+	},
+	"Set_Script_Option":
+{
+	"prototype": "Set_Script_Option( optnum, optval )",
+	"parameter": [
+		{
+			"_name": "optnum",
+			"_value": "Integer constant"
+		},
+		{
+			"_name": "optval",
+			"_value": "boolean (0/1)"
+		}
+	],
+	"explain": [
+		"Sets one or more options on or off for this script",
+		{
+			"code": "const SCRIPTOPT_NO_INTERRUPT := 1;      // if 1, script runs until it sleeps\nconst SCRIPTOPT_DEBUG        := 2;      // if 1, prints any debug info included\nconst SCRIPTOPT_NO_RUNAWAY   := 3;      // if 1, doesn't warn about runaway conditions\nconst SCRIPTOPT_CAN_ACCESS_OFFLINE_MOBILES := 4;",
+			"__text": "Constants for this function:"
+		},
+		"set_script_option(SCRIPTOPT_NO_INTERRUPT,1) is the same as set_critical(1)",
+		"set_script_option(SCRIPTOPT_DEBUG,1) is the same as set_debug(1)"
+	],
+	"return": "previous value",
+	"error": [
+		"\"Unknown Script Option\"",
+		"\"Invalid parameter type\""
+	],
+	"_name": "Set_Script_Option"
+	},
+	"Sleep":
+{
+	"prototype": "Sleep( num_seconds )",
+	"parameter": {
+		"_name": "num_seconds",
+		"_value": "Integer"
+	},
+	"explain": [
+		"Puts the current script to sleep for num_seconds. No further instructions in this script will be processed in this script until the time expires.",
+		"DO NOT USE IN A CRITICAL BLOCK! Your server will freeze for the duration!",
+		"If this script is attached to a character (like a UseScript), calling detach() before the sleep will allow other scripts to run while this script sleeps."
+	],
+	"return": "0 after sleep",
+	"_name": "Sleep"
+	},
+	"Sleepms":
+{
+	"prototype": "Sleepms( num_milliseconds )",
+	"parameter": {
+		"_name": "num_milliseconds",
+		"_value": "Integer"
+	},
+	"explain": [
+		"Puts the current script to sleep for num_milliseconds. No further instructions in this script will be processed in this script until the time expires.",
+		"DO NOT USE IN A CRITICAL BLOCK! Your server will freeze for the duration!",
+		"If this script is attached to a character (like a UseScript), calling detach() before the sleep will allow other scripts to run while this script sleeps.",
+		"You're not likely to get any faster resolution than 10ms"
+	],
+	"return": "0 after sleep",
+	"_name": "Sleepms"
+	},
+	"Wait_For_Event":
+{
+	"prototype": "Wait_For_Event( num_seconds_timeout )",
+	"parameter": {
+		"_name": "num_seconds_timeout",
+		"_value": "Integer"
+	},
+	"explain": [
+		"The primary access to a script's event queue. If there is an event waiting, the function immediately returns with the event (could be a string, int, struct, etc).",
+		"If no event is waiting, the script sleeps for num_seconds_timeout or until a new event arrives. If the timeout is reached, the function returns 0.",
+		"if timeout is 0, returns immediately"
+	],
+	"return": "object on event recv, 0 on timeout",
+	"_name": "Wait_For_Event"
+	},
+	"Events_Waiting":
+{
+	"prototype": "Events_Waiting()",
+	"explain": "Returns the number of events waiting in the event queue for this script.",
+	"return": "Integer number of events waiting",
+	"_name": "Events_Waiting"
+	},
+	"Set_Priority":
+{
+	"prototype": "Set_Priority( priority )",
+	"parameter": {
+		"_name": "priority",
+		"_value": "Integer 1..255"
+	},
+	"explain": [
+		"the priority of a script is how many instructions it executes before switching to another script.",
+		"default script priority is 1."
+	],
+	"return": "Integer previous priority",
+	"error": "\"Invalid parameter type\"",
+	"_name": "Set_Priority"
+	},
+	"Set_Critical":
+{
+	"prototype": "Set_Critical( critical )",
+	"parameter": {
+		"_name": "critical",
+		"_value": "Boolean (0/1)"
+	},
+	"explain": [
+		"critical scripts run if they are not blocked, without interruption.",
+		"An infinite loop in a critical script will hang the server",
+		"Use this in blocks by setting 'critical' to 1 before the critical code and to 0 after it.",
+		"Use this function sparingly, only in parts of code that must execute without interruption"
+	],
+	"return": "1 on success",
+	"error": "\"Invalid parameter type\"",
+	"_name": "Set_Critical"
+	},
+	"Set_Debug":
+{
+	"prototype": "Set_Debug( debug )",
+	"parameter": {
+		"_name": "debug",
+		"_value": "Boolean (0/1)"
+	},
+	"explain": [
+		"if debug=1, and the script was compiled with 'ecompile -i [script].src', each script source line will be printed as it is executed.",
+		"if debug=0, disables this output."
+	],
+	"return": "1 on success",
+	"error": "\"Invalid parameter type\"",
+	"_name": "Set_Debug"
+	},
+	"Start_Script":
+{
+	"prototype": "Start_Script( script_name, param := 0 )",
+	"parameter": [
+		{
+			"_name": "script_name",
+			"_value": "String name and path of script to run"
+		},
+		{
+			"_name": "param",
+			"_value": "object to pass to the script. Only one param may be passed. (optional)"
+		}
+	],
+	"explain": [
+		"Starts a new script running.",
+		"Tip: write your script to expect a struct or array as its only parameter, so you may pass multiple pieces of data through the struct or array."
+	],
+	"return": "A Script object for the started script on success.",
+	"error": [
+		"\"Error in script name\"",
+		"\"Script X does not exist.\"",
+		"\"Unable to start script\"",
+		"\"Invalid parameter type\""
+	],
+	"related": "Script",
+	"_name": "Start_Script"
+	},
+	"Start_Skill_Script":
+{
+	"prototype": "Start_Skill_Script( chr, attr_name, script_name := \"\", param := 0 )",
+	"parameter": [
+		{
+			"_name": "chr",
+			"_value": "Character to start the script for"
+		},
+		{
+			"_name": "attr_name",
+			"_value": "String of AttributeID to start the script for e.g. 'Anatomy'"
+		},
+		{
+			"_name": "script_name",
+			"_value": "If given, starts this script instead of the default one"
+		},
+		{
+			"_name": "param",
+			"_value": "object to pass to the script. Only one param may be passed. (optional)"
+		}
+	],
+	"explain": [
+		"starts for given chr and attr_name definied script (overrideable with param script_name)",
+		"param is any UObject given to skill script as second param (first is chr)",
+		"performs the same checks like normal skillusage (death,frozen,skilldelay,...)",
+		"Tip: write your script to expect a struct or array as its only parameter, so you may pass multiple pieces of data through the struct or array."
+	],
+	"return": "A Script object for the started script on success.",
+	"related": "Script",
+	"_name": "Start_Skill_Script"
+	},
+	"Run_Script":
+{
+	"prototype": "Run_Script( script_name, param := 0 )",
+	"parameter": [
+		{
+			"_name": "script_name",
+			"_value": "String name and path of script to run"
+		},
+		{
+			"_name": "param",
+			"_value": "object to pass to the script. Only one param may be passed. (optional)"
+		}
+	],
+	"explain": [
+		"Starts a new NON-CRITICAL script. Runs until the script exits, returns the return value of the started script.",
+		"Tip: write your script to expect a struct or array as its only parameter, so you may pass multiple pieces of data through the struct or array."
+	],
+	"return": "The return value of the started script, or 1 if no value was returned",
+	"error": [
+		"\"Unable to read script\"",
+		"\"Script exited with an error condition\"",
+		"\"Script does not exist\"",
+		"\"Script descriptor error\""
+	],
+	"_name": "Run_Script"
+	},
+	"Run_Script_To_Completion":
+{
+	"prototype": "Run_Script_To_Completion( script_name, param := 0 )",
+	"parameter": [
+		{
+			"_name": "script_name",
+			"_value": "String name and path of script to run"
+		},
+		{
+			"_name": "param",
+			"_value": "object to pass to the script. Only one param may be passed. (optional)"
+		}
+	],
+	"explain": [
+		"Starts a new CRITICAL script. Runs until the script exits, returns the return value of the started script.",
+		"Tip: write your script to expect a struct or array as its only parameter, so you may pass multiple pieces of data through the struct or array.",
+		"Every 1000 instructions, \"Script X running..\" is printed to the console"
+	],
+	"return": "The return value of the started script, or 1 if no value was returned",
+	"error": [
+		"\"Unable to read script\"",
+		"\"Script exited with an error condition\"",
+		"\"Script does not exist\"",
+		"\"Script descriptor error\""
+	],
+	"_name": "Run_Script_To_Completion"
+	},
+	"SysLog":
+{
+	"prototype": "SysLog( text )",
+	"parameter": {
+		"_name": "text",
+		"_value": "String"
+	},
+	"explain": "write text to the console, and to the log file includes context (calling script name)",
+	"return": "1 on success",
+	"_name": "SysLog"
+	},
+	"Clear_Event_Queue":
+{
+	"prototype": "Clear_Event_Queue()",
+	"explain": "Empties the current script's event queue",
+	"return": "1 on success",
+	"_name": "Clear_Event_Queue"
+	},
+	"OpenURL":
+{
+	"prototype": "OpenURL( character, url )",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Player Character Ref"
+		},
+		{
+			"_name": "url",
+			"_value": "String"
+		}
+	],
+	"explain": "Sends an Open URL packet to the client, to open the url in their Default Browser.",
+	"return": "1 on success",
+	"error": "\"No client attached\"",
+	"_name": "OpenURL"
+	},
+	"Set_Event_Queue_Size":
+{
+	"prototype": "Set_Event_Queue_Size(size)",
+	"parameter": {
+		"_name": "size",
+		"_value": "Integer new size"
+	},
+	"explain": [
+		"Changes the maximum number of events the current script will keep in the queue (additional events will be discarded).",
+		"If not called, the default size is 20 events."
+	],
+	"return": "Integer old queue size.",
+	"error": "\"Invalid parameter type\"",
+	"_name": "Set_Event_Queue_Size"
+	},
+	"Create_Debug_Context":
+{
+	"prototype": "Create_Debug_Context()",
+	"explain": "TBD",
+	"return": "TBD",
+	"_name": "Create_Debug_Context"
+	},
+	"Is_Critical":
+{
+	"prototype": "Is_Critical()",
+	"explain": "Returns true if the script is critical (by using set_critical())",
+	"return": "1 if critical, else 0.",
+	"_name": "Is_Critical"
+	},
+	"OpenConnection":
+{
+	"prototype": "OpenConnection( host, port, scriptdef, params )",
+	"parameter": [
+		{
+			"_name": "host",
+			"_value": "Target host"
+		},
+		{
+			"_name": "port",
+			"_value": "Target port"
+		},
+		{
+			"_name": "scriptdef",
+			"_value": "Name of the script to be started when the connection is established"
+		},
+		{
+			"_name": "params",
+			"_value": "A struct of parameters to be sent to the script"
+		},
+		{
+			"_name": "assume_string",
+			"_value": "Integer if set to 1 all communication from connection will be sent/received as raw strings."
+		}
+	],
+	"explain": [
+		"Creates an outgoing TCP/IP connection to the host/port, once connection is open the scriptdef is run and",
+		"any params defined in the struct will be passed to that script. The script type should be in the form of an Auxilry Script."
+	],
+	"return": "1 on success",
+	"_name": "OpenConnection"
+	},
+	"Debugger":
+{
+	"prototype": "Debugger()",
+	"explain": "puts the script in debug state",
+	"return": "1 on success",
+	"_name": "Debugger"
+	},
+	"PerformanceMeasure":
+{
+	"prototype": "PerformanceMeasure(delta_seconds := 10, max_scripts := 100)",
+	"parameter": [
+		{
+			"_name": "delta_seconds",
+			"_value": "seconds to observe"
+		},
+		{
+			"_name": "max_scripts",
+			"_value": "maximum number of scripts to be returned"
+		}
+	],
+	"explain": [
+		"Monitors for given number of seconds the instructions of all scripts.",
+		"Returns struct with the following members:",
+		"total_number_observed : number of scripts alive in the timespan",
+		"total_instructions : sum of all instructions of the observed scripts",
+		"scripts : array of structs (max number is given max_scripts param) sorted by instructions amount",
+		"each scripts entry has the following members:",
+		"name : script name, if attached with name/npctemplate",
+		"instructions : number of executed instructions",
+		"pid : PID of the script",
+		"percent : percent of the total instruction amount"
+	],
+	"return": "see above",
+	"_name": "PerformanceMeasure"
+	},
+	"HTTPRequest":
+{
+	"prototype": "HTTPRequest(url, method := \"GET\", options := struct{})",
+	"parameter": [
+		{
+			"_name": "url",
+			"_value": "URL"
+		},
+		{
+			"_name": "method",
+			"_value": "HTTP Method to use for request (eg. GET, POST)"
+		},
+		{
+			"_name": "options",
+			"_value": "A struct containing options for the request. Available options are: 'data', a string representing the POST data; 'headers', a struct containing headers to send, where the key is the header's name and value is the header's value"
+		}
+	],
+	"explain": "Creates an HTTP request, and returns the returned data as a string.",
+	"code": "Example: create a POST request to a REST endpoint with custom header:\n\n HTTPRequest(\"http://localhost:3000/\",\"POST\", struct{ \n  data := \"{\\\"stuff1\\\":[1,2,35]}\", \n  headers := struct{\n    \"Content-Type\" := \"application/json\"\n  }\n});",
+	"return": "Response data as a string.",
+	"_name": "HTTPRequest"
+	}
 }

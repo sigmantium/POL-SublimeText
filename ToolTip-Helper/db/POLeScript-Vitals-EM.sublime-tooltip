@@ -1,10 +1,294 @@
 {
   "_comment": "FILE - VITALS",
-  "ApplyDamage": {
-    "method": "",
-    "parameters": [""],
-    "explanation": [""],
-    "return":"",
-    "link":"https:\/\/docs.polserver.com\/pol100\/fullfunc.php?xmlfile=vitalsem#ApplyDamage"
-  }
+  "ApplyDamage":
+	{
+	"prototype": "ApplyDamage( mobile, damage, userepsys := DAMAGE_USE_REPSYS, send_damage := DAMAGE_USE_DEFAULT )",
+	"parameter": [
+		{
+			"_name": "mobile",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "damage",
+			"_value": "Real (0.0 to 30000.0)"
+		},
+		{
+			"_name": "userepsys",
+			"_value": "Integer (optional, default DAMAGE_USE_REPSYS)"
+		},
+		{
+			"_name": "send_damage",
+			"_value": "Integer (optional, default DAMAGE_USE_DEFAULT)"
+		}
+	],
+	"explain": [
+		"Decreases a character's hit points, after reducing damage due to armor.",
+		{
+			"code": "const DAMAGE_USE_REPSYS  := 1;\nconst DAMAGE_NO_REPSYS   := 0;\nconst DAMAGE_NO_SHOW     := 0;\nconst DAMAGE_SHOW        := 1;\nconst DAMAGE_USE_DEFAULT := 2;",
+			"__text": "Notes: vitals.em constants for userepsys:"
+		},
+		"DAMAGE_USE_DEFAULT uses the SendDamagePacket setting from combat.cfg",
+		"(Old notes:) The steps taken are as follows:\n\t\t\tA piece of armor is chosen randomly, based on probabilities in ARMRZONE.CFG. \n\t\t\tDamage is reduced by 50% to 100% of the armor's AR. \n\t\t\tRemaining damage is halved. \n\t\t\t\"I'm Hit\" animation is played. \n\t\t\tDamage is applied. \n\t\t\tMobile is killed if hit points are now zero. \n\t\t   Invokes Reputation system effects."
+	],
+	"return": "Real damage applied to mobile on success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Damage is out of range\""
+	],
+	"related": "Character",
+	"_name": "ApplyDamage"
+	},
+	"ApplyRawDamage":
+{
+	"prototype": "ApplyRawDamage( Character, Hits, userepsys := DAMAGE_USE_REPSYS, send_damage := DAMAGE_USE_DEFAULT )",
+	"parameter": [
+		{
+			"_name": "Character",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "Hits",
+			"_value": "Integer (0..255)"
+		},
+		{
+			"_name": "userepsys",
+			"_value": "Integer (optional, default DAMAGE_USE_REPSYS)"
+		},
+		{
+			"_name": "send_damage",
+			"_value": "Integer (optional, default DAMAGE_USE_DEFAULT)"
+		}
+	],
+	"explain": [
+		"Decreases a character's hit points.  If this causes hit points to drop to zero, kills the character.",
+		"Notes: Armor is ignored.",
+		"Invokes Reputation system effects.",
+		{
+			"code": "const DAMAGE_USE_REPSYS  := 1;\nconst DAMAGE_NO_REPSYS   := 0;\nconst DAMAGE_NO_SHOW     := 0;\nconst DAMAGE_SHOW        := 1;\nconst DAMAGE_USE_DEFAULT := 2;",
+			"__text": "Notes: vitals.em constants for userepsys:"
+		},
+		"DAMAGE_USE_DEFAULT uses the SendDamagePacket setting from combat.cfg"
+	],
+	"return": "1 on success",
+	"error": "none (returns 0 on invalid parameter)",
+	"related": "Character",
+	"_name": "ApplyRawDamage"
+	},
+	"HealDamage":
+{
+	"prototype": "HealDamage( Character, Hits )",
+	"parameter": [
+		{
+			"_name": "Character",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "Hits",
+			"_value": "Integer (0..255)"
+		}
+	],
+	"explain": [
+		"Increases a character's hit points, up to the character's maximum.",
+		"Notes: Invokes Reputation system effects."
+	],
+	"return": "1 if some part of the damage could be healed.",
+	"error": "\"Invalid parameter\"",
+	"related": "Character",
+	"_name": "HealDamage"
+	},
+	"ConsumeMana":
+{
+	"prototype": "ConsumeMana( who, spellid )",
+	"parameter": [
+		{
+			"_name": "who",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "spellid",
+			"_value": "Integer"
+		}
+	],
+	"explain": [
+		"Consumes amount of \"Mana\" for \"who\" for the spell as defined in spells.cfg",
+		"Notes: spells.cfg files define spells and spell ids.",
+		"Consumes from \"Mana\" vital."
+	],
+	"return": "1 on success",
+	"error": [
+		"\"Invalid parameter\"",
+		"\"No such spell\"",
+		"\"Spell ID out of range\""
+	],
+	"related": "Character",
+	"relatedcfg": "spells.cfg",
+	"_name": "ConsumeMana"
+	},
+	"ConsumeVital":
+{
+	"prototype": "ConsumeVital( who, vital, hundredths )",
+	"parameter": [
+		{
+			"_name": "who",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "vital",
+			"_value": "String (vital name)"
+		},
+		{
+			"_name": "hundredths",
+			"_value": "Integer"
+		}
+	],
+	"explain": "Consumes an amount of vital \"vital\" in hundreths. for example, ConsumeVital(who, \"Stamina\", 100) \nconsumes one point of stamina.",
+	"return": "1 on consume success or 0 on failure (insufficient value for the vital)",
+	"error": "\"Invalid parameter type\" including if vital was not found as a vital name",
+	"related": "Character",
+	"relatedcfg": "vitals.cfg",
+	"_name": "ConsumeVital"
+	},
+	"GetVital":
+{
+	"prototype": "GetVital( character, vitalname )",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "vitalname",
+			"_value": "String (vital name)"
+		}
+	],
+	"explain": "Gets the current value of \"vitalname\" on \"character\".",
+	"return": "Integer current value of the vital on success or Error",
+	"error": "\"Invalid parameter type\" including if vitalname was not found as a vital",
+	"related": "Character",
+	"relatedcfg": "vitals.cfg",
+	"_name": "GetVital"
+	},
+	"GetVitalName":
+{
+	"prototype": "GetVitalName( alias_name )",
+	"parameter": {
+		"_name": "alias_name",
+		"_value": "String"
+	},
+	"explain": "Returns the real vital name from an alias",
+	"return": "String",
+	"error": "\"Invalid parameter type\"",
+	"related": "Character",
+	"relatedcfg": "vitals.cfg",
+	"_name": "GetVitalName"
+	},
+	"GetVitalMaximumValue":
+{
+	"prototype": "GetVitalMaximumValue( character, vitalname )",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "vitalname",
+			"_value": "String (vital name)"
+		}
+	],
+	"explain": "Gets the maximum value of \"vitalname\" on \"character\"",
+	"return": "Integer maximum value of the vital on success or Error",
+	"error": "\"Invalid parameter type\" including if vitalname was not found as a vital",
+	"related": "Character",
+	"relatedcfg": "vitals.cfg",
+	"_name": "GetVitalMaximumValue"
+	},
+	"GetVitalRegenRate":
+{
+	"prototype": "GetVitalRegenRate( character, vitalname )",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "vitalname",
+			"_value": "String (vital name)"
+		}
+	],
+	"explain": "Returns the regeneration rate for \"vitalname\" on \"character\"",
+	"return": "Integer regeneration rate of the vital on success",
+	"error": "\"Invalid parameter type\" including if vitalname was not found as a vital",
+	"related": [
+		"Character",
+		"String"
+	],
+	"relatedcfg": "vitals.cfg",
+	"_name": "GetVitalRegenRate"
+	},
+	"RecalcVitals":
+{
+	"prototype": "RecalcVitals( character, calc_attribute := RECALC_INTRINSIC_MOD, calc_vital := RECALC_VITALS )",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "calc_attribute",
+			"_value": "Integer/String (attribute name)"
+		},
+		{
+			"_name": "calc_vital",
+			"_value": "Integer/String (vital name)"
+		}
+	],
+	"explain": [
+		"if default values are passed recalculates regen rates and maximum values from the exported functions in vitals.cfg for all vitals on a mobile\n\t  and the intrinsic modifier from the exported functions in attributes.cfg for all attributes",
+		"if calc_attribute is set to RECALC_NO_INTRINSIC_MOD it skips the recalculation of attributes",
+		"if calc_attribute is set to an attribute name it only calculates for given attribute",
+		"if calc_vital is set to RECALC_NO_VITALS it skips the recalculation of vitals",
+		"if calc_vital is set to an vital name it only calculates for given vital",
+		{
+			"code": "const RECALC_INTRINSIC_MOD    := 1;\nconst RECALC_NO_INTRINSIC_MOD := 0;\nconst RECALC_VITALS           := 1;\nconst RECALC_NO_VITALS        := 0;",
+			"__text": "Notes: vitals.em constants:"
+		}
+	],
+	"return": "1 on success",
+	"error": [
+		"\"Mobile must be online.\"",
+		"\"Invalid parameter type\"",
+		"\"Vital not defined: {given name}\"",
+		"\"Attribute not defined: {given name}\""
+	],
+	"related": "Character",
+	"relatedcfg": [
+		"vitals.cfg",
+		"attributes.cfg"
+	],
+	"_name": "RecalcVitals"
+	},
+	"SetVital":
+{
+	"prototype": "SetVital( character, vitalname, value )",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Character Reference"
+		},
+		{
+			"_name": "vitalname",
+			"_value": "String (vital name)"
+		},
+		{
+			"_name": "value",
+			"_value": "Integer (in hundreths)"
+		}
+	],
+	"explain": "Sets the current value for \"vitalname\" on \"character\" in hundreths.",
+	"return": "1 on success",
+	"error": "\"Invalid parameter type\" including if vitalname was not found as a vital",
+	"related": "Character",
+	"relatedcfg": "vitals.cfg",
+	"_name": "SetVital"
+	}
 }

@@ -1,4 +1,259 @@
 {
   "_comment": "FILE - FILE",
-  "": {}
+  "FileExists":
+  {
+				"prototype": "FileExists( filename )",
+				"parameter": {
+					"_name": "filename",
+					"_value": "string"
+				},
+				"explain": "Checks for the existence of a file based on Filename parameter.",
+				"return": "1 on success",
+				"error": [
+					"\"Invalid parameter type\"",
+					"\"Error in filename descriptor\"",
+					"\"No parent path traversal please.\""
+				],
+				"relatedcfg": "fileaccess.cfg",
+				"_name": "FileExists"
+			},
+			"ReadFile":
+			{
+				"prototype": "ReadFile( filename )",
+				"parameter": {
+					"_name": "filename",
+					"_value": "string"
+				},
+				"explain": [
+					"Reads a text file, returning the contents as an array of strings, removing newlines.",
+					"By default, no package has any file access rights. To grant access, see config/fileaccess.cfg"
+				],
+				"return": "returns array of strings",
+				"error": [
+					"\"Invalid parameter type\"",
+					"\"Error in filename descriptor\"",
+					"\"No parent path traversal please.\"",
+					"\"Access denied\"",
+					"\"File not found: X\""
+				],
+				"relatedcfg": "fileaccess.cfg",
+				"_name": "ReadFile"
+			},
+			"WriteFile":
+			{
+				"prototype": "WriteFile( filename, textcontents )",
+				"parameter": [
+					{
+						"_name": "filename",
+						"_value": "string"
+					},
+					{
+						"_name": "textcontents",
+						"_value": "array of strings"
+					}
+				],
+				"explain": [
+					"Writes a new file to disk, appends newlines, creates file if it does not exist, renames existing file to filename.bak",
+					"By default, no package has any file access rights. To grant access, see config/fileaccess.cfg"
+				],
+				"return": "1 or error",
+				"error": [
+					"\"Invalid parameter type\"",
+					"\"Error in filename descriptor\"",
+					"\"No parent path traversal please.\"",
+					"\"Access denied\"",
+					"\"File not found: X\"",
+					"\"Error during write.\"",
+					"\"Unable to remove filenameX: reasonY",
+					"\"Unable to rename filenameX: to filenameZ: reasonY"
+				],
+				"relatedcfg": "fileaccess.cfg",
+				"_name": "WriteFile"
+			},
+			"AppendToFile":
+			{
+				"prototype": "AppendToFile( filename, textlines )",
+				"parameter": [
+					{
+						"_name": "filename",
+						"_value": "string"
+					},
+					{
+						"_name": "textlines",
+						"_value": "array of strings"
+					}
+				],
+				"explain": [
+					"Appends to a text file, adding newlines. Creates file if it does not exist.",
+					"By default, no package has any file access rights. To grant access, see config/fileaccess.cfg"
+				],
+				"return": "1 or error",
+				"error": [
+					"\"Invalid parameter type\"",
+					"\"Error in filename descriptor\"",
+					"\"No parent path traversal please.\"",
+					"\"Access denied\"",
+					"\"Unable to open file: X\"",
+					"\"Error during write.\""
+				],
+				"relatedcfg": "fileaccess.cfg",
+				"_name": "AppendToFile"
+			},
+			"LogToFile":
+			{
+				"prototype": "LogToFile( filename, line, flags := 0 )",
+				"parameter": [
+					{
+						"_name": "filename",
+						"_value": "String"
+					},
+					{
+						"_name": "line",
+						"_value": "String"
+					},
+					{
+						"_name": "flags",
+						"_value": "Integer"
+					}
+				],
+				"explain": [
+					"Appends a single line to a text file, adds newlines, creates file if it does not exist.",
+					"By default, no package has any file access rights. To grant access, see config/fileaccess.cfg",
+					{
+						"code": "const LOG_DATETIME := 1; // log Core-Style DateTimeStr in front of log entry",
+						"__text": "file.em constants for flags:"
+					}
+				],
+				"return": "1 or error",
+				"error": [
+					"\"Invalid parameter type\"",
+					"\"Error in filename descriptor\"",
+					"\"No parent path traversal please.\"",
+					"\"Access denied\"",
+					"\"Unable to open file: X\"",
+					"\"Error during write.\""
+				],
+				"relatedcfg": "fileaccess.cfg",
+				"_name": "LogToFile"
+			},
+			"OpenBinaryFile":
+			{
+				"prototype": "OpenBinaryFile( filename, mode := OPENMODE_IN, endian := LITTLE_ENDIAN )",
+				"parameter": [
+					{
+						"_name": "filename",
+						"_value": "string"
+					},
+					{
+						"_name": "mode",
+						"_value": "Integer"
+					},
+					{
+						"_name": "endian",
+						"_value": "Integer"
+					}
+				],
+				"explain": [
+					"Opens BinaryFile stream",
+					"By default, no package has any file access rights. To grant access, see config/fileaccess.cfg",
+					{
+						"code": "const OPENMODE_IN    := 0x01; // (input) Allow input operations on the stream\nconst OPENMODE_OUT   := 0x02; // (output) Allow output operations on the stream\nconst OPENMODE_ATE   := 0x04; // (at end) Set the stream's position indicator to the end of the stream on opening\nconst OPENMODE_APP   := 0x08; // (append) Set the stream's position indicator to the end of the stream before each output operation\nconst OPENMODE_TRUNC := 0x10; // (truncate) Any current content is discarded, assuming a length of zero on opening",
+						"__text": "file.em constants for mode:"
+					},
+					{
+						"code": "const LITTLE_ENDIAN := 0x00;\nconst BIG_ENDIAN    := 0x01;",
+						"__text": "file.em constants for endian:"
+					}
+				],
+				"return": "BinaryFile or error",
+				"error": [
+					"\"Invalid parameter type\"",
+					"\"Error in filename descriptor\"",
+					"\"No parent path traversal please.\"",
+					"\"Access denied\""
+				],
+				"related": "BinaryFile",
+				"relatedcfg": "fileaccess.cfg",
+				"_name": "OpenBinaryFile"
+			},
+			"CreateDirectory":
+			{
+				"prototype": "CreateDirectory( dirname )",
+				"parameter": {
+					"_name": "dirname",
+					"_value": "string"
+				},
+				"explain": "Creates directory",
+				"return": "1 or error",
+				"error": [
+					"\"Invalid parameter type\"",
+					"\"Error in dirname descriptor\"",
+					"\"No parent path traversal please.\"",
+					"\"Directory already exists.\"",
+					"\"Could not create directory.\""
+				],
+				"_name": "CreateDirectory"
+			},
+			"ListDirectory":
+			{
+				"prototype": "ListDirectory( dirname, extension := LISTDIR_ALL_FILES, listdirs := LISTDIR_DONT_LIST_DIRS )",
+				"parameter": [
+					{
+						"_name": "dirname",
+						"_value": "string"
+					},
+					{
+						"_name": "extension",
+						"_value": "string"
+					},
+					{
+						"_name": "listdirs",
+						"_value": "Integer"
+					}
+				],
+				"explain": [
+					"List directory content",
+					{
+						"code": "const LISTDIR_NO_FILES       := \"\";\nconst LISTDIR_ALL_FILES      := \"*\";",
+						"__text": "extension param can be extension without \".\" or file.em constant:"
+					},
+					{
+						"code": "const LISTDIR_LIST_DIRS      := 0x1;\nconst LISTDIR_DONT_LIST_DIRS := 0x0;",
+						"__text": "file.em constants for listdirs:"
+					}
+				],
+				"return": "array of strings or error",
+				"error": [
+					"\"Invalid parameter type\"",
+					"\"Error in dirname descriptor\"",
+					"\"No parent path traversal please.\"",
+					"\"Directory not found.\""
+				],
+				"_name": "ListDirectory"
+			},
+			"CreateXMLFile":
+			{
+				"prototype": "CreateXMLFile()",
+				"explain": [
+					"TinyXML based xml reading/writing.",
+					"creates an empty XMLFile object"
+				],
+				"return": "XMLFile object or error",
+				"_name": "CreateXmlFile"
+			},
+			"OpenXMLFile":
+			{
+				"prototype": "OpenXMLFile( filename )",
+				"parameter": {
+					"_name": "filename",
+					"_value": "string"
+				},
+				"explain": [
+					"TinyXML based xml reading/writing.",
+					"opens given filename and returns XMLFile object, fileaccess.cfg is checked"
+				],
+				"return": "XMLFile object or error",
+				"relatedcfg": "fileaccess.cfg",
+				"_name": "OpenXmlFile"
+			}
 }

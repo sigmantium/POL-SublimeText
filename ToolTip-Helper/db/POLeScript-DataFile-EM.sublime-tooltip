@@ -1,4 +1,83 @@
 {
   "_comment": "FILE - DATAFILE",
-  "": {}
+  "CreateDataFile":
+	{
+		"prototype": "CreateDataFile( filespec, flags := DF_KEYTYPE_STRING )",
+		"parameter": [
+			{
+				"_name": "filespec",
+				"_value": "String"
+			},
+			{
+				"_name": "flags",
+				"_value": "Integer"
+			}
+		],
+		"explain": [
+			"Creates a new data file.",
+			"filespec is in normal package descriptor format. 'filename' or '::filename' will create the new data file /data/ds/filename. ':pkgname:filename' will create /data/ds/pkgname/filename.",
+			"flags specifies if the keys of the new datafile are strings OR integers."
+		],
+		"return": "DataFile Reference. See the DataFile object documentation.",
+		"error": [
+			"\"Error in descriptor\"",
+			"\"An exception occurred\"",
+			"\"Invalid parameter type\""
+		],
+		"related": "Datafile",
+		"_name": "CreateDataFile"
+	},
+	"OpenDataFile":
+	{
+		"prototype": "OpenDataFile( filespec )",
+		"parameter": {
+			"_name": "filespec",
+			"_value": "String"
+		},
+		"explain": [
+			"Opens a datafile for access.",
+			"filespec is in normal package descriptor format. 'filename' or '::filename' will open the data file /data/ds/filename. ':pkgname:filename' will open /data/ds/pkgname/filename."
+		],
+		"return": "DataFile Reference. See the DataFile object documentation.",
+		"error": [
+			"\"Datafile does not exist\"",
+			"\"Error in descriptor\"",
+			"\"An exception occurred\"",
+			"\"Invalid parameter type\""
+		],
+		"related": "Datafile",
+		"_name": "OpenDataFile"
+	},
+	"UnloadDataFile":
+	{
+		"prototype": "UnloadDataFile( filespec )",
+		"parameter": {
+			"_name": "filespec",
+			"_value": "String"
+		},
+		"explain": [
+			"Unloads a datafile",
+			"filespec is in normal package descriptor format. 'filename' or '::filename' will unload the data file /data/ds/filename. ':pkgname:filename' will unload /data/ds/pkgname/filename."
+		],
+		"return": "1 on success",
+		"error": [
+			"\"Unable to find data store file\"",
+			"\"Invalid parameter type\""
+		],
+		"related": "Datafile",
+		"_name": "UnloadDataFile"
+	},
+	"ListDataFiles":
+	{
+		"prototype": "ListDataFiles( )",
+		"explain": [
+			"Returns an array of structs containing:",
+			".pkg - name of the package the datafile belongs to",
+			".name - name of the file",
+			".descriptor - :pkg:name"
+		],
+		"return": "Array of Structs",
+		"related": "Datafile",
+		"_name": "ListDataFiles"
+	}
 }

@@ -1,4 +1,274 @@
 {
   "_comment": "FILE - POLSYS",
-  "Print": {}
+  "ReloadConfiguration":
+	{
+	"prototype": "ReloadConfiguration()",
+	"explain": [
+		"reloads pol.cfg (most entries), npcdesc.cfg and bannedips.cfg",
+		"Linux: HUP signal will cause ReloadConfiguration to be called."
+	],
+	"return": "1",
+	"_name": "ReloadConfiguration"
+	},
+	"Packages":
+{
+	"prototype": "Packages()",
+	"explain": "Get an array of \"package objects\", with \"name\", \"supports_http\" and \"npcdesc\" members. (more info TBD)",
+	"return": "An array of package objects.",
+	"_name": "Packages"
+	},
+	"ReadMillisecondClock":
+{
+	"prototype": "ReadMillisecondClock()",
+	"explain": "Returns a double of the current millisecond clock. The precision is 10ms.",
+	"return": "Current time in milliseconds.",
+	"_name": "ReadMillisecondClock"
+	},
+	"SetSysTrayPopupText":
+{
+	"prototype": "SetSysTrayPopupText(text)",
+	"parameter": {
+		"_name": "text",
+		"_value": "String tooltip text for systray icon"
+	},
+	"explain": "Sets the systray icon's tooltip text (win32 only)",
+	"return": "1",
+	"_name": "SetSysTrayPopupText"
+	},
+	"GetItemDescriptor":
+{
+	"prototype": "GetItemDescriptor(objtype)",
+	"parameter": {
+		"_name": "objtype",
+		"_value": "int Objtype OR string ObjtypeName"
+	},
+	"explain": [
+		"Returns a struct of all itemdesc.cfg properties for the objtype.",
+		"The keys are the property names, i.e. \"Color\", \"Desc\", etc. The values can be String, Integer, Real. The exceptions are \"CProps\" and \"StackingIgnoresCProps\". \"CProps\" is a dictionary where the CProp name is the key, and the value can be any packable type (i.e. array, struct, etc.). \"StackingIgnoresCProps\" is an array of strings.",
+		"Note: Descriptor of Weapon will return MinDamage and MaxDamage calculated from Damage-Dice too.",
+		"The primary use of this function is to pass it to any of the item creation functions, and the values in the struct will be used in place of the static itemdesc.cfg values. Use it to assign specific properties to an item during creation, rather than after. This allows easier stacking with existing item stacks.",
+		{
+			"code": [
+				"//For example, to stack with an existing stack with color 0x10 and cprop\nuse uo;\nuse polsys;\nprogram testdesc(who,objtype)\n    var ret := GetItemDescriptor(CInt(objtype));\n    ret.Color := 0x10;\n    ret.CProps.insert(\"blah\",\"1\"); //assuming the existing stack have this color and cprop\n    ret.StackingIgnoresCProps.append(\"blingbling\");    \n    var item := CreateItemInBackpack(who,ret,10);\n    if(item)\n        print(\"OK!\");\n    endif\nendprogram",
+				"To print the contents of the struct:\nvar ret := GetItemDescriptor(objtype);\nforeach thing in ret\n    print(_thing_iter + \": \" + thing);\nendforeach"
+			],
+			"__text": "Note: Not all properties can be assigned per-item, so editing the value in the descriptor struct will not be passed to the new item."
+		}
+	],
+	"return": "A struct of all itemdesc.cfg properties and values.",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Itemdesc.cfg entry for objtype X not found.\""
+	],
+	"relatedcfg": "itemdesc.cfg",
+	"_name": "GetItemDescriptor"
+	},
+	"FormatItemDescription":
+{
+	"prototype": "FormatItemDescription(desc, amount := 1, suffix := \"\")",
+	"parameter": [
+		{
+			"_name": "desc",
+			"_value": "Base item description"
+		},
+		{
+			"_name": "amount",
+			"_value": "Item amount"
+		},
+		{
+			"_name": "suffix",
+			"_value": "Suffix to append"
+		}
+	],
+	"explain": "This formats the desc using Pols built in Singular/Plular formatter.",
+	"return": "A string.",
+	"_name": "FormatItemDescription"
+	},
+	"Realms":
+{
+	"prototype": "Realms(realm:=\"\")",
+	"parameter": {
+		"_name": "realm",
+		"_value": "String"
+	},
+	"explain": [
+		"Returns a dictionary of structs or a single struct.",
+		"If a single case-sensitive realm name is passed, will return the information for only that realm.",
+		{
+			"code": "\"realm_name\" -> \"width\"\n                    \"height\"\n                    \"mapid\"\n                    \"toplevel_item_count\"\n                    \"mobile_count\"\n                    \"season\"",
+			"__text": "example:"
+		}
+	],
+	"return": "A dictionary of structs of Realms or struct of single Realm",
+	"_name": "Realms"
+	},
+	"GetCmdLevelName":
+{
+	"prototype": "GetCmdLevelName(number)",
+	"parameter": {
+		"_name": "number",
+		"_value": "Integer"
+	},
+	"explain": "Will get a command level's name.",
+	"return": "CmdLevelName or Error",
+	"error": "\"Invalid parameter type.\"",
+	"relatedcfg": "cmds.cfg",
+	"_name": "GetCmdLevelName"
+	},
+	"GetCmdLevelNumber":
+{
+	"prototype": "GetCmdLevelNumber(name)",
+	"parameter": {
+		"_name": "name",
+		"_value": "String"
+	},
+	"explain": "Will get the numeric value of a command level.",
+	"return": "CmdLevel or Error",
+	"error": [
+		"\"Invalid parameter type.\"",
+		"\"Could not find a command level with that name.\""
+	],
+	"relatedcfg": "cmds.cfg",
+	"_name": "GetCmdLevelNumber"
+	},
+	"IncRevision":
+{
+	"prototype": "IncRevision( object )",
+	"parameter": {
+		"_name": "object",
+		"_value": "UObject Ref"
+	},
+	"explain": "Increases the internal \"Revision\" number of an UObject. Used to manually increase this number for scripted changes to things such as mob.race and such where core does not auto increase it.",
+	"return": "1 on success",
+	"error": "\"Invalid parameter type.\"",
+	"_name": "IncRevision"
+	},
+	"ListenPoints":
+{
+	"prototype": "ListenPoints( )",
+	"explain": "Array of listen points...",
+	"return": "Array",
+	"error": "\"Invalid parameter type.\"",
+	"_name": "ListenPoints"
+	},
+	"ListTextCommands":
+{
+	"prototype": "ListTextCommands( )",
+	"explain": [
+		"Returns a dict of a dict of structs.",
+		"Dict 1 - Package names Dict 2 - Command levels Struct - .dir .script",
+		{
+			"code": "Example:\n\tforeach package in ( commands )\n\t\tPrint(\"Pkg:\"+_package_iter);\n\t\tforeach level in ( package )\n\t\t\tPrint(\" CmdLvl:\"+_level_iter);\n\t\t\tforeach command in ( level )\n\t\t\t\tPrint(\"     \"+command);\n\t\t\t\tSleepMS(2);\n\t\t\tendforeach\n\t\t\tSleepMS(2);\n\t\tendforeach\n\t\tSleepMS(2);\n\tendforeach"
+		}
+	],
+	"return": "1 on success",
+	"error": "\"Invalid parameter type.\"",
+	"_name": "ListTextCommands"
+	},
+	"GetPackageByName":
+{
+	"prototype": "GetPackageByName(name)",
+	"parameter": {
+		"_name": "name",
+		"_value": "String"
+	},
+	"explain": "Will return a package reference.",
+	"return": "PackageRef or Error",
+	"error": [
+		"\"Invalid parameter type.\"",
+		"\"No package found by that name.\""
+	],
+	"related": "Package",
+	"_name": "GetPackageByName"
+	},
+	"CreatePacket":
+{
+	"prototype": "CreatePacket(type, size)",
+	"parameter": [
+		{
+			"_name": "type",
+			"_value": "Integer"
+		},
+		{
+			"_name": "size",
+			"_value": "Integer"
+		}
+	],
+	"explain": [
+		"Creates a new packet object. Type is the byte command id that always is set as the first byte (no need to set it yourself). Size is the fixed-length size for this packet, or MSGLEN_VARIABLE if it is variable length (no need to figure out the size in advance, the packet buffer will be resized as need by using the Set* methods).",
+		{
+			"code": "const MSGLEN_VARIABLE := -1;",
+			"__text": "Notes: polsys.em constants for this function:"
+		}
+	],
+	"return": "A new packet object or Error",
+	"error": [
+		"\"Invalid parameter type.\"",
+		"\"Packet type too high\""
+	],
+	"related": "Packet",
+	"_name": "CreatePacket"
+	},
+	"AddRealm":
+{
+	"prototype": "AddRealm(realm_name, base_realm)",
+	"parameter": [
+		{
+			"_name": "realm_name",
+			"_value": "String - case-sensitive name of the realm"
+		},
+		{
+			"_name": "base_realm",
+			"_value": "String - case-sensitive name of the realm"
+		}
+	],
+	"explain": "Creates a new Realm based on an other realm, uses same map and regions.",
+	"return": "1",
+	"error": [
+		"\"BaseRealm not found.\"",
+		"\"BaseRealm is a ShadowRealm.\"",
+		"\"Realmname already defined.\""
+	],
+	"_name": "AddRealm"
+	},
+	"DeleteRealm":
+{
+	"prototype": "DeleteRealm(realm)",
+	"parameter": {
+		"_name": "realm",
+		"_value": "String - case-sensitive name of the realm"
+	},
+	"explain": "Deletes a ShadowRealm, only if the realm is \"clean\"",
+	"return": "1",
+	"error": [
+		"\"Realm not found.\"",
+		"\"Realm is not a ShadowRealm.\"",
+		"\"Mobiles in Realm.\"",
+		"\"Items in Realm.\""
+	],
+	"_name": "DeleteRealm"
+	},
+	"MD5Encrypt":
+{
+	"prototype": "MD5Encrypt(str)",
+	"parameter": {
+		"_name": "str",
+		"_value": "String"
+	},
+	"explain": "Encrypts given string.",
+	"return": "MD5 hash string on success",
+	"error": [
+		"\"Invalid parameter\"",
+		"\"String is empty\"",
+		"\"Failed to encrypt\""
+	],
+	"_name": "MD5Encrypt"
+	},
+	"LogCPropProfile":
+{
+	"prototype": "LogCPropProfile()",
+	"explain": "Writes the CProp profiling info into cpprofile.log file (see ProfileCProps option in pol.cfg).",
+	"return": "1 or Error",
+	"_name": "LogCPropProfile"
+	}
 }

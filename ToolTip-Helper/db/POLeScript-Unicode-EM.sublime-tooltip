@@ -1,4 +1,235 @@
 {
   "_comment": "FILE - UNICODE",
-  "": {}
+  "BroadcastUC":
+	{
+	"prototype": "BroadcastUC(uc_text, langcode, font:=_DEFAULT_UCFONT, color:=_DEFAULT_UCCOLOR)",
+	"parameter": [
+		{
+			"_name": "uc_text",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character"
+		},
+		{
+			"_name": "langcode",
+			"_value": "3-character 'Originating Language' string code  e.g. ENU, CHT, DEU, RUS, KOR, etc."
+		},
+		{
+			"_name": "font",
+			"_value": "Integer (optional) font code. Not the same as non-unicode font codes"
+		},
+		{
+			"_name": "color",
+			"_value": "Integer (optional) color code. Not the same color as the same value for non-unicode prints"
+		}
+	],
+	"explain": [
+		"Broadcasts a unicode string to all players",
+		"uc_text MUST be an array of integers representing unicode characters.",
+		"Integers must be \"Big Endian\" (0x1234) and not \"Little Endian\" (0x3412).",
+		"Integers will be clipped internally to 2-bytes (value masked with 0xFFFF)",
+		"The Array must be terminated with zero. (0x0000)"
+	],
+	"return": "1 on success",
+	"error": [
+		"\"Unicode array exceeds maximum size.\" (200 characters)",
+		"\"langcode must be a 3-character code.\"",
+		"\"Invalid value in Unicode array.\"",
+		"\"A parameter was invalid\""
+	],
+	"related": "Array",
+	"_name": "BroadcastUC"
+	},
+	"PrintTextAboveUC":
+{
+	"prototype": "PrintTextAboveUC(above_object, uc_text, langcode, font:=_DEFAULT_UCFONT, color:=_DEFAULT_UCCOLOR, journal_print := JOURNAL_UC_PRINT_NAME)",
+	"parameter": [
+		{
+			"_name": "above_object",
+			"_value": "UObject reference"
+		},
+		{
+			"_name": "uc_text",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character"
+		},
+		{
+			"_name": "langcode",
+			"_value": "3-character 'Originating Language' string code  e.g. ENU, CHT, DEU, RUS, KOR, etc."
+		},
+		{
+			"_name": "font",
+			"_value": "Integer (optional) font code. Not the same as non-unicode font codes"
+		},
+		{
+			"_name": "color",
+			"_value": "Integer (optional) color code. Not the same color as the same value for non-unicode prints"
+		},
+		{
+			"_name": "journal_print",
+			"_value": "Integer (optional)"
+		}
+	],
+	"explain": [
+		"Displays a unicode string above 'above_object'",
+		"uc_text MUST be an array of integers representing unicode characters.",
+		"Integers must be \"Big Endian\" (0x1234) and not \"Little Endian\" (0x3412).",
+		"Integers will be clipped internally to 2-bytes (value masked with 0xFFFF)",
+		"The Array must be terminated with zero. (0x0000)",
+		{
+			"code": "const JOURNAL_UC_PRINT_NAME\t:= 0x00; // Implicit.  Print's the object's description / npc's name in the journal.\nconst JOURNAL_UC_PRINT_YOU_SEE := 0x01; // Will print \"You see:\" in the journal.",
+			"__text": "Notes: journal_print flags:"
+		}
+	],
+	"return": "1 on success, 0 on failure",
+	"error": [
+		"\"Unicode array exceeds maximum size.\" (200 characters)",
+		"\"langcode must be a 3-character code.\"",
+		"\"Invalid value in Unicode array.\"",
+		"\"A parameter was invalid\""
+	],
+	"related": [
+		"Array",
+		"UObject"
+	],
+	"_name": "PrintTextAboveUC"
+	},
+	"PrintTextAbovePrivateUC":
+{
+	"prototype": "PrintTextAbovePrivateUC(above_object, uc_text, langcode, character, font:=_DEFAULT_UCFONT, color:=_DEFAULT_UCCOLOR, journal_print := JOURNAL_UC_PRINT_NAME)",
+	"parameter": [
+		{
+			"_name": "above_object",
+			"_value": "UObject reference"
+		},
+		{
+			"_name": "uc_text",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character"
+		},
+		{
+			"_name": "langcode",
+			"_value": "3-character 'Originating Language' string code  e.g. ENU, CHT, DEU, RUS, KOR, etc."
+		},
+		{
+			"_name": "character",
+			"_value": "Character reference to receive the text"
+		},
+		{
+			"_name": "font",
+			"_value": "Integer (optional) font code. Not the same as non-unicode font codes"
+		},
+		{
+			"_name": "color",
+			"_value": "Integer (optional) color code. Not the same color as the same value for non-unicode prints"
+		},
+		{
+			"_name": "journal_print",
+			"_value": "Integer (optional)"
+		}
+	],
+	"explain": [
+		"Displays a unicode string above 'above_object' only to 'character'",
+		"uc_text MUST be an array of integers representing unicode characters.",
+		"Integers must be \"Big Endian\" (0x1234) and not \"Little Endian\" (0x3412).",
+		"Integers will be clipped internally to 2-bytes (value masked with 0xFFFF)",
+		"The Array must be terminated with zero. (0x0000)",
+		{
+			"code": "const JOURNAL_UC_PRINT_NAME\t:= 0x00; // Implicit.  Print's the object's description / npc's name in the journal.\nconst JOURNAL_UC_PRINT_YOU_SEE := 0x01; // Will print \"You see:\" in the journal.",
+			"__text": "Notes: journal_print flags:"
+		}
+	],
+	"return": "1 on success, 0 on failure",
+	"error": [
+		"\"Unicode array exceeds maximum size.\" (200 characters)",
+		"\"langcode must be a 3-character code.\"",
+		"\"Invalid value in Unicode array.\"",
+		"\"A parameter was invalid\""
+	],
+	"related": [
+		"Array",
+		"UObject",
+		"Character"
+	],
+	"_name": "PrintTextAbovePrivateUC"
+	},
+	"SendSysMessageUC":
+{
+	"prototype": "SendSysMessageUC(character, uc_text, langcode, font:=_DEFAULT_UCFONT, color:=_DEFAULT_UCCOLOR)",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Character reference to receive the text"
+		},
+		{
+			"_name": "uc_text",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character"
+		},
+		{
+			"_name": "langcode",
+			"_value": "3-character 'Originating Language' string code  e.g. ENU, CHT, DEU, RUS, KOR, etc."
+		},
+		{
+			"_name": "font",
+			"_value": "Integer (optional) font code. Not the same as non-unicode font codes"
+		},
+		{
+			"_name": "color",
+			"_value": "Integer (optional) color code. Not the same color as the same value for non-unicode prints"
+		}
+	],
+	"explain": [
+		"Displays a unicode system message to 'character'",
+		"uc_text MUST be an array of integers representing unicode characters.",
+		"Integers must be \"Big Endian\" (0x1234) and not \"Little Endian\" (0x3412).",
+		"Integers will be clipped internally to 2-bytes (value masked with 0xFFFF)",
+		"The Array must be terminated with zero. (0x0000)"
+	],
+	"return": "1 on success",
+	"error": [
+		"\"Unicode array exceeds maximum size.\" (200 characters)",
+		"\"langcode must be a 3-character code.\"",
+		"\"Invalid value in Unicode array.\"",
+		"\"A parameter was invalid\""
+	],
+	"related": "Array",
+	"_name": "SendSysMessageUC"
+	},
+	"RequestInputUC":
+{
+	"prototype": "RequestInputUC(character, item, uc_prompt, langcode)",
+	"parameter": [
+		{
+			"_name": "character",
+			"_value": "Character reference to receive the text"
+		},
+		{
+			"_name": "item",
+			"_value": "placeholder, pass any valid item"
+		},
+		{
+			"_name": "uc_prompt",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character. The question to which the player types the response."
+		},
+		{
+			"_name": "langcode",
+			"_value": "3-character 'Originating Language' string code  e.g. ENU, CHT, DEU, RUS, KOR, etc."
+		}
+	],
+	"explain": [
+		"Displays a unicode system message prompt to 'character', the character can then enter unicode characters which will be returned to the script.",
+		"uc_prompt MUST be an array of integers representing unicode characters.",
+		"Integers must be \"Big Endian\" (0x1234) and not \"Little Endian\" (0x3412).",
+		"Integers will be clipped internally to 2-bytes (value masked with 0xFFFF)",
+		"The Array must be terminated with zero. (0x0000)"
+	],
+	"return": "a struct with members \"lang\" (3-character string), and \"uc_text\" (a \"unicode array\" of 2-byte integers representing unicode characters in the specified language) on success.",
+	"error": [
+		"\"No client attached\"",
+		"\"Another script has an active prompt\"",
+		"\"Unicode array exceeds maximum size.\" (200 characters)",
+		"\"langcode must be a 3-character code.\"",
+		"\"Invalid value in Unicode array.\"",
+		"\"Invalid control characters in text entry\"",
+		"\"A parameter was invalid\""
+	],
+	"related": "Array",
+	"_name": "RequestInputUC"
+	}
 }

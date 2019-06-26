@@ -1,4 +1,622 @@
 {
   "_comment": "FILE - NPC",
-  "": {}
+  "SetAnchor":
+	{
+	"prototype": "SetAnchor( centerx, centery, distance_start, percent_subtract )",
+	"parameter": [
+		{
+			"_name": "centerx",
+			"_value": "Integer world coordinate"
+		},
+		{
+			"_name": "centery",
+			"_value": "Integer world coordinate"
+		},
+		{
+			"_name": "distance_start",
+			"_value": "Integer"
+		},
+		{
+			"_name": "percent_subtract",
+			"_value": "Integer"
+		}
+	],
+	"explain": [
+		"Sets the NPC's 'anchor' point. The NPC will have difficulty moving far away from this coordinate, and will generally stay near it.",
+		"centerx and centery define the anchor point.",
+		"distance_start is the distance away from the anchor point at which the npc may not be able to move beyond. Under this distance there is a 100% chance the move will succeed. If 0, it disables the anchor point.",
+		"percent_subtract is how much to subtract from the normal 100% chance for each move beyond the distance_start boundary. So if this value is \"20\", the first move beyond the distance_start range (and away from the anchor point) will only have an 80% chance of succeeding. The next one will have a 60% chance. So the NPC will tend to move back toward its anchor point.",
+		"The anchor point has no effect as long as the NPC is in war mode."
+	],
+	"return": "1 on success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Invalid Coordinates for Realm\""
+	],
+	"related": "NPC",
+	"_name": "SetAnchor"
+	},
+	"Self":
+{
+	"prototype": "Self()",
+	"explain": "return a mobileref to self",
+	"return": "A Character Reference to this NPC",
+	"related": "NPC",
+	"_name": "Self"
+	},
+	"Wander":
+{
+	"prototype": "Wander()",
+	"explain": "walk, usually forward, sometimes turning",
+	"return": "1 if the move succeeded, 0 if it failed",
+	"related": "NPC",
+	"_name": "Wander"
+	},
+	"Move":
+{
+	"prototype": "Move( direction )",
+	"parameter": {
+		"_name": "direction",
+		"_value": "Direction String, Facing Integer, or Bounding Box"
+	},
+	"explain": [
+		"A Direction String is one of: N, S, E, W, NW, NE, SW, SE",
+		"A Facing Integer is 0 through 7 where 0 is North, 1 is NorthEast, etc.",
+		"See MakeBoundingBox for info on the bounding box."
+	],
+	"return": "Boolean for move success, or Direction String if bounding box was used",
+	"error": "none, returns 0 on failures",
+	"related": "NPC",
+	"_name": "Move"
+	},
+	"WalkToward":
+{
+	"prototype": "WalkToward( object )",
+	"parameter": {
+		"_name": "object",
+		"_value": "UObject"
+	},
+	"explain": [
+		"Walk toward object one tile. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		"Note also, walking in range of your opponent may cause you to attack.",
+		"See the NPC members run_speed and use_adjustments. If use_adjustments is 1 the NPC will adjust the direction of the move to attempt to avoid small obsticles. Also, this function will always return true as a result. If it is 0, the NPC will not attempt to adjust the move, and the function will return false.",
+		"The success of this function is affected by the NPC's anchor point. See SetAnchor().",
+		"In the future, this function will activate a pathfinding system."
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Mobile specified cannot be seen\" if object is a character and invisible"
+	],
+	"related": [
+		"NPC",
+		"UObject"
+	],
+	"_name": "WalkToward"
+	},
+	"WalkAwayFrom":
+{
+	"prototype": "WalkAwayFrom( object )",
+	"parameter": {
+		"_name": "object",
+		"_value": "UObject"
+	},
+	"explain": [
+		"Walk away from object one tile. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		"Note also, walking in range of your opponent may cause you to attack.",
+		"See the NPC members run_speed and use_adjustments. If use_adjustments is 1 the NPC will adjust the direction of the move to attempt to avoid small obsticles. Also, this function will always return true as a result. If it is 0, the NPC will not attempt to adjust the move, and the function will return false.",
+		"The success of this function is affected by the NPC's anchor point. See SetAnchor().",
+		"In the future, this function will activate a pathfinding system."
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Mobile specified cannot be seen\" if object is a character and invisible"
+	],
+	"related": [
+		"NPC",
+		"UObject"
+	],
+	"_name": "WalkAwayFrom"
+	},
+	"RunToward":
+{
+	"prototype": "RunToward( object )",
+	"parameter": {
+		"_name": "object",
+		"_value": "UObject"
+	},
+	"explain": [
+		"Runs toward object one tile. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		"Note also, walking in range of your opponent may cause you to attack.",
+		"See the NPC members run_speed and use_adjustments. If use_adjustments is 1 the NPC will adjust the direction of the move to attempt to avoid small obsticles. Also, this function will always return true as a result. If it is 0, the NPC will not attempt to adjust the move, and the function will return false.",
+		"The success of this function is affected by the NPC's anchor point. See SetAnchor().",
+		"In the future, this function will activate a pathfinding system."
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Mobile specified cannot be seen\" if object is a character and invisible"
+	],
+	"related": [
+		"NPC",
+		"UObject"
+	],
+	"_name": "RunToward"
+	},
+	"RunAwayFrom":
+{
+	"prototype": "RunAwayFrom( object )",
+	"parameter": {
+		"_name": "object",
+		"_value": "UObject"
+	},
+	"explain": [
+		"Runs away from object one tile. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		"Note also, walking in range of your opponent may cause you to attack.",
+		"See the NPC members run_speed and use_adjustments. If use_adjustments is 1 the NPC will adjust the direction of the move to attempt to avoid small obsticles. Also, this function will always return true as a result. If it is 0, the NPC will not attempt to adjust the move, and the function will return false.",
+		"The success of this function is affected by the NPC's anchor point. See SetAnchor().",
+		"In the future, this function will activate a pathfinding system."
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Mobile specified cannot be seen\" if object is a character and invisible"
+	],
+	"related": [
+		"NPC",
+		"UObject"
+	],
+	"_name": "RunAwayFrom"
+	},
+	"TurnToward":
+{
+	"prototype": "TurnToward( object, flags := FACE_NORMAL )",
+	"parameter": [
+		{
+			"_name": "object",
+			"_value": "UObject"
+		},
+		{
+			"_name": "flags",
+			"_value": "Integer"
+		}
+	],
+	"explain": [
+		"Adjust facing to turn toward object. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		{
+			"code": "const FACE_NORMAL := 0x0;\nconst FACE_FORCE := 0x1;",
+			"__text": "See Face() for flags explanation"
+		}
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Mobile specified cannot be seen\" if object is a character and invisible"
+	],
+	"related": [
+		"NPC",
+		"UObject"
+	],
+	"_name": "TurnToward"
+	},
+	"TurnAwayFrom":
+{
+	"prototype": "TurnAwayFrom( object, flags := FACE_NORMAL )",
+	"parameter": [
+		{
+			"_name": "object",
+			"_value": "UObject"
+		},
+		{
+			"_name": "flags",
+			"_value": "Integer"
+		}
+	],
+	"explain": [
+		"Adjust facing to turn away from object. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		{
+			"code": "const FACE_NORMAL := 0x0;\nconst FACE_FORCE := 0x1;",
+			"__text": "See Face() for flags explanation"
+		}
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Mobile specified cannot be seen\" if object is a character and invisible"
+	],
+	"related": [
+		"NPC",
+		"UObject"
+	],
+	"_name": "TurnAwayFrom"
+	},
+	"WalkTowardLocation":
+{
+	"prototype": "WalkTowardLocation( x, y )",
+	"parameter": [
+		{
+			"_name": "x",
+			"_value": "Integer World Coordinate"
+		},
+		{
+			"_name": "y",
+			"_value": "Integer World Coordinate"
+		}
+	],
+	"explain": [
+		"Walk toward the given coordinates one tile. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		"Note also, walking in range of your opponent may cause you to attack.",
+		"See the NPC members run_speed and use_adjustments. If use_adjustments is 1 the NPC will adjust the direction of the move to attempt to avoid small obsticles. Also, this function will always return true as a result. If it is 0, the NPC will not attempt to adjust the move, and the function will return false.",
+		"The success of this function is affected by the NPC's anchor point. See SetAnchor().",
+		"In the future, this function will activate a pathfinding system."
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Invalid Coordinates for Realm\""
+	],
+	"related": "NPC",
+	"_name": "WalkTowardLocation"
+	},
+	"WalkAwayFromLocation":
+{
+	"prototype": "WalkAwayFromLocation( x, y )",
+	"parameter": [
+		{
+			"_name": "x",
+			"_value": "Integer World Coordinate"
+		},
+		{
+			"_name": "y",
+			"_value": "Integer World Coordinate"
+		}
+	],
+	"explain": [
+		"Walk away from the given coordinates one tile. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		"Note also, walking in range of your opponent may cause you to attack.",
+		"See the NPC members run_speed and use_adjustments. If use_adjustments is 1 the NPC will adjust the direction of the move to attempt to avoid small obsticles. Also, this function will always return true as a result. If it is 0, the NPC will not attempt to adjust the move, and the function will return false.",
+		"The success of this function is affected by the NPC's anchor point. See SetAnchor().",
+		"In the future, this function will activate a pathfinding system."
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Invalid Coordinates for Realm\""
+	],
+	"related": "NPC",
+	"_name": "WalkAwayFromLocation"
+	},
+	"RunTowardLocation":
+{
+	"prototype": "RunTowardLocation( x, y )",
+	"parameter": [
+		{
+			"_name": "x",
+			"_value": "Integer World Coordinate"
+		},
+		{
+			"_name": "y",
+			"_value": "Integer World Coordinate"
+		}
+	],
+	"explain": [
+		"Runs toward the given coordinates one tile. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		"Note also, walking in range of your opponent may cause you to attack.",
+		"See the NPC members run_speed and use_adjustments. If use_adjustments is 1 the NPC will adjust the direction of the move to attempt to avoid small obsticles. Also, this function will always return true as a result. If it is 0, the NPC will not attempt to adjust the move, and the function will return false.",
+		"The success of this function is affected by the NPC's anchor point. See SetAnchor().",
+		"In the future, this function will activate a pathfinding system."
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Invalid Coordinates for Realm\""
+	],
+	"related": "NPC",
+	"_name": "RunTowardLocation"
+	},
+	"RunAwayFromLocation":
+{
+	"prototype": "RunAwayFromLocation( x, y )",
+	"parameter": [
+		{
+			"_name": "x",
+			"_value": "Integer World Coordinate"
+		},
+		{
+			"_name": "y",
+			"_value": "Integer World Coordinate"
+		}
+	],
+	"explain": [
+		"Runs away from the given coordinates one tile. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		"Note also, walking in range of your opponent may cause you to attack.",
+		"See the NPC members run_speed and use_adjustments. If use_adjustments is 1 the NPC will adjust the direction of the move to attempt to avoid small obsticles. Also, this function will always return true as a result. If it is 0, the NPC will not attempt to adjust the move, and the function will return false.",
+		"The success of this function is affected by the NPC's anchor point. See SetAnchor().",
+		"In the future, this function will activate a pathfinding system."
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Invalid Coordinates for Realm\""
+	],
+	"related": "NPC",
+	"_name": "RunAwayFromLocation"
+	},
+	"TurnTowardLocation":
+{
+	"prototype": "TurnTowardLocation( x, y, flags := FACE_NORMAL )",
+	"parameter": [
+		{
+			"_name": "x",
+			"_value": "Integer World Coordinate"
+		},
+		{
+			"_name": "y",
+			"_value": "Integer World Coordinate"
+		},
+		{
+			"_name": "flags",
+			"_value": "Integer"
+		}
+	],
+	"explain": [
+		"Adjust facing to turn toward given coordinates one tile. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		{
+			"code": "const FACE_NORMAL := 0x0;\nconst FACE_FORCE := 0x1;",
+			"__text": "See Face() for flags explanation"
+		}
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Invalid Coordinates for Realm\""
+	],
+	"related": "NPC",
+	"_name": "TurnTowardLocation"
+	},
+	"TurnAwayFromLocation":
+{
+	"prototype": "TurnAwayFromLocation( x, y, flags := FACE_NORMAL )",
+	"parameter": [
+		{
+			"_name": "x",
+			"_value": "Integer World Coordinate"
+		},
+		{
+			"_name": "y",
+			"_value": "Integer World Coordinate"
+		},
+		{
+			"_name": "flags",
+			"_value": "Integer"
+		}
+	],
+	"explain": [
+		"Adjust facing to turn away from given coordinates one tile. Puts the script to sleep for a period of time proportional to the NPC's run_speed (or dexterity if not defined).",
+		{
+			"code": "const FACE_NORMAL := 0x0;\nconst FACE_FORCE := 0x1;",
+			"__text": "See Face() for flags explanation"
+		}
+	],
+	"return": "Boolean for move success",
+	"error": [
+		"\"Invalid parameter type\"",
+		"\"Invalid Coordinates for Realm\""
+	],
+	"related": "NPC",
+	"_name": "TurnAwayFromLocation"
+	},
+	"SetOpponent":
+{
+	"prototype": "SetOpponent( character )",
+	"parameter": {
+		"_name": "character",
+		"_value": "CharacterRef"
+	},
+	"explain": [
+		"Set your opponent.  If you are in range (or are carrying a projectile weapon and have LOS), you will attack. If a player character is connected, the NPC will highlight.",
+		"Implicitly sets war mode.",
+		"pass 0 to clear the opponent."
+	],
+	"return": "0 on invalid param or clear, 1 on successful set",
+	"related": [
+		"Character",
+		"NPC"
+	],
+	"_name": "SetOpponent"
+	},
+	"SetWarMode":
+{
+	"prototype": "SetWarMode( warmode )",
+	"parameter": {
+		"_name": "warmode",
+		"_value": "Integer 1/0"
+	},
+	"explain": [
+		"Usually used to leave warmode, but can be used to enter warmode independently of setting an opponent.",
+		"Setting war mode to 0 clears your opponent."
+	],
+	"return": "1 on success, 0 on invalid param or clear",
+	"related": "NPC",
+	"_name": "SetWarMode"
+	},
+	"Say":
+{
+	"prototype": "Say( text, text_type:=SAY_TEXTTYPE_DEFAULT, do_event:=SAY_DOEVENT_DISABLE )",
+	"parameter": [
+		{
+			"_name": "text",
+			"_value": "String"
+		},
+		{
+			"_name": "text_type",
+			"_value": "Integer"
+		},
+		{
+			"_name": "do_event",
+			"_value": "Integer"
+		}
+	],
+	"explain": [
+		"Makes the NPC print text above its head. Uses the NPC member speech_font and speech_color.",
+		"If do_event is enabled with SAY_DOEVENT_ENABLE, it will send a speech event to nearby npcs.",
+		{
+			"code": "// Constants for texttype flags in the Say() function\nconst SAY_TEXTTYPE_DEFAULT := \"default\";\nconst SAY_TEXTTYPE_WHISPER := \"whisper\";\nconst SAY_TEXTTYPE_YELL := \"yell\";\n\n// Constants for doevent flag in Say() function\nconst SAY_DOEVENT_DISABLE := 0x0;\nconst SAY_DOEVENT_ENABLE := 0x1;",
+			"__text": "Notes: npc.em constant for this function:"
+		}
+	],
+	"return": "0",
+	"error": [
+		"\"NPC is squelched\"",
+		"\"texttype string param must be either 'default', 'whisper', or 'yell'\""
+	],
+	"related": "NPC",
+	"_name": "Say"
+	},
+	"SayUC":
+{
+	"prototype": "SayUC( uc_text, text_type:=SAY_TEXTTYPE_DEFAULT, langcode:=SAY_LANG, do_event:=SAY_DOEVENT_DISABLE )",
+	"parameter": [
+		{
+			"_name": "uc_text",
+			"_value": "Array of 2-byte integers, where each integer is a Unicode character"
+		},
+		{
+			"_name": "text_type",
+			"_value": "Integer"
+		},
+		{
+			"_name": "langcode",
+			"_value": "3-character 'Originating Language' string code  e.g. ENU, CHT, DEU, RUS, KOR, etc."
+		},
+		{
+			"_name": "do_event",
+			"_value": "Integer"
+		}
+	],
+	"explain": [
+		"Makes the NPC print text above its head. Uses the NPC member speech_font and speech_color.",
+		"If do_event is enabled with SAY_DOEVENT_ENABLE, it will send a speech event to nearby npcs.",
+		"uc_text MUST be an array of integers representing unicode characters.",
+		"Integers must be \"Big Endian\" (0x1234) and not \"Little Endian\" (0x3412).",
+		"Integers will be clipped internally to 2-bytes (value masked with 0xFFFF)",
+		"The Array must be terminated with zero. (0x0000)"
+	],
+	"return": "0",
+	"error": [
+		"\"A parameter was invalid\"",
+		"\"NPC is squelched\"",
+		"\"texttype string param must be either 'default', 'whisper', or 'yell'\"",
+		"\"Unicode array exceeds maximum size.\"",
+		"\"langcode must be a 3-character code.\"",
+		"\"Invalid value in Unicode array.\""
+	],
+	"related": "NPC",
+	"_name": "SayUC"
+	},
+	"GetProperty":
+{
+	"prototype": "GetProperty( propertyname )",
+	"parameter": {
+		"_name": "propertyname",
+		"_value": "String"
+	},
+	"explain": "Deprecated. Equivalent to GetObjProperty( Self(), propertyname )",
+	"return": "An unpacked object. See GetObjProperty in UO.EM",
+	"error": [
+		"\"Property not found\"",
+		"\"Invalid parameter type\""
+	],
+	"related": "NPC",
+	"_name": "GetProperty"
+	},
+	"SetProperty":
+{
+	"prototype": "SetProperty( propertyname, propertyvalue )",
+	"parameter": [
+		{
+			"_name": "propertyname",
+			"_value": "String"
+		},
+		{
+			"_name": "propertyvalue",
+			"_value": "Packable script object (int, string, array, etc)"
+		}
+	],
+	"explain": "Deprecated. Equivalent to SetObjProperty( Self(), propertyname, propertyvalue )",
+	"return": "1. See SetObjProperty in UO.EM",
+	"error": "\"Invalid parameter type\"",
+	"related": "NPC",
+	"_name": "SetProperty"
+	},
+	"MakeBoundingBox":
+{
+	"prototype": "MakeBoundingBox( areastring )",
+	"parameter": {
+		"_name": "areastring",
+		"_value": "String, see explanation"
+	},
+	"explain": [
+		"Make a bounding box from an area string.  An area string is a number of 'x1 y1 x2 y2' world coordinate entries.",
+		{
+			"code": "XXXX\n   XXXXXXX\n   XXXXXXX\n   XXXX",
+			"__text": "\"1 1 4 4 2 5 3 7\" would create a walk area something like this:"
+		},
+		"Used with Move() and IsLegalMove() functions"
+	],
+	"return": "boundingbox on success, empty string on invalid param (ick). Careful, not much error checking!",
+	"_name": "MakeBoundingBox"
+	},
+	"IsLegalMove":
+{
+	"prototype": "IsLegalMove( move, boundingbox )",
+	"parameter": [
+		{
+			"_name": "move",
+			"_value": "String, one of N, S, E, W, NW, NE, SW, SE"
+		},
+		{
+			"_name": "boundingbox",
+			"_value": "Bounding box, from CreateBoundingBox"
+		}
+	],
+	"explain": "Given your position, and a tentative move, would it fall within a bounding box. This function ignores facing. It checks explicity for moving in a given direction, regardless of facing.",
+	"return": "0 on invalid parameter, or illegal move. 1 on legal move",
+	"related": "NPC",
+	"_name": "IsLegalMove"
+	},
+	"CanMove":
+{
+	"prototype": "CanMove( direction )",
+	"parameter": {
+		"_name": "direction",
+		"_value": "String, one of N, S, E, W, NW, NE, SW, SE"
+	},
+	"explain": "Given current position and direction, would it be possible to move there?",
+	"return": "0 on invalid parameter, or illegal move. 1 on legal move",
+	"related": "NPC",
+	"_name": "CanMove"
+	},
+	"Face":
+{
+	"prototype": "Face( direction, flags := FACE_NORMAL )",
+	"parameter": [
+		{
+			"_name": "direction",
+			"_value": "Integer (0 - 7) or String, one of N, S, E, W, NW, NE, SW, SE"
+		},
+		{
+			"_name": "flags",
+			"_value": "Integer"
+		}
+	],
+	"explain": {
+		"code": "const FACE_NORMAL := 0x0;\nconst FACE_FORCE := 0x1;",
+		"__text": "Sets Facing to given direction. If FACE_FORCE is set frozen/paralysed is not checked."
+	},
+	"return": "0 on invalid parameter, illegal direction, or failed to face. New direction on success.",
+	"related": "NPC",
+	"_name": "Face"
+	}
 }

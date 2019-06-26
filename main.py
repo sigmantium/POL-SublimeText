@@ -80,7 +80,8 @@ class PleasurazyAPICompletionsPackageEventListener(sublime_plugin.EventListener)
             trigger += '\t(%s)' % basename(v.file_name())
         if v.id == view.id:
             trigger += settings.get("file_view_abbrev", '\tview')
-        self.completions.append([trigger, contents])
+            ##REMOVED FOR NOW##
+        #self.completions.append([trigger, contents])
 
     if not self.completions:
       return []

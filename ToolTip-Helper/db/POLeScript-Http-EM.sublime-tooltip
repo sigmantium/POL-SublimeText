@@ -1,4 +1,58 @@
 {
   "_comment": "FILE - HTTP",
-  "": {}
+  "WriteHtml":
+	{
+		"prototype": "WriteHtml( html )",
+		"parameter": {
+			"_name": "html",
+			"_value": "String"
+		},
+		"explain": "Writes a line of HTML to the \"virtual webpage\" that will be sent to the connecting browser and appends a new-line.",
+		"return": "1 always",
+		"error": [
+			"\"Socket is disconnected\"",
+			"\"Invalid parameter type\""
+		],
+		"_name": "WriteHtml"
+	},
+	"WriteHtmlRaw":
+	{
+		"prototype": "WriteHtmlRaw( html )",
+		"parameter": {
+			"_name": "html",
+			"_value": "String"
+		},
+		"explain": "Writes a line of HTML to the \"virtual webpage\" that will be sent to the connecting browser, does NOT append a new-line.",
+		"return": "1 always",
+		"error": [
+			"\"Socket is disconnected\"",
+			"\"Invalid parameter type\""
+		],
+		"_name": "WriteHtmlRaw"
+	},
+	"QueryParam":
+	{
+		"prototype": "QueryParam( param )",
+		"parameter": {
+			"_name": "param",
+			"_value": "String"
+		},
+		"explain": [
+			"Query's the accessed URL for any embedded parameters. (see your favorite HTML docs for parameter embedding! :) )",
+			{
+				"code": "QueryParam( \"par\" ) ---> \"wibble\"\nQueryParam( \"name\" ) --> \"\"\nQueryParam( \"heat\" ) --> 0 [integer]",
+				"__text": "Example: http://pol.server.com:8080/querytest.ecl?par=wibble&name="
+			}
+		],
+		"return": "String value of the embedded param, or 0 if not found.",
+		"error": "\"Invalid parameter type\"",
+		"_name": "QueryParam"
+	},
+	"QueryIP":
+	{
+		"prototype": "QueryIP()",
+		"explain": "returns the IP address of the connecting browser",
+		"return": "String IP address, i.e. \"192.168.0.5\"",
+		"_name": "QueryIP"
+	}
 }

@@ -1,4 +1,137 @@
 {
   "_comment": "FILE - MYSQL",
-  "": {}
+  "mysql_connect":
+	{
+		"prototype": "mysql_connect(host,username,password := \"\")",
+		"parameter": [
+			{
+				"_name": "host",
+				"_value": "MySQL DBMS hostname, usually 'localhost'"
+			},
+			{
+				"_name": "username",
+				"_value": "User Name for the connection"
+			},
+			{
+				"_name": "password",
+				"_value": "Password for the connection"
+			}
+		],
+		"explain": "Connects to DMBS.",
+		"return": "Connection on success",
+		"_name": "mysql_connect"
+	},
+	"mysql_query":
+	{
+		"prototype": "mysql_query(connection,query,parameters := \"\")",
+		"parameter": [
+			{
+				"_name": "connection",
+				"_value": "Connection object"
+			},
+			{
+				"_name": "query",
+				"_value": "the SQL query to perform"
+			},
+			{
+				"_name": "parameters",
+				"_value": "Array of parameters."
+			}
+		],
+		"explain": [
+			"Performs a query. Every occurrence of ? in the query will be replaced\n  by corresponding parameter in the parameters array (if present). Parameters are\n  automatically escaped. All parameters are handled as string by now.",
+			"Example: mysql_query(conn, \"SELECT a FROM t WHERE a = ? AND b = ?\", array{1,\"hel'lo\")\n  executes \"SELECT a FROM t WHERE a = '1' AND b = 'hel\\'lo'\""
+		],
+		"return": "Connection on success",
+		"_name": "mysql_query"
+	},
+	"mysql_fetch_row":
+	{
+		"prototype": "mysql_fetch_row(result)",
+		"parameter": {
+			"_name": "result",
+			"_value": "Result object"
+		},
+		"explain": "Fetches next row from Result.",
+		"return": "Array on success",
+		"_name": "mysql_fetch_row"
+	},
+	"mysql_affected_rows":
+	{
+		"prototype": "mysql_affected_rows(result)",
+		"parameter": {
+			"_name": "result",
+			"_value": "Result object"
+		},
+		"explain": "Returns number of rows affected by last query.",
+		"return": "Integer on success",
+		"_name": "mysql_affected_rows"
+	},
+	"mysql_num_fields":
+	{
+		"prototype": "mysql_num_fields(result)",
+		"parameter": {
+			"_name": "result",
+			"_value": "Result object"
+		},
+		"explain": "Returns number of fields in result.",
+		"return": "Integer on success",
+		"_name": "mysql_num_fields"
+	},
+	"mysql_num_rows":
+	{
+		"prototype": "mysql_num_rows(result)",
+		"parameter": {
+			"_name": "result",
+			"_value": "Result object"
+		},
+		"explain": "Returns number of rows in result.",
+		"return": "Integer on success",
+		"_name": "mysql_num_rows"
+	},
+	"mysql_select_db":
+	{
+		"prototype": "mysql_select_db(connection,database)",
+		"parameter": [
+			{
+				"_name": "connection",
+				"_value": "Connection object"
+			},
+			{
+				"_name": "database",
+				"_value": "database name"
+			}
+		],
+		"explain": "Select a database to perform queries on.",
+		"return": "1 on success",
+		"_name": "mysql_select_db"
+	},
+	"mysql_field_name":
+	{
+		"prototype": "mysql_field_name(result,column_index)",
+		"parameter": [
+			{
+				"_name": "result",
+				"_value": "Result object"
+			},
+			{
+				"_name": "column_index",
+				"_value": "index for the field in the result"
+			}
+		],
+		"explain": "Returns the given field's name in result.",
+		"return": "String on success",
+		"_name": "mysql_field_name"
+	},
+	"mysql_close":
+	{
+		"prototype": "mysql_close(connection)",
+		"parameter": {
+			"_name": "connection",
+			"_value": "Connection object"
+		},
+		"explain": "Closed the connection to DBMS.",
+		"return": "1 on success",
+		"_name": "mysql_close"
+	}
 }

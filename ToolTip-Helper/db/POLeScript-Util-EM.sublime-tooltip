@@ -1,4 +1,87 @@
 {
   "_comment": "FILE - Util",
-  "": {  }
+  "RandomInt":
+	{
+	"prototype": "RandomInt(below_this_number)",
+	"parameter": {
+		"_name": "below_this_number",
+		"_value": "Integer"
+	},
+	"explain": "Returns a random integer below the passed parameter and greater or equal to zero.",
+	"return": "Integer R such that 0 less or equal to R less than below_this_number",
+	"error": "\"RandomInt() expects a positive integer\"",
+	"_name": "RandomInt"
+	},
+	"RandomIntMinMax":
+{
+	"prototype": "RandomIntMinMax(minValue, maxValue)",
+	"parameter": [
+		{
+			"_name": "minValue",
+			"_value": "Integer"
+		},
+		{
+			"_name": "maxValue",
+			"_value": "Integer"
+		}
+	],
+	"explain": "Returns a random integer between the Min and Max integers passed. Accepts negative Integers and if parameters in wrong order swaps them.",
+	"return": "Integer Randomly between Min and Max parameters",
+	"error": "\"RandomIntMinMax() expects an integer\"",
+	"_name": "RandomIntMinMax"
+	},
+	"RandomFloat":
+{
+	"prototype": "RandomFloat(below_this_float)",
+	"parameter": {
+		"_name": "below_this_float",
+		"_value": "Real"
+	},
+	"explain": "Returns a random real below the passed parameter and greater or equal to zero.",
+	"return": "Real R such that 0 less or equal to R less than below_this_number",
+	"error": "\"RandomFloat() expects a Real parameter\"",
+	"_name": "RandomFloat"
+	},
+	"RandomDiceRoll":
+{
+	"prototype": "RandomDiceRoll(dice_string)",
+	"parameter": {
+		"_name": "dice_string",
+		"_value": "String"
+	},
+	"explain": [
+		"Returns a random number according to the passed die roll string. This is standard NdS+X format. N=number of dies to roll, S=number of sides per die, X=integer to add(or subtract) after roll.",
+		{
+			"code": "4\nd4\nd6+6\nd6-2\n2d12\n2d8+12\n2d8-4",
+			"__text": "Here's some acceptable examples:"
+		}
+	],
+	"return": "Valkyrie's pedantic wording: \"returns an integer greater or equal to N+X and not more than N*S+X\"",
+	"_name": "RandomDiceRoll"
+	},
+	"StrFormatTime":
+{
+	"prototype": "StrFormatTime( format_string, time_stamp:=0 )",
+	"parameter": [
+		{
+			"_name": "format_string",
+			"_value": "String"
+		},
+		{
+			"_name": "time_stamp",
+			"_value": "Integer"
+		}
+	],
+	"explain": [
+		"Takes in the StrFTime() specifiers for the format string.",
+		"If time_stamp is 0, it will use POLCore().systime.",
+		"For format_string information, please go to http://www.cppreference.com/stddate/strftime.html"
+	],
+	"return": "String",
+	"error": [
+		"\"No time string passed.\"",
+		"\"Format string exceeded 100 characters.\""
+	],
+	"_name": "StrFormatTime"
+	}
 }
