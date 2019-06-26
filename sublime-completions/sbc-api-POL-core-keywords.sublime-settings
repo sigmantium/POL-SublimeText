@@ -8,8 +8,8 @@
 		["endfunction\tkeyword","endfunction"],
 
 		// Declaration
-		[ "const\tdeclare", "const $1${2: := $3]" ],
-		[  "var\tdeclare", "var $1${2: := $3]" ],
+		[ "const\tdeclare", "const $1${2: := $3}" ],
+		[  "var\tdeclare", "var $1${2: := $3}" ],
 
 		// Enum
 		["enum","enum"],

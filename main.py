@@ -60,7 +60,7 @@ class PleasurazyAPICompletionsPackageEventListener(sublime_plugin.EventListener)
             view_words = v.extract_completions(prefix, locations[0])
         else:
             view_words = v.extract_completions(prefix)
-        view_words = filter_words(view_words)
+        #view_words = filter_words(view_words)
         view_words = fix_truncation(v, view_words)
         words += [(w, v) for w in view_words]
 
@@ -73,15 +73,15 @@ class PleasurazyAPICompletionsPackageEventListener(sublime_plugin.EventListener)
         if scope and view.match_selector(locations[0], scope):
           self.completions += pleasurazy.api[API_Keyword].get('completions')
 
-    """REMOVED FOR MULTI FILE AUTOCOMPLETE
+    
     for w, v in words:
         trigger = w
         contents = w.replace('$', '\\$')
         if v.id != view.id and v.file_name():
             trigger += '\t(%s)' % basename(v.file_name())
         if v.id == view.id:
-            trigger += settings.get("file_view_abbrev", '\tview')
-        #self.completions.append([trigger, contents])"""
+            trigger += settings.get('file_view_abbrev', '\tview')
+        self.completions.append([trigger, contents])
 
     if not self.completions:
       return []

@@ -1,4 +1,8 @@
 {
+  // Setting: file_view_abbrev
+  // Default: \tview
+  // Purpose: When reciving an autocomplete from the currently open file the autocomplete type shown on the right hand side will display this string
+  "file_view_abbrev": "\tview",
   // --------------------
   // sublime-better-completions-Package (sbc package)
   // --------------------
