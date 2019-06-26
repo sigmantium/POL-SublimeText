@@ -572,9 +572,11 @@ class ToolTipHelperCommand(sublime_plugin.TextCommand):
                         file['file_name'] = full_path
                         tooltip_files.append(file)
                         has_files = True
+                    
                 if has_files:
+                    """ #UNCOMMENT BELOW TO SEE SCOPES IN CONSOLE
                     msg = "files with valid scope: %s\n" % str(tooltip_files)
-                    self.logger_msg += msg
+                    self.logger_msg += msg"""
                     break
             if not has_files:
                 self.logger_msg += 'There is no file with scope from the files list that match to the current scope\n'                
